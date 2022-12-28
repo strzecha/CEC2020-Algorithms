@@ -1,0 +1,6 @@
+AGSK(1, 1000, fun1D)
+AGSK(2, 4000, fun2D)
+AGSK(3, 9000, fun3D)
+AGSK(5, 10000, hypersphere5D)
+AGSK(2, 5000, easom2D)
+AGSK(10, 10000, hypersphere10D)

@@ -1,0 +1,106 @@
+import numpy as np
+
+def COLSHADE(dim, MAX_FES):
+    mi = 0.25
+    e_f = 10 ** (-4)
+    p = 0.11 # proportion of best solutions
+    # 1
+    r_N_init = 18
+    r_arc = 2.6
+    N_init = np.round(dim * r_N_init)
+    A = np.round(N_init * r_arc)
+    
+    # 2
+    N_0 = N_init
+    N_min = 4
+    p_m0 = 0.5 
+    p_mG = p_m0
+    N_G = N_0
+
+    # 3 initialize memories
+    M_CR = 0.5
+    M_F = 0.5
+    M_CR_L = 0.5
+    M_F_L = 0.5
+
+    CR = list()
+    F = list()
+
+    # 4
+    P_0 = np.random.rand(N_init, dim)
+    P = P_0
+    # 5 initial tolerance
+
+    # 6
+    stop = False
+    FES = 0
+    while not stop:
+        # 7
+        # 8
+        fit_P = list() 
+        for i in range(N_G):
+            new_P = P[:]
+            l = np.random.rand()
+            pbest = get_pbest(P)
+            if l <= p_mG:
+                CR[i], F[i] = generate_parameters(M_CR_L, M_F_L)
+                u_i_g = current_to_pbest(P[i], CR[i], F[i], P, pbest)
+            else:
+                CR[i], F[i] = generate_parameters(M_CR, M_F)
+                u_i_g = levy(P[i], CR[i], F[i], P, pbest, N_G, dim, P_G)
+
+            if evaluate(u_i_g) > evaluate(P[i]):
+                new_P[i] = u_i_g
+                A.append(P[i])
+
+                if l <= p_mG:
+                    pass
+                else:
+                    pass
+        
+        FES += N_G
+
+        M_CR, M_F = update_memories(S_CR, S_F, delta_f)
+        M_CR_L, M_F = update_memories(S_CR_L, S_F, delta_f_L)
+        p_mG = update_probability(delta_f, delta_f_L, p_mG, mi)
+        # e_G = 
+        N_G = np.round(((N_min - N_init) / MAX_FES) * FES + N_init)
+
+def update_probability(delta_f, delta_f_L, p_mG, mi):
+    if delta_f_L == delta_f and delta_f == 0:
+        return p_mG
+    else:
+        
+        return mi * p_mG + (1 - mi) * p_mG_s
+
+def generate_parameters(M_CR, M_F):
+    CR_i = np.random.normal(M_CR_ri, 0.1) if M_CR_ri > 0 else 0
+    F_i = M_CR_ri + 0.1 * np.random.standard_cauchy(M_CR_ri)
+
+def current_to_pbest(x_i, CR_i, F_i, P, pbest):
+    x_pbest = np.random.choice(pbest)
+    x_r1 = x_r2 = None
+    
+    while x_r1 != x_r2:
+        x_r1, x_r2 = np.random.choice(P, 2)
+
+    return x_i + F_i * (x_pbest - x_i) + F_i(x_r1 - x_r2)
+
+def levy(x_i, CR_i, F_i, P, pbest, N_G, dim, P_G):
+    F_crit = np.sqrt((1 - CR_i/2) / N_G)
+    F_i = np.max(F_crit, F_i)
+    jrand = np.random.randint(1, dim)
+    x_pbest = P_G[0] # TODO
+    for j in range(dim):
+        if np.random.rand() <= CR_i or j == jrand:
+            F_levy = F_i * S
+            u_j = x_j + F_levy * (x_pbest[j] - x_j)
+        else:
+            u_j = x_j
+    
+
+def get_pbest(P):
+    pass
+
+def evaluate(x, fun):
+    return fun(x)
