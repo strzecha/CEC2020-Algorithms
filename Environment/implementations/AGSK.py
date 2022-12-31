@@ -1,130 +1,116 @@
 import numpy as np
 import copy
 import matplotlib.pyplot as plt
+from implementations.evolutionary_algorithm import EvolutionaryAlgorithm, Individual
 
-k_r = 0.5
-k_f = 0.5
-k = 0.7
-p = 0.5
+class AGSK(EvolutionaryAlgorithm):
+    def __init__(self, k_r=0.5, k_f=0.5, k=0.7, p=0.05, t_MAX=1000):
+        super().__init__()
+        self.k_r = k_r
+        self.k_f = k_f
+        self.k = k
+        self.p = p
+        self.t_MAX = t_MAX
 
-class AGSKIndividual:
-    def __init__(self, x):
-        self.x = x
-        self.objective = 0
+    def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
+        super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
+        self.NP = 20 * self.D
 
-    def __repr__(self):
-        return f"{self.x}: obj:{self.objective}"
+    def initialize_population(self):
+        self.P = [AGSKIndividual(np.random.rand(self.D)) for _ in range(self.NP)]
 
-    def __add__(self, individual):
-        return AGSKIndividual(self.x + individual.x)
-    
-    def __sub__(self, individual):
-        return AGSKIndividual(self.x - individual.x)
+    def evaluate_population(self):
+        for i in range(self.NP):
+            self.evaluate_individual(self.P[i])
 
-    def __mul__(self, num):
-        return AGSKIndividual(self.x * num)
+    def before_start(self):
+        self.P = sorted(self.P, key=lambda x: x.objective)
+        self.global_best = self.P[0]
 
-    def __lt__(self, individual):
-        return list(self.x) < list(individual.x)
+    def prepare_to_generate_population(self):
+        self.D_junior = int(self.D * (1 - self.t/self.t_MAX) ** self.k_r)
+        self.D_senior = self.D - self.D_junior
 
-def AGSK(dim, MAX_FES, fun):
-    G = 0
-    NP = 20 * dim
-    GEN = 100
-    objs = list()
+        self.P = sorted(self.P, key=lambda x: x.objective)
+        self.global_best = self.P[0]
 
-    P = [AGSKIndividual(np.random.rand(dim)) for _ in range(NP)]
-    for i in range(NP):
-            P[i].objective = evaluate(P[i], fun)
-    g_best = P[0]
-    # 5
-    for G in range(GEN):
-        # 6
-        dim_junior = int(dim * (1 - G/GEN) ** k_r)
-        dim_senior = dim - dim_junior
-        #7
-        P_junior = JuniorGSK(NP, dim_junior, P)
+    def mutation(self):
+        self.T = list()
 
-        #8
-        P_senior = SeniorGSK(NP, dim_junior, dim_senior, P_junior)
+        x_p_best = self.P[:int(self.NP * self.p)]
+        x_p_worst = self.P[int(self.NP * self.p):int(self.NP - (2 * self.p))]
+        x_mid = self.P[int(self.NP - 2 * self.p):]
 
-        #9
-        #P_junior.extend(P_senior)
-        new_P = P_senior
-        for i in range(NP):
-            new_P[i].objective = evaluate(new_P[i], fun)
+        for i in range(self.NP):
+            # junior phase
+            x_r = np.random.choice(self.P)
+            x_i = self.P[i]
 
-            if new_P[i].objective < P[i].objective:
-                P[i] = new_P[i]
-
-        #10
-        P = sort_best(P)
-        best = P[0]
-
-        if best.objective < g_best.objective:
-            g_best = best
-
-        print(g_best)
-        objs.append(g_best.objective)
-
-    plt.plot(range(len(objs)), objs)
-    plt.show()
-
-def JuniorGSK(NP, dim, P):
-    # jest posortowewane best -> wosrt
-    new_P = copy.deepcopy(P)
-    for i in range(NP):
-        x_r = np.random.choice(P)
-        x_i = new_P[i]
-        if i == 0:
-            x_better = P[i+1]
-            x_worse = P[i+2]
-        elif i == NP - 1:
-            x_better = P[i-1]
-            x_worse = P[i-2]
-        else:
-            x_better = P[i-1]
-            x_worse = P[i+1]
-        x_i_new = x_i
-        for j in range(dim):
-            if np.random.rand() <= k_r:
+            if i == 0:
+                x_better = self.P[i+1]
+                x_worse = self.P[i+2]
+            elif i == self.NP - 1:
+                x_better = self.P[i-1]
+                x_worse = self.P[i-2]
+            else:
+                x_better = self.P[i-1]
+                x_worse = self.P[i+1]
+            x_i_new = x_i
+            for j in range(self.D_junior):
                 if x_i.objective > x_r.objective:
-                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_r.x[j] - x_i.x[j])) * k_f
+                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_r.x[j] - x_i.x[j])) * self.k_f
                 else:
-                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_i.x[j] - x_r.x[j])) * k_f
-            else:
-                x_i_new.x[j] = x_i.x[j]
-        new_P[i] = x_i_new
-    return new_P
+                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_i.x[j] - x_r.x[j])) * self.k_f
 
-def SeniorGSK(NP, dim_junior, dim_senior, P):
-    x_p_best = P[:int(NP * p)]
-    x_p_worst = P[int(NP * p):int(NP - (2 * p))]
-    x_mid = P[int(NP - 2 * p):]
-    new_P = copy.deepcopy(P)
-    for i in range(NP):
-        x_i = new_P[i]
-        x_i_new = x_i
-        x_pb = np.random.choice(x_p_best)
-        x_pw = np.random.choice(x_p_worst)
-        x_m = np.random.choice(x_mid)
-        for j in range(dim_junior, dim_senior):
-            if np.random.rand() <= k_r:
+            # senior phase
+            x_pb = np.random.choice(x_p_best)
+            x_pw = np.random.choice(x_p_worst)
+            x_m = np.random.choice(x_mid)
+            for j in range(self.D_junior, self.D_senior):
                 if x_i.objective > x_m.objective:
-                    x_i_new.x[j] = x_i.x[j] + k_f * ((x_pb.x[j] - x_pw.x[j]) + (x_m.x[j] - x_i.x[j]))
+                    x_i_new.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_m.x[j] - x_i.x[j])) * self.k_f
                 else:
-                    x_i_new.x[j] = x_i.x[j] + k_f * ((x_pb.x[j] - x_pw.x[j]) + (x_i.x[j] - x_m.x[j]))
-            else:
-                x_i_new.x[j] = x_i.x[j]
-        new_P[i] = x_i_new
-    return new_P
+                    x_i_new.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_i.x[j] - x_m.x[j])) * self.k_f
 
+            self.T.append(x_i_new)
 
-def evaluate(x, fun):
-    return fun(x.x)
+    def crossover(self):
+        self.O = list()
+        for i in range(self.NP):
+            x = self.P[i]
+            u = self.T[i]
+            for j in range(self.D):
+                if np.random.rand() < self.k_r:
+                    x.x[j] = u.x[j]
+            self.O.append(x)
 
-def sort_best(P):
-    return sorted(P, key=lambda x: x.objective)
+        self.new_P = self.O
+
+    def operation_after_generate(self):
+        for i in range(self.NP):
+            if self.new_P[i].objective < self.P[i].objective:
+                self.P[i] = self.new_P[i]
+
+        self.get_pbest()
+        self.FES += self.NP
+
+        if self.FES >= self.MAX_FES:
+            self.stop = True
+
+        self.FESs.append(self.FES)
+        self.bests_values.append(self.global_best.objective)
+
+    def get_pbest(self):
+        best = sorted(self.P, key=lambda x: x.objective)
+        ind = int(np.round(self.p * np.size(self.P)))
+        ind = max(ind, 1)
+        self.pbest = best[:ind]
+        self.global_best = self.pbest[0]
+        
+
+class AGSKIndividual(Individual):
+    def __init__(self, x):
+        super().__init__(x)
 
 # TODO
 # Control Adaptive setting

@@ -1,101 +1,8 @@
 import numpy as np
 import copy
 import matplotlib.pyplot as plt
-from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm, EvolutionaryAlgorithm2
+from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm
 
-p = 0.1 # pbest
-
-class IMODE(EvolutionaryAlgorithm2):
-    def __init__(self, p=0.1, nop=3, p_ls=0.1, p_1=1, p_2=2, archive_rate=2.6):
-        super().__init__()
-        self.p = 0.1 # p best solutions
-        self.nop = 3
-        self.Prob_ls = 0.1
-        self.prob_1 = 1
-        self.prob_2 = 1
-        self.archive_rate = 2.6
-
-    def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
-        super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
-        self.NP = 12 * self.D * self.D
-        self.archive_size = int(self.archive_rate * self.NP)
-        self.archive = list()
-
-    def initialize_population(self):
-        self.P = [IMODEIndividual(np.random.rand(self.D), 0.5, 0.5) for _ in range(self.NP)]
-
-    def evaluate_population(self):
-        for i in range(self.NP):
-            self.evaluate_individual(self.P[i])
-
-        self.FES += self.NP
-
-    def before_start(self):
-        op_1 = Operator(current_to_pbest_archive, self.NP // 3, self.D)
-        op_1.P = copy.deepcopy(self.P[:self.NP // 3])
-        op_1.x_best = get_pbest(op_1.P)[0]
-        op_2 = Operator(current_to_pbest_without_archive, self.NP // 3, self.D)
-        op_2.P = copy.deepcopy(self.P[self.NP // 3:self.NP // 3 * 2])
-        op_2.x_best = get_pbest(op_2.P)[0]
-        op_3 = Operator(weighted_to_to_pbest, self.NP // 3, self.D)
-        op_3.P = copy.deepcopy(self.P[self.NP // 3 * 2:])
-        op_3.x_best = get_pbest(op_3.P)[0]
-
-        self.ops = [op_1, op_2, op_3]
-
-    def prepare_to_generate_population(self):
-        self.pbest = get_pbest(self.P)
-        self.new_P = list()
-
-    def mutation(self):
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].mutation(self.P, self.archive, self.pbest)
-
-    def crossover(self):
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].crossover()
-                self.new_P.extend(self.ops[i].P)
-
-        self.P = copy.deepcopy(self.new_P)
-    
-    def operation_after_generate(self):
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].calculate_diversity()
-
-        for i in range(len(self.ops)):
-                if self.ops[i].NP > 0:
-                    self.ops[i].x_best = get_pbest(self.ops[i].P)[0]
-
-        # 9
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].calculate_diversity_rate(self.ops)
-                self.ops[i].calculate_quality_rate(self.ops)
-                self.ops[i].calculate_improvment_rate_value()
-        
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].calculate_new_size_of_population(np.delete(self.ops, i), self.NP)
-
-        # 10, 11
-        self.archive = update_archive(self.archive, self.new_P, self.archive_size)
-
-        if self.FES >= 0.85 * self.MAX_FES and self.FES < self.MAX_FES:
-            # 14
-            SQP()
-            # 15
-            # ???
-
-        pbest = get_pbest(self.P)
-        self.FESs.append(self.FES)
-        self.bests_values.append(pbest[0].objective)
-
-        if self.FES >= self.MAX_FES:
-            self.stop = True
-        
 class IMODEIndividual(Individual):
     def __init__(self, x, CR=0.5, F=0.5):
         super().__init__(x)
@@ -182,7 +89,7 @@ class Operator:
     def calculate_new_size_of_population(self, other_ops, NP):
         self.NP = int(max(0.1, min(0.9, self.IRV / np.sum([op.IRV for op in other_ops]))) * NP)
 
-"""
+
 class IMODE(EvolutionaryAlgorithm):
     def __init__(self):
         self.nop = 3
@@ -404,10 +311,6 @@ def IMODE_fun(dim, MAX_FES, fun):
         pbest = get_pbest(P)
         objs.append(pbest[0].objective)
 
-    plt.plot(range(len(objs)), objs)
-    plt.show()
-
-"""
 def SQP():
     pass
 

@@ -2,7 +2,9 @@ import numpy as np
 import copy
 from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm
 
-class EnMODE(EvolutionaryAlgorithm):
+p = 0.1 # pbest
+
+class IMODE(EvolutionaryAlgorithm):
     def __init__(self, p=0.1, nop=3, prob_ls=0.1, prob_1=1, prob_2=2, archive_rate=2.6):
         super().__init__()
         self.p = 0.1 # p best solutions
@@ -19,7 +21,7 @@ class EnMODE(EvolutionaryAlgorithm):
         self.archive = list()
 
     def initialize_population(self):
-        self.P = [EnMODEIndividual(np.random.rand(self.D), 0.5, 0.5) for _ in range(self.NP)]
+        self.P = [IMODEIndividual(np.random.rand(self.D), 0.5, 0.5) for _ in range(self.NP)]
 
     def evaluate_population(self):
         for i in range(self.NP):
@@ -29,14 +31,17 @@ class EnMODE(EvolutionaryAlgorithm):
 
     def before_start(self):
         # prepare DE operators
-        op_1 = Operator(current_to_pbest_archive, self.NP // 2, self.D)
-        op_1.P = copy.deepcopy(self.P[:self.NP // 2])
+        op_1 = Operator(current_to_pbest_archive, self.NP // 3, self.D)
+        op_1.P = copy.deepcopy(self.P[:self.NP // 3])
         op_1.x_best = get_pbest(op_1.P)[0]
-        op_2 = Operator(rand_to_pbest, self.NP // 2, self.D)
-        op_2.P = copy.deepcopy(self.P[self.NP // 2:])
+        op_2 = Operator(current_to_pbest_without_archive, self.NP // 3, self.D)
+        op_2.P = copy.deepcopy(self.P[self.NP // 3:self.NP // 3 * 2])
         op_2.x_best = get_pbest(op_2.P)[0]
+        op_3 = Operator(weighted_to_to_pbest, self.NP // 3, self.D)
+        op_3.P = copy.deepcopy(self.P[self.NP // 3 * 2:])
+        op_3.x_best = get_pbest(op_3.P)[0]
 
-        self.ops = [op_1, op_2]
+        self.ops = [op_1, op_2, op_3]
 
     def prepare_to_generate_population(self):
         self.pbest = get_pbest(self.P)
@@ -78,6 +83,12 @@ class EnMODE(EvolutionaryAlgorithm):
         # 10, 11
         self.archive = update_archive(self.archive, self.new_P, self.archive_size)
 
+        if self.FES >= 0.85 * self.MAX_FES and self.FES < self.MAX_FES:
+            # 14
+            SQP()
+            # 15
+            # ???
+
         pbest = get_pbest(self.P)
         self.FESs.append(self.FES)
         self.bests_values.append(pbest[0].objective)
@@ -85,7 +96,7 @@ class EnMODE(EvolutionaryAlgorithm):
         if self.FES >= self.MAX_FES:
             self.stop = True
         
-class EnMODEIndividual(Individual):
+class IMODEIndividual(Individual):
     def __init__(self, x, CR=0.5, F=0.5):
         super().__init__(x)
         self.CR = CR
@@ -120,7 +131,7 @@ class Operator:
     def regenerate(self):
         if self.NP > len(self.P):
             for i in range(self.NP - len(self.P)):
-                self.P.append(EnMODEIndividual(np.random.rand(self.dim), 0.5, 0.5))
+                self.P.append(IMODEIndividual(np.random.rand(self.dim), 0.5, 0.5))
 
         else:
             bests = sorted(self.P, key=lambda x: x.objective)
@@ -171,7 +182,9 @@ class Operator:
     def calculate_new_size_of_population(self, other_ops, NP):
         self.NP = int(max(0.1, min(0.9, self.IRV / np.sum([op.IRV for op in other_ops]))) * NP)
 
-p = 0.1
+def SQP():
+    pass
+
 def get_pbest(P):
     best = sorted(P, key=lambda x: x.objective)
     ind = int(np.ceil(p * np.size(P)))
@@ -188,6 +201,9 @@ def update_archive(archive, new_P, archive_size):
     #return archive
     return new_P
 
+def evaluate(x, fun):
+    return fun(x.x)
+
 def current_to_pbest_archive(x_i, CR_i, F_i, P, archive, pbest):
     P_A = np.append(P, archive)
     x_pbest = np.random.choice(pbest)
@@ -198,12 +214,20 @@ def current_to_pbest_archive(x_i, CR_i, F_i, P, archive, pbest):
 
     return x_i + (x_pbest - x_i) * F_i + (x_r1 - x_r2) * F_i
 
-def rand_to_pbest(x_i, CR_i, F_i, P, archive, pbest):
-    P_A = np.append(P, archive)
+def current_to_pbest_without_archive(x_i, CR_i, F_i, P, archive, pbest):
     x_pbest = np.random.choice(pbest)
-    x_r1 = x_r2 = None
+    x_r1 = x_r3 = None
     
-    while x_r1 == x_r2:
-        x_r1, x_r2 = np.random.choice(P, 2)
+    while x_r1 == x_r3:
+        x_r1, x_r3 = np.random.choice(P, 2)
 
-    return x_i + (x_pbest - x_i + x_r1 - x_r2) * F_i
+    return x_i + (x_pbest - x_i) * F_i + (x_r1 - x_r3) * F_i
+
+def weighted_to_to_pbest(x_i, CR_i, F_i, P, archive, pbest):
+    x_pbest = np.random.choice(pbest)
+    x_r1 = x_r3 = None
+    
+    while x_r1 == x_r3:
+        x_r1, x_r3 = np.random.choice(P, 2)
+
+    return x_r1 * F_i + (x_pbest - x_r3)
