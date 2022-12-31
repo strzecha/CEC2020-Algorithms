@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 k_r = 0.5
 k_f = 0.5
+k = 0.7
 p = 0.5
 
 class AGSKIndividual:
@@ -45,11 +46,11 @@ def AGSK(dim, MAX_FES, fun):
         P_junior = JuniorGSK(NP, dim_junior, P)
 
         #8
-        P_senior = SeniorGSK(NP, dim_junior, dim_senior, P)
+        P_senior = SeniorGSK(NP, dim_junior, dim_senior, P_junior)
 
         #9
-        P_junior.extend(P_senior)
-        new_P = P_junior
+        #P_junior.extend(P_senior)
+        new_P = P_senior
         for i in range(NP):
             new_P[i].objective = evaluate(new_P[i], fun)
 

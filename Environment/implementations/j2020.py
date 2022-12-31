@@ -88,6 +88,7 @@ class j2020Algorithm(EvolutionaryAlgorithm):
             self.Pb = np.array(new_Pb)
 
             best = self.best_of(self.Pb)
+            self.FESs.append(self.FES)
             self.bests_values.append(function(best.x))
 
             self.check_if_improve(best, function)

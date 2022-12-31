@@ -1,31 +1,106 @@
 import numpy as np
 import copy
 import matplotlib.pyplot as plt
-from implementations.evolutionary_algorithm import Individual
+from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm, EvolutionaryAlgorithm2
 
 p = 0.1 # pbest
 
+class IMODE(EvolutionaryAlgorithm2):
+    def __init__(self, p=0.1, nop=3, p_ls=0.1, p_1=1, p_2=2, archive_rate=2.6):
+        super().__init__()
+        self.p = 0.1 # p best solutions
+        self.nop = 3
+        self.Prob_ls = 0.1
+        self.prob_1 = 1
+        self.prob_2 = 1
+        self.archive_rate = 2.6
+
+    def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
+        super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
+        self.NP = 12 * self.D * self.D
+        self.archive_size = int(self.archive_rate * self.NP)
+        self.archive = list()
+
+    def initialize_population(self):
+        self.P = [IMODEIndividual(np.random.rand(self.D), 0.5, 0.5) for _ in range(self.NP)]
+
+    def evaluate_population(self):
+        for i in range(self.NP):
+            self.evaluate_individual(self.P[i])
+
+        self.FES += self.NP
+
+    def before_start(self):
+        op_1 = Operator(current_to_pbest_archive, self.NP // 3, self.D)
+        op_1.P = copy.deepcopy(self.P[:self.NP // 3])
+        op_1.x_best = get_pbest(op_1.P)[0]
+        op_2 = Operator(current_to_pbest_without_archive, self.NP // 3, self.D)
+        op_2.P = copy.deepcopy(self.P[self.NP // 3:self.NP // 3 * 2])
+        op_2.x_best = get_pbest(op_2.P)[0]
+        op_3 = Operator(weighted_to_to_pbest, self.NP // 3, self.D)
+        op_3.P = copy.deepcopy(self.P[self.NP // 3 * 2:])
+        op_3.x_best = get_pbest(op_3.P)[0]
+
+        self.ops = [op_1, op_2, op_3]
+
+    def prepare_to_generate_population(self):
+        self.pbest = get_pbest(self.P)
+        self.new_P = list()
+
+    def mutation(self):
+        for i in range(len(self.ops)):
+            if self.ops[i].NP > 0:
+                self.ops[i].mutation(self.P, self.archive, self.pbest)
+
+    def crossover(self):
+        for i in range(len(self.ops)):
+            if self.ops[i].NP > 0:
+                self.ops[i].crossover()
+                self.new_P.extend(self.ops[i].P)
+
+        self.P = copy.deepcopy(self.new_P)
+    
+    def operation_after_generate(self):
+        for i in range(len(self.ops)):
+            if self.ops[i].NP > 0:
+                self.ops[i].calculate_diversity()
+
+        for i in range(len(self.ops)):
+                if self.ops[i].NP > 0:
+                    self.ops[i].x_best = get_pbest(self.ops[i].P)[0]
+
+        # 9
+        for i in range(len(self.ops)):
+            if self.ops[i].NP > 0:
+                self.ops[i].calculate_diversity_rate(self.ops)
+                self.ops[i].calculate_quality_rate(self.ops)
+                self.ops[i].calculate_improvment_rate_value()
+        
+        for i in range(len(self.ops)):
+            if self.ops[i].NP > 0:
+                self.ops[i].calculate_new_size_of_population(np.delete(self.ops, i), self.NP)
+
+        # 10, 11
+        self.archive = update_archive(self.archive, self.new_P, self.archive_size)
+
+        if self.FES >= 0.85 * self.MAX_FES and self.FES < self.MAX_FES:
+            # 14
+            SQP()
+            # 15
+            # ???
+
+        pbest = get_pbest(self.P)
+        self.FESs.append(self.FES)
+        self.bests_values.append(pbest[0].objective)
+
+        if self.FES >= self.MAX_FES:
+            self.stop = True
+        
 class IMODEIndividual(Individual):
     def __init__(self, x, CR=0.5, F=0.5):
-        self.x = x
-        self.objective = 0
+        super().__init__(x)
         self.CR = CR
         self.F = F
-
-    def __repr__(self):
-        return f"{self.x}: obj:{self.objective}"
-
-    def __add__(self, individual):
-        return IMODEIndividual(self.x + individual.x)
-    
-    def __sub__(self, individual):
-        return IMODEIndividual(self.x - individual.x)
-
-    def __mul__(self, num):
-        return IMODEIndividual(self.x * num)
-
-    def __lt__(self, individual):
-        return list(self.x) < list(individual.x)
 
 class Operator:
     def __init__(self, strategy, NP_op, dim):
@@ -39,7 +114,7 @@ class Operator:
         self.x_best = None
         self.dim = dim
 
-    def crossover(self, x_i, v_i, CR_i):
+    def do_crossover(self, x_i, v_i, CR_i):
         j_rand = np.random.randint(0, np.size(x_i))
 
         for j in range(np.size(x_i)):
@@ -62,13 +137,31 @@ class Operator:
             bests = sorted(self.P, key=lambda x: x.objective)
             self.P = bests[:self.NP]
 
+    def mutation(self, P, archive, pbest):
+        self.O = list()
+        self.regenerate()
+
+        for i in range(self.NP):
+            v_i = self.strategy(self.P[i], self.P[i].CR, self.P[i].F, P, archive, pbest)
+            self.O.append(v_i)
+
+    def crossover(self):
+        new_P = list()
+
+        for i in range(self.NP):
+            v_i = self.O[i]
+            u_i = self.do_crossover(self.P[i], v_i, self.P[i].CR)
+
+            new_P.append(u_i)
+
+        self.P = copy.deepcopy(new_P)
 
     def generate(self, P, archive, pbest):
         new_P = list()
         self.regenerate()
         for i in range(self.NP):
             v_i = self.strategy(self.P[i], self.P[i].CR, self.P[i].F, P, archive, pbest)
-            u_i = self.crossover(self.P[i], v_i, self.P[i].CR)
+            u_i = self.do_crossover(self.P[i], v_i, self.P[i].CR)
 
             new_P.append(u_i)
 
@@ -89,7 +182,129 @@ class Operator:
     def calculate_new_size_of_population(self, other_ops, NP):
         self.NP = int(max(0.1, min(0.9, self.IRV / np.sum([op.IRV for op in other_ops]))) * NP)
 
-def IMODE(dim, MAX_FES, fun):
+"""
+class IMODE(EvolutionaryAlgorithm):
+    def __init__(self):
+        self.nop = 3
+        self.Prob_ls = 0.1
+        self.prob_1 = 1
+        self.prob_2 = 1
+        self.archive_rate = 2.6
+
+    def crossover(self):
+        return super().crossover()
+
+    def mutation(self):
+        return super().mutation()
+
+    def selection(self):
+        return super().selection()
+        
+    def optimize(self, fun, dimensionality, budget_FES, MAX, MIN):
+        self.prepare_to_optimize()
+
+        NP = 12 * dimensionality * dimensionality
+        archive_size = int(self.archive_rate * NP)
+        archive = list()
+
+        G = 1
+        FES = 0
+        MAX_FES = budget_FES
+
+        # 2
+        #P = [IMODEIndividual(np.random.rand(dim), np.random.normal(0.5, 0.15), np.random.normal(0.5, 0.15)) for _ in range(NP)]
+        #P = [IMODEIndividual(np.random.rand(dimensionality), 0.5, 0.5) for _ in range(NP)]
+        P = self.initialize_population(NP, IMODEIndividual, dimensionality)
+
+        # 3
+        for i in range(NP):
+                P[i].objective = evaluate(P[i], fun)
+        FES += NP
+
+        # 4
+        op_1 = Operator(current_to_pbest_archive, NP // 3, dimensionality)
+        op_1.P = copy.deepcopy(P[:NP // 3])
+        op_1.x_best = get_pbest(op_1.P)[0]
+        op_2 = Operator(current_to_pbest_without_archive, NP // 3, dimensionality)
+        op_2.P = copy.deepcopy(P[NP // 3:NP // 3 * 2])
+        op_2.x_best = get_pbest(op_2.P)[0]
+        op_3 = Operator(weighted_to_to_pbest, NP // 3, dimensionality)
+        op_3.P = copy.deepcopy(P[NP // 3 * 2:])
+        op_3.x_best = get_pbest(op_3.P)[0]
+
+        ops = [op_1, op_2, op_3]
+
+
+        objs = list()
+        # 5
+        while FES < MAX_FES:
+            # 6
+            G += 1
+
+            # 7, 8
+            pbest = get_pbest(P)
+            new_P = list()
+
+            for i in range(len(ops)):
+                if ops[i].NP > 0:
+                    ops[i].mutation(P, archive, pbest)
+                    ops[i].crossover()
+                    new_P.extend(ops[i].P)
+                    ops[i].calculate_diversity()
+
+            for i in range(len(ops)):
+                if ops[i].NP > 0:
+                    ops[i].x_best = get_pbest(ops[i].P)[0]
+
+            # 9
+            for i in range(len(ops)):
+                if ops[i].NP > 0:
+                    ops[i].calculate_diversity_rate(ops)
+                    ops[i].calculate_quality_rate(ops)
+                    ops[i].calculate_improvment_rate_value()
+            
+            for i in range(len(ops)):
+                if ops[i].NP > 0:
+                    ops[i].calculate_new_size_of_population(np.delete(ops, i), NP)
+
+            # 10, 11
+            archive = update_archive(archive, new_P, archive_size)
+            P = copy.deepcopy(new_P)
+            new_P = list()
+
+            pbest = get_pbest(P)
+            for i in range(len(ops)):
+                if ops[i].NP > 0:
+                    ops[i].mutation(P, archive, pbest)
+                    ops[i].crossover()
+                    #ops[i].generate(P, archive, pbest)
+                    new_P.extend(ops[i].P)
+                    for j in range(ops[i].NP):
+                        ops[i].P[j].objective = evaluate(ops[i].P[j], fun)
+
+            for i in range(len(ops)):
+                if ops[i].NP > 0:
+                    ops[i].x_best = get_pbest(ops[i].P)[0]
+
+            FES += NP
+
+            # 12 
+            # ???
+
+            # 13
+            if FES >= 0.85 * MAX_FES and FES < MAX_FES:
+                # 14
+                SQP()
+                # 15
+                # ???
+
+            pbest = get_pbest(P)
+            self.FESs.append(FES)
+            self.bests_values.append(pbest[0].objective)
+
+        return pbest[0].x, pbest[0].objective
+
+def IMODE_fun(dim, MAX_FES, fun):
     # 1
     nop = 3
     Prob_ls = 0.1
@@ -192,6 +407,7 @@ def IMODE(dim, MAX_FES, fun):
     plt.plot(range(len(objs)), objs)
     plt.show()
 
+"""
 def SQP():
     pass
 
