@@ -3,7 +3,7 @@ import copy
 from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm
 
 class EnMODE(EvolutionaryAlgorithm):
-    def __init__(self, p=0.1, nop=3, prob_ls=0.1, prob_1=1, prob_2=2, archive_rate=2.6):
+    def __init__(self, p=0.1, nop=2, prob_ls=0.1, prob_1=1, prob_2=2, archive_rate=2.6):
         super().__init__()
         self.p = 0.1 # p best solutions
         self.nop = nop
@@ -30,17 +30,27 @@ class EnMODE(EvolutionaryAlgorithm):
     def before_start(self):
         # prepare DE operators
         op_1 = Operator(current_to_pbest_archive, self.NP // 2, self.D)
-        op_1.P = copy.deepcopy(self.P[:self.NP // 2])
-        op_1.x_best = get_pbest(op_1.P)[0]
+        #op_1.P = copy.deepcopy(self.P[:self.NP // 2])
+        #op_1.x_best = get_pbest(op_1.P)[0]
         op_2 = Operator(rand_to_pbest, self.NP // 2, self.D)
-        op_2.P = copy.deepcopy(self.P[self.NP // 2:])
-        op_2.x_best = get_pbest(op_2.P)[0]
+        #op_2.P = copy.deepcopy(self.P[self.NP // 2:])
+        #op_2.x_best = get_pbest(op_2.P)[0]
 
         self.ops = [op_1, op_2]
 
     def prepare_to_generate_population(self):
         self.pbest = get_pbest(self.P)
         self.new_P = list()
+
+        self.shuffled_P = copy.deepcopy(self.P)
+
+        np.random.shuffle(self.shuffled_P)
+
+        index = 0
+        for i in range(self.nop):
+            self.ops[i].P = self.shuffled_P[index:index+self.ops[i].NP]
+            index = self.ops[i].NP
+            self.ops[i].x_best = get_pbest(self.ops[i].P)[0]
 
     def mutation(self):
         for i in range(len(self.ops)):
@@ -55,7 +65,7 @@ class EnMODE(EvolutionaryAlgorithm):
 
         self.P = copy.deepcopy(self.new_P)
     
-    def operation_after_generate(self):
+    def after_generate(self):
         for i in range(len(self.ops)):
             if self.ops[i].NP > 0:
                 self.ops[i].calculate_diversity()

@@ -48,8 +48,8 @@ for k = 21
         input.mueff   = 1/sum(input.weights.^2);                    
         input.cs      = (input.mueff+2) / (D+input.mueff+3);         
         input.damps   = 1 + 2*max(0, sqrt((input.mueff-1)/(D+1))-1) + input.cs;                      
-        input.cmu     = ((D+2)/3)*((2/(input.mueff*(D+sqrt(2))^2))+(1-1/input.mueff)...
-                        *min([1,(2*input.mueff-1)/((D+2)^2+input.mueff)]));
+        input.cmu     = ( ( D + 2 ) / 3 ) * ( ( 2 / ( input.mueff * ( D + sqrt(2) ) ^ 2 ) ) + ( 1 - 1 / input.mueff)...
+                        * min( [1, (2*input.mueff-1) / ((D+2)^2+input.mueff) ] ));
         input.cc      = 4/(D+4);  
         %% problem specification
         problem.constr_fun_name = 'cec20_func';                 

@@ -28,7 +28,7 @@ class EvolutionaryAlgorithm(ABC):
             self.crossover()
             self.evaluate_population()
 
-            self.operation_after_generate()
+            self.after_generate()
 
         return self.pbest[0].x, self.pbest[0].objective
 
@@ -66,7 +66,7 @@ class EvolutionaryAlgorithm(ABC):
         pass
 
     @abstractmethod
-    def operation_after_generate(self):
+    def after_generate(self):
         pass
 
     def evaluate_individual(self, individual):
@@ -81,6 +81,7 @@ class EvolutionaryAlgorithm(ABC):
     def LPSR(self, NP_min, NP_init, MAX_FES, FES):
         NP = int(np.round(((NP_min - NP_init) / MAX_FES) * FES + NP_init))
         return NP
+        
 class Individual:
     def __init__(self, x):
         self.x = x

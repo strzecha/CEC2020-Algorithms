@@ -95,7 +95,7 @@ class j2020(EvolutionaryAlgorithm):
             self.evaluate_individual(u)
             self.O.append(u)
 
-    def operation_after_generate(self):
+    def after_generate(self):
         for i in range(self.bNP):
             x = self.Pb[i]
             u = self.O[i]

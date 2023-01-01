@@ -29,7 +29,7 @@ class AGSK(EvolutionaryAlgorithm):
 
     def prepare_to_generate_population(self):
         self.D_junior = int(self.D * (1 - self.t/self.t_MAX) ** self.k_r)
-        self.D_senior = self.D - self.D_junior
+        self.D_senior = self.D
 
         self.P = sorted(self.P, key=lambda x: x.objective)
         self.global_best = self.P[0]
@@ -86,7 +86,7 @@ class AGSK(EvolutionaryAlgorithm):
 
         self.new_P = self.O
 
-    def operation_after_generate(self):
+    def after_generate(self):
         for i in range(self.NP):
             if self.new_P[i].objective < self.P[i].objective:
                 self.P[i] = self.new_P[i]

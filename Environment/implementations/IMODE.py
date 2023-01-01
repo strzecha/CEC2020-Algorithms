@@ -32,20 +32,32 @@ class IMODE(EvolutionaryAlgorithm):
     def before_start(self):
         # prepare DE operators
         op_1 = Operator(current_to_pbest_archive, self.NP // 3, self.D)
-        op_1.P = copy.deepcopy(self.P[:self.NP // 3])
-        op_1.x_best = get_pbest(op_1.P)[0]
+        #op_1.P = copy.deepcopy(self.P[:self.NP // 3])
+        #op_1.x_best = get_pbest(op_1.P)[0]
         op_2 = Operator(current_to_pbest_without_archive, self.NP // 3, self.D)
-        op_2.P = copy.deepcopy(self.P[self.NP // 3:self.NP // 3 * 2])
-        op_2.x_best = get_pbest(op_2.P)[0]
+        #op_2.P = copy.deepcopy(self.P[self.NP // 3:self.NP // 3 * 2])
+        #op_2.x_best = get_pbest(op_2.P)[0]
         op_3 = Operator(weighted_to_to_pbest, self.NP // 3, self.D)
-        op_3.P = copy.deepcopy(self.P[self.NP // 3 * 2:])
-        op_3.x_best = get_pbest(op_3.P)[0]
+        #op_3.P = copy.deepcopy(self.P[self.NP // 3 * 2:])
+        #op_3.x_best = get_pbest(op_3.P)[0]
 
         self.ops = [op_1, op_2, op_3]
 
     def prepare_to_generate_population(self):
         self.pbest = get_pbest(self.P)
         self.new_P = list()
+
+        self.shuffled_P = copy.deepcopy(self.P)
+
+        np.random.shuffle(self.shuffled_P)
+
+        index = 0
+        for i in range(self.nop):
+            self.ops[i].P = self.shuffled_P[index:index+self.ops[i].NP]
+            index = self.ops[i].NP
+            print(index, end=" ")
+            self.ops[i].x_best = get_pbest(self.ops[i].P)[0]
+        print()
 
     def mutation(self):
         for i in range(len(self.ops)):
@@ -60,7 +72,7 @@ class IMODE(EvolutionaryAlgorithm):
 
         self.P = copy.deepcopy(self.new_P)
     
-    def operation_after_generate(self):
+    def after_generate(self):
         for i in range(len(self.ops)):
             if self.ops[i].NP > 0:
                 self.ops[i].calculate_diversity()

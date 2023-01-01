@@ -120,7 +120,7 @@ class COLSHADE(EvolutionaryAlgorithm):
             self.O.append(u)
                 
 
-    def operation_after_generate(self):
+    def after_generate(self):
 
         new_P = list()
 
@@ -172,7 +172,7 @@ class COLSHADE(EvolutionaryAlgorithm):
 
     def update_probability(self):
         if not (np.size(self.delta_f_L) == 0 and np.size(self.delta_f) == 0):
-            p_m_s = np.sum(self.delta_f_L) / (np.sum(self.delta_f_L) + np.sum(self.delta_f))
+            self.p_m_s = np.sum(self.delta_f_L) / (np.sum(self.delta_f_L) + np.sum(self.delta_f))
             self.p_m = self.mi * self.p_m + (1 - self.mi) * self.p_m_s
 
     def generate_parameters(self, M_CR, M_F):

@@ -1,4 +1,4 @@
-from implementations.IMODE_2 import IMODE, IMODE_2
+from implementations.IMODE import IMODE, IMODE_2
 from implementations.COLSHADE import COLSHADE
 from implementations.EnMODE import EnMODE
 from implementations.AGSK import AGSK
