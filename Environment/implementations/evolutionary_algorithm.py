@@ -40,6 +40,8 @@ class EvolutionaryAlgorithm(ABC):
         self.t = 0
         self.FES = 0
         self.MAX_FES = budget_FES
+        self.MIN = MIN
+        self.MAX = MAX
 
     @abstractmethod
     def initialize_population(self):

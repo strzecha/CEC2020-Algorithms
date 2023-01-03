@@ -20,7 +20,7 @@ class AGSK(EvolutionaryAlgorithm):
         self.NP_init = self.NP
 
     def initialize_population(self):
-        self.P = [AGSKIndividual(np.random.rand(self.D)) for _ in range(self.NP)]
+        self.P = [AGSKIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)]
 
     def evaluate_population(self):
         for i in range(self.NP):
