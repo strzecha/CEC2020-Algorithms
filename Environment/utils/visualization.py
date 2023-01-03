@@ -7,5 +7,7 @@ def draw_graph_evaluations(algorithms):
         FESs = algorithm.FESs
         bests = algorithm.bests_values
         plt.plot(FESs, bests, color, label=name)
+    plt.xlabel("FES")
+    plt.ylabel("fun value")
     plt.legend()
     plt.show()

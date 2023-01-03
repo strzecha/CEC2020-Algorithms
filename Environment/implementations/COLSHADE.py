@@ -64,6 +64,12 @@ class COLSHADE(EvolutionaryAlgorithm):
         for i in range(self.NP):
             self.evaluate_individual(self.P[i])
 
+        self.get_pbest()
+        self.FES += self.NP
+
+        self.FESs.append(self.FES)
+        self.bests_values.append(self.global_best.objective)
+
     def get_pbest(self):
         best = sorted(self.P, key=lambda x: x.objective)
         ind = int(np.round(self.p * np.size(self.P)))
@@ -72,7 +78,7 @@ class COLSHADE(EvolutionaryAlgorithm):
         self.global_best = self.pbest[0]
 
     def before_start(self):
-        self.pbest = self.get_pbest()
+        pass
         # set initial tolerance
 
     def prepare_to_generate_population(self):
@@ -87,7 +93,6 @@ class COLSHADE(EvolutionaryAlgorithm):
         self.l = np.random.rand()
 
     def mutation(self):
-        self.get_pbest()
         self.T = list()
 
         for i in range(self.NP):
@@ -119,9 +124,7 @@ class COLSHADE(EvolutionaryAlgorithm):
             
             self.O.append(u)
                 
-
-    def after_generate(self):
-
+    def selection(self):
         new_P = list()
 
         for i in range(self.NP):
@@ -150,12 +153,9 @@ class COLSHADE(EvolutionaryAlgorithm):
                 new_P.append(x)
 
         self.P = new_P
+        
 
-        self.FES += self.NP
-
-        self.FESs.append(self.FES)
-        self.bests_values.append(self.global_best.objective)
-
+    def after_generate(self):
         if self.FES >= self.MAX_FES:
             self.stop = True
 
@@ -164,7 +164,6 @@ class COLSHADE(EvolutionaryAlgorithm):
         self.update_probability()
         # e_G = 
         self.NP = self.LPSR(self.NP_min, self.NP_init, self.MAX_FES, self.FES)
-        print(self.NP)
 
 
     def update_memories(self, M_CR, M_F, S_CR, S_F, delta_f):

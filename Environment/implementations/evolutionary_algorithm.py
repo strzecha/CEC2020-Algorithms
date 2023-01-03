@@ -2,15 +2,10 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 class EvolutionaryAlgorithm(ABC):
-    def __init__(self):
-        # visualization
-        self.bests_values = None 
-        self.FESs = None 
-
     def prepare_to_optimize(self):
         self.FESs = list()
         self.bests_values = list()
-        self.pbest = None
+        self.global_best = None
 
     def optimize(self, fun, dimenstionality, budget_FES, MAX, MIN):
         self.prepare_to_optimize()
@@ -27,10 +22,11 @@ class EvolutionaryAlgorithm(ABC):
             self.mutation()
             self.crossover()
             self.evaluate_population()
+            self.selection()
 
             self.after_generate()
 
-        return self.pbest[0].x, self.pbest[0].objective
+        return self.global_best.x, self.global_best.objective
 
     @abstractmethod
     def before_start(self):
@@ -69,19 +65,17 @@ class EvolutionaryAlgorithm(ABC):
     def after_generate(self):
         pass
 
+    @abstractmethod
+    def selection(self):
+        pass
+
     def evaluate_individual(self, individual):
         individual.evaluate(self.fun)
-
-    def best_of(self, population):
-        # looking for the lowest value of objective
-        population = sorted(population, key=lambda ind: ind.objective)
-        best = population[0]
-        return best
 
     def LPSR(self, NP_min, NP_init, MAX_FES, FES):
         NP = int(np.round(((NP_min - NP_init) / MAX_FES) * FES + NP_init))
         return NP
-        
+
 class Individual:
     def __init__(self, x):
         self.x = x

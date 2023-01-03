@@ -1,29 +1,27 @@
-from implementations.IMODE import IMODE, IMODE_2
-from implementations.COLSHADE import COLSHADE
+from implementations.j2020 import j2020
+from implementations.IMODE import IMODE
 from implementations.EnMODE import EnMODE
-from implementations.AGSK import AGSK
-from implementations.esCMAgES import CMAES
-from test_functions.test_functions import fun1D, fun2D, fun3D, hypersphere2D, easom2D, hypersphere5D, hypersphere10D
+from implementations.COLSHADE import COLSHADE
+from implementations.AGSK import AGSK, AGSK2
+from test_functions.test_functions import (fun1D, fun2D, fun3D, 
+                                            hypersphere2D, easom2D, 
+                                            schwefel2D, himmelblau2D, hypersphere5D)
+from utils.visualization import draw_graph_evaluations
 
-CMAES(50, fun2D, 2)
+alg_5 = AGSK2()
 
 
-#IMODE_main([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], fun1D)
-"""
-IMODE(1, 1000, fun1D)
-IMODE(2, 2000, fun2D)
-IMODE(3, 3000, fun3D)
-"""
-#print(fun1D([1.02387573]))
-#COLSHADE(1, 1000, fun1D)
-#COLSHADE(2, 1000, hypersphere2D)
-#COLSHADE(5, 2500, hypersphere5D)
-#COLSHADE(10, 10000, hypersphere10D)
-"""
-AGSK(1, 1000, fun1D)
-AGSK(2, 2000, fun2D)
-AGSK(3, 3000, fun3D)
-AGSK(5, 10000, hypersphere5D)
-AGSK(2, 5000, easom2D)
-AGSK(10, 10000, hypersphere10D)
-"""
+
+print("Fun1D:")
+
+#(best_sol_5, objective_val_5) = alg_5.optimize(fun1D, 1, 500, 100, -100)
+
+#print(best_sol_5, objective_val_5)
+
+#draw_graph_evaluations([ (alg_5, "AGSK")])
+
+(best_sol_5, objective_val_5) = alg_5.optimize(fun3D, 3, 1000, 100, -100)
+
+print(best_sol_5, objective_val_5)
+
+draw_graph_evaluations([ (alg_5, "AGSK")])

@@ -32,14 +32,9 @@ class IMODE(EvolutionaryAlgorithm):
     def before_start(self):
         # prepare DE operators
         op_1 = Operator(current_to_pbest_archive, self.NP // 3, self.D)
-        #op_1.P = copy.deepcopy(self.P[:self.NP // 3])
-        #op_1.x_best = get_pbest(op_1.P)[0]
         op_2 = Operator(current_to_pbest_without_archive, self.NP // 3, self.D)
-        #op_2.P = copy.deepcopy(self.P[self.NP // 3:self.NP // 3 * 2])
-        #op_2.x_best = get_pbest(op_2.P)[0]
         op_3 = Operator(weighted_to_to_pbest, self.NP // 3, self.D)
-        #op_3.P = copy.deepcopy(self.P[self.NP // 3 * 2:])
-        #op_3.x_best = get_pbest(op_3.P)[0]
+
 
         self.ops = [op_1, op_2, op_3]
 
@@ -55,9 +50,7 @@ class IMODE(EvolutionaryAlgorithm):
         for i in range(self.nop):
             self.ops[i].P = self.shuffled_P[index:index+self.ops[i].NP]
             index = self.ops[i].NP
-            print(index, end=" ")
             self.ops[i].x_best = get_pbest(self.ops[i].P)[0]
-        print()
 
     def mutation(self):
         for i in range(len(self.ops)):
@@ -65,12 +58,11 @@ class IMODE(EvolutionaryAlgorithm):
                 self.ops[i].mutation(self.P, self.archive, self.pbest)
 
     def crossover(self):
+        self.O = list()
         for i in range(len(self.ops)):
             if self.ops[i].NP > 0:
                 self.ops[i].crossover()
-                self.new_P.extend(self.ops[i].P)
-
-        self.P = copy.deepcopy(self.new_P)
+                self.O.extend(self.ops[i].P)
     
     def after_generate(self):
         for i in range(len(self.ops)):
@@ -90,7 +82,7 @@ class IMODE(EvolutionaryAlgorithm):
         
         for i in range(len(self.ops)):
             if self.ops[i].NP > 0:
-                self.ops[i].calculate_new_size_of_population(np.delete(self.ops, i), self.NP)
+                self.ops[i].calculate_new_size_of_population(self.ops, self.NP)
 
         # 10, 11
         self.archive = update_archive(self.archive, self.new_P, self.archive_size)
@@ -102,11 +94,37 @@ class IMODE(EvolutionaryAlgorithm):
             # ???
 
         pbest = get_pbest(self.P)
+        self.global_best = pbest[0]
         self.FESs.append(self.FES)
-        self.bests_values.append(pbest[0].objective)
+        self.bests_values.append(self.global_best.objective)
+
+        self.update_NP()
 
         if self.FES >= self.MAX_FES:
             self.stop = True
+
+    def update_NP(self):
+        self.new_NP = 0
+        for i in range(self.nop):
+            self.new_NP += self.ops[i].NP
+
+        if self.new_NP < self.NP:
+            sub = self.NP - self.new_NP
+            while sub > 0:
+                self.ops[sub % self.nop].NP += 1
+                sub -= 1
+
+    def selection(self):
+        self.new_P = list()
+        for i in range(self.NP):
+            x = self.P[i]
+            u = self.O[i]
+
+            if x.objective < u.objective:
+                self.new_P.append(x)
+            else:
+                self.new_P.append(u)
+        self.P = self.new_P
         
 class IMODEIndividual(Individual):
     def __init__(self, x, CR=0.5, F=0.5):
@@ -142,10 +160,12 @@ class Operator:
 
     def regenerate(self):
         if self.NP > len(self.P):
+            print("mało")
             for i in range(self.NP - len(self.P)):
                 self.P.append(IMODEIndividual(np.random.rand(self.dim), 0.5, 0.5))
 
-        else:
+        elif self.NP < len(self.P):
+            print("dużo")
             bests = sorted(self.P, key=lambda x: x.objective)
             self.P = bests[:self.NP]
 
