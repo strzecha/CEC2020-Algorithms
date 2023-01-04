@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 def draw_graph_evaluations(algorithms):
-    colors = ("b", "r", "g", "y", "m")
+    colors = ("b", "r", "g", "y", "m", "c")
     for alg, color in zip(algorithms, colors):
         algorithm, name = alg
         FESs = algorithm.FESs

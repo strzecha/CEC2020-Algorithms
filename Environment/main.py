@@ -3,6 +3,7 @@ from implementations.IMODE import IMODE
 from implementations.EnMODE import EnMODE
 from implementations.COLSHADE import COLSHADE
 from implementations.AGSK import AGSK
+from implementations.esCMAgES import esCMAgES
 from test_functions.test_functions import (fun1D, fun2D, fun3D, 
                                             hypersphere2D, easom2D, 
                                             schwefel2D, himmelblau2D, hypersphere5D)
@@ -13,7 +14,7 @@ alg_2 = EnMODE()
 alg_3 = j2020(50, 10)
 alg_4 = COLSHADE()
 alg_5 = AGSK()
-
+alg_6 = esCMAgES()
 
 
 print("Fun1D:")
@@ -26,13 +27,17 @@ MAX = [10] * DIM
 (best_sol_3, objective_val_3) = alg_3.optimize(fun1D, 1, 500, 1, 0)
 (best_sol_4, objective_val_4) = alg_4.optimize(fun1D, 1, 500, 100, -100)
 (best_sol_5, objective_val_5) = alg_5.optimize(fun1D, DIM, MAX_FES, MAX, MIN)
+(best_sol_6, objective_val_6) = alg_6.optimize(fun1D, DIM, MAX_FES, 100, -100)
+
 print(best_sol_1, objective_val_1)
 print(best_sol_2, objective_val_2)
 print(best_sol_3, objective_val_3)
 print(best_sol_4, objective_val_4)
 print(best_sol_5, objective_val_5)
+print(best_sol_6, objective_val_6)
 
-draw_graph_evaluations([(alg_1, "IMODE"), (alg_2, "EnMODE"), (alg_3, "j2020"), (alg_4, "COLSHADE"), (alg_5, "AGSK")])
+draw_graph_evaluations([(alg_1, "IMODE"), (alg_2, "EnMODE"), (alg_3, "j2020"),
+                         (alg_4, "COLSHADE"), (alg_5, "AGSK"), (alg_6, "esCMAgES")])
 
 print(20 * "-")
 print("Fun2D")
