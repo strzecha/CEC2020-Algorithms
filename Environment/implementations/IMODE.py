@@ -1,4 +1,5 @@
 import numpy as np
+import scipy as sp
 import copy
 from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm
 
@@ -92,10 +93,7 @@ class IMODE(EvolutionaryAlgorithm):
         self.archive = update_archive(self.archive, self.P, self.archive_size)
 
         if self.FES >= 0.85 * self.MAX_FES and self.FES < self.MAX_FES:
-            # 14
-            SQP()
-            # 15
-            # ???
+            self.local_search()
 
         pbest = get_pbest(self.P)
         self.global_best = pbest[0]
@@ -129,6 +127,18 @@ class IMODE(EvolutionaryAlgorithm):
             else:
                 new_P = np.append(new_P, u)
         self.P = new_P
+
+    def local_search(self):
+        if np.random.rand() < self.p_ls:
+            CFE_ls = np.min([np.ceil(0.02 * self.MAX_FES), self.MAX_FES - self.FES])
+            x_sqp = IMODEIndividual(sp.optimize.minimize(self.fun, self.global_best.x, method="SLSQP", tol=1e-6, options={"maxiter": CFE_ls}).x)
+            x_sqp.evaluate(self.fun)
+            if x_sqp.objective < self.global_best.objective:
+                self.p_ls = 0.1
+                self.P[0] = x_sqp
+            else:
+                self.p_ls = 0.0001
+            self.FES += CFE_ls
         
 class IMODEIndividual(Individual):
     def __init__(self, x, CR=0.5, F=0.5):
@@ -218,8 +228,7 @@ class Operator:
     def calculate_new_size_of_population(self, other_ops, NP):
         self.NP = int(max(0.1, min(0.9, self.IRV / np.sum([op.IRV for op in other_ops]))) * NP)
 
-def SQP():
-    pass
+
 
 def get_pbest(P):
     best = sorted(P, key=lambda x: x.objective)

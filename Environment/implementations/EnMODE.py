@@ -87,7 +87,7 @@ class EnMODE(EvolutionaryAlgorithm):
                 self.ops[i].calculate_new_size_of_population(self.ops, self.NP)
 
         # 10, 11
-        self.archive = update_archive(self.archive, self.new_P, self.archive_size)
+        self.archive = update_archive(self.archive, self.P, self.archive_size)
 
         pbest = get_pbest(self.P)
         self.global_best = pbest[0]
@@ -111,16 +111,16 @@ class EnMODE(EvolutionaryAlgorithm):
                 sub -= 1
 
     def selection(self):
-        self.new_P = np.array([])
+        new_P = np.array([])
         for i in range(self.NP):
             x = self.P[i]
             u = self.O[i]
 
             if x.objective < u.objective:
-                self.new_P.append(x)
+                new_P = np.append(new_P, x)
             else:
-                self.new_P.append(u)
-        self.P = self.new_P
+                new_P = np.append(new_P, u)
+        self.P = new_P
         
 class EnMODEIndividual(Individual):
     def __init__(self, x, CR=0.5, F=0.5):
