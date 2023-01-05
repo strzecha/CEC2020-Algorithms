@@ -55,7 +55,7 @@ class j2020(EvolutionaryAlgorithm):
         self.Pb = np.array([j2020Individual(np.random.uniform(self.min, self.max, self.D), self.F, self.CR) for _ in range(self.bNP)])
         self.Ps = np.array([j2020Individual(np.random.uniform(self.min, self.max, self.D), self.F, self.CR) for _ in range(self.sNP)])
 
-    def evaluate_population(self):
+    def evaluate_initial_population(self):
         for i in range(self.bNP):
             self.evaluate_individual(self.Pb[i])
         for i in range(self.sNP):
@@ -66,6 +66,9 @@ class j2020(EvolutionaryAlgorithm):
 
         self.FESs.append(self.FES)
         self.bests_values.append(self.global_best.objective)
+
+    def evaluate_new_population(self):
+        self.evaluate_initial_population()
 
     def get_best(self, P):
         new_P = sorted(P, key=lambda x: x.objective)

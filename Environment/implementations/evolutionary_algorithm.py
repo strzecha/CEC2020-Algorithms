@@ -11,7 +11,7 @@ class EvolutionaryAlgorithm(ABC):
         self.prepare_to_optimize()
         self.initialize_parameters(fun, dimenstionality, budget_FES, MAX, MIN)
         self.initialize_population()
-        self.evaluate_population()
+        self.evaluate_initial_population()
         self.before_start()
 
         self.stop = False
@@ -21,7 +21,7 @@ class EvolutionaryAlgorithm(ABC):
 
             self.mutation()
             self.crossover()
-            self.evaluate_population()
+            self.evaluate_new_population()
             self.selection()
 
             self.after_generate()
@@ -48,7 +48,11 @@ class EvolutionaryAlgorithm(ABC):
         pass
 
     @abstractmethod
-    def evaluate_population(self):
+    def evaluate_new_population(self):
+        pass
+
+    @abstractmethod
+    def evaluate_initial_population(self):
         pass
 
     @abstractmethod

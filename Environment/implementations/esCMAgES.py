@@ -53,11 +53,14 @@ class esCMAgES(EvolutionaryAlgorithm):
     def initialize_population(self):
         self.P = [esCMAgESIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)]
 
-    def evaluate_population(self):
+    def evaluate_initial_population(self):
         for i in range(self.NP):
             self.evaluate_individual(self.P[i])
 
         self.FES += self.NP
+
+    def evaluate_new_population(self):
+        self.evaluate_initial_population()
 
     def before_start(self):
         self.x = np.zeros([1, self.D])
