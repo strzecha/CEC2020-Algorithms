@@ -108,8 +108,10 @@ class j2020(EvolutionaryAlgorithm):
         self.new_Pb = np.array([])
 
         for i in range(self.bNP):
-            x = self.Pb[i]
+            
             u = self.O[i]
+            closest_individual_index = self.crowding(u)
+            x = self.Pb[closest_individual_index]
 
             if u.objective <= x.objective:
                 xi = u # x, F, CR
@@ -171,6 +173,19 @@ class j2020(EvolutionaryAlgorithm):
 
         return v
 
+    def crowding(self, u):
+        dist = np.linalg.norm(self.Pb[0].x - u.x)
+        min_dist = dist
+        min_index = 0
+
+        for i in range(1, self.bNP):
+            dist = np.linalg.norm(self.Pb[i].x - u.x)
+            if dist < min_dist:
+                min_dist = dist
+                min_index = i
+
+        return min_index
+
     def do_crossover(self, x, v):
         # jDE crossover
         CR = np.random.random() if np.random.random() < self.tau2 else x.CR
@@ -181,6 +196,11 @@ class j2020(EvolutionaryAlgorithm):
         for j in range(self.D):
             if np.random.random() <= CR or j == jrand:
                 u.x[j] = v.x[j]
+
+                while u.x[j] < self.MIN[j]:
+                    u.x[j] += (self.MAX[j] - self.MIN[j])
+                while u.x[j] > self.MAX[j]:
+                    u.x[j] -= (self.MAX[j] - self.MIN[j])
             else:
                 u.x[j] = x.x[j]
         return u
