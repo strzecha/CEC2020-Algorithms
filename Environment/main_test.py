@@ -8,8 +8,8 @@ from test_functions.test_functions import (fun1D, fun2D, fun3D,
                                             schwefel2D, himmelblau2D, hypersphere5D)
 from utils.visualization import draw_graph_evaluations
 
-alg_1 = j2020(50, 10)
-NAME = "j2020"
+alg_1 = AGSK()
+NAME = "AGSK"
 
 
 print("Fun1D:")
