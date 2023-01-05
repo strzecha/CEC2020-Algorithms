@@ -36,8 +36,8 @@ class j2020(EvolutionaryAlgorithm):
 
     def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
         super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
-        self.bNP = self.bNP if self.bNP else 7 * self.dimensionality
-        self.sNP = self.sNP if self.sNP else self.dimensionality
+        self.bNP = self.bNP if self.bNP else 7 * self.D
+        self.sNP = self.sNP if self.sNP else self.D
 
         self.MIN_SNP = 3 # various individuals in mutation
 
@@ -48,12 +48,10 @@ class j2020(EvolutionaryAlgorithm):
         self.ageLmt = self.MAX_FES // 10
         self.noImprove = 0
 
-        self.min = MIN
-        self.max = MAX
 
     def initialize_population(self):
-        self.Pb = np.array([j2020Individual(np.random.uniform(self.min, self.max, self.D), self.F, self.CR) for _ in range(self.bNP)])
-        self.Ps = np.array([j2020Individual(np.random.uniform(self.min, self.max, self.D), self.F, self.CR) for _ in range(self.sNP)])
+        self.Pb = np.array([j2020Individual(np.random.uniform(self.MIN, self.MAX, self.D), self.F, self.CR) for _ in range(self.bNP)])
+        self.Ps = np.array([j2020Individual(np.random.uniform(self.MIN, self.MAX, self.D), self.F, self.CR) for _ in range(self.sNP)])
 
     def evaluate_initial_population(self):
         for i in range(self.bNP):
@@ -61,14 +59,17 @@ class j2020(EvolutionaryAlgorithm):
         for i in range(self.sNP):
             self.evaluate_individual(self.Ps[i])
 
-        self.FES += self.bNP
+        self.FES += self.bNP + self.sNP
         self.global_best = self.get_best(self.Ps)
 
         self.FESs.append(self.FES)
         self.bests_values.append(self.global_best.objective)
 
     def evaluate_new_population(self):
-        self.evaluate_initial_population()
+        for i in range(self.bNP):
+            self.evaluate_individual(self.O[i])
+
+        self.FES += self.bNP
 
     def get_best(self, P):
         new_P = sorted(P, key=lambda x: x.objective)
@@ -88,24 +89,23 @@ class j2020(EvolutionaryAlgorithm):
             self.Ms_size = 3
 
     def mutation(self):
-        self.T = list()
+        self.T = np.array([])
         for x in self.Pb:
             Ms = np.array([self.Ps[i] for i in np.random.randint(0, self.sNP, self.Ms_size)])
             v = self.mutation_big(x, Ms)
 
-            self.T.append(v)
+            self.T = np.append(self.T, v)
 
     def crossover(self):
-        self.O = list()
+        self.O = np.array([])
         for i in range(self.bNP):
             x = self.Pb[i]
             v = self.T[i]
             u = self.do_crossover(x, v)
-            self.evaluate_individual(u)
-            self.O.append(u)
+            self.O = np.append(self.O, u)
 
     def selection(self):
-        self.new_Pb = list()
+        self.new_Pb = np.array([])
 
         for i in range(self.bNP):
             x = self.Pb[i]
@@ -116,16 +116,16 @@ class j2020(EvolutionaryAlgorithm):
             else:
                 xi = x # x, F, CR
 
-            self.new_Pb.append(xi)
+            self.new_Pb = np.append(self.Pb, xi)
 
-        self.Pb = np.array(self.new_Pb)
+        self.Pb = self.new_Pb
 
     def after_generate(self):
         best_Pb = self.get_best(self.Pb)
-        self.check_if_improve(best_Pb, self.fun)
+        self.check_if_improve(best_Pb)
 
         for k in range(self.m):
-            new_Ps = list()
+            new_Ps = np.array([])
 
             for x in self.Ps:
                 v = self.mutation_small(x)
@@ -135,12 +135,16 @@ class j2020(EvolutionaryAlgorithm):
                     xi = u # x, F, CR
                 else:
                     xi = x # x, F, CR
-                new_Ps.append(xi)
+                new_Ps = np.append(new_Ps, xi)
 
-            self.Ps = np.array(new_Ps)
+            self.FES += self.sNP
+
+            self.Ps = new_Ps
 
         self.global_best = self.get_best(self.Ps)
 
+        self.bests_values.append(self.global_best.objective)
+        self.FESs.append(self.FES)
         if self.FES >= self.MAX_FES:
             self.stop = True
 
@@ -181,7 +185,7 @@ class j2020(EvolutionaryAlgorithm):
                 u.x[j] = x.x[j]
         return u
 
-    def check_if_improve(self, current_best, function):
+    def check_if_improve(self, current_best):
         if current_best.objective < self.global_best.objective: 
             self.Ps[self.FES % self.Ps.shape[0]] = current_best
             self.noImprove = 0
@@ -207,7 +211,9 @@ class j2020(EvolutionaryAlgorithm):
         dif = P[first].objective - P[last].objective
 
         if abs(dif) < self.eps and statement:
-            new_P = np.array([j2020Individual(np.random.uniform(self.min, self.max, self.D), P[i].F, P[i].CR) for i in range(P.shape[0])])
+            new_P = np.array([j2020Individual(np.random.uniform(self.MIN, self.MAX, self.D), P[i].F, P[i].CR) for i in range(P.shape[0])])
+            for i in range(P.shape[0]):
+                self.evaluate_individual(new_P[i])
             P = new_P
 
         return P

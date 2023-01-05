@@ -88,12 +88,12 @@ class AGSK(EvolutionaryAlgorithm):
             else:
                 x_better = self.P[i-1]
                 x_worse = self.P[i+1]
-            x_i_new = copy.deepcopy(x_i)
+            v = copy.deepcopy(x_i)
             for j in range(self.D_junior):
                 if x_i.objective > x_r.objective:
-                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_r.x[j] - x_i.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_r.x[j] - x_i.x[j])) * x_i.F
                 else:
-                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_i.x[j] - x_r.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_i.x[j] - x_r.x[j])) * x_i.F
 
             # senior phase
             x_pb = np.random.choice(x_p_best)
@@ -101,11 +101,11 @@ class AGSK(EvolutionaryAlgorithm):
             x_m = np.random.choice(x_mid)
             for j in range(self.D_junior, self.D_senior):
                 if x_i.objective > x_m.objective:
-                    x_i_new.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_m.x[j] - x_i.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_m.x[j] - x_i.x[j])) * x_i.F
                 else:
-                    x_i_new.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_i.x[j] - x_m.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_i.x[j] - x_m.x[j])) * x_i.F
 
-            self.T.append(x_i_new)
+            self.T.append(v)
 
     def crossover(self):
         self.O = list()
