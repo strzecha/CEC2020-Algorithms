@@ -4,11 +4,9 @@ import matplotlib.pyplot as plt
 import copy
 from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm
 
-class CMAESIndividual:
-    def __init__(self, y, z, d):
+class esCMAgESIndividual:
+    def __init__(self, y):
         self.x = y
-        self.z = z
-        self.d = d
         self.objective = 0
 
     def evaluate(self, fun):
@@ -17,33 +15,24 @@ class CMAESIndividual:
     def __repr__(self):
         return f"{self.y} {self.z} {self.d}: obj:{self.objective}"
 
-    def __add__(self, individual):
-        return CMAESIndividual(self.x + individual.x)
-    
-    def __sub__(self, individual):
-        return CMAESIndividual(self.x - individual.x)
-
-    def __mul__(self, num):
-        return CMAESIndividual(self.x * num)
-
     def __lt__(self, individual):
         return list(self.x) < list(individual.x)
 
 class esCMAgES(EvolutionaryAlgorithm):
-    def __init__(self, teta_p=-1, teta_r=0, gamma_min=3, sigma_max=100, T=500):
+    def __init__(self, teta_p=-1, teta_r=0, gamma_min=3, sigma_max=100, Tg=500):
         #teta_p = 0.2
         self.teta_p = teta_p
         self.teta_r = teta_r
         self.gamma_min = gamma_min
         self.sigma_max = sigma_max
-        self.T = T
+        self.Tg = Tg
 
     def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
         super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
         # 1
         self.NP = int(4 + np.floor(3 * np.log(self.D)))
         self.mi = int(np.floor(self.NP / 3))
-        self.sigma_0 = 1
+        self.sigma = 1
         self.P_sigma = np.zeros([1, self.D])
         self.P_c = np.zeros([1, self.D])
         self.C = np.identity(self.D)
@@ -51,10 +40,10 @@ class esCMAgES(EvolutionaryAlgorithm):
 
         self.c_c = 4 / (self.D + 4)
 
-        self.w = np.log([self.mi + 0.5 for i in range(self.mi)]).reshape(self.mi, 1) - np.log([i + 1 for i in range(self.mi)]).reshape(self.mi, 1)
-        self.w = self.w / np.sum(self.w)
+        self.weights = np.log([self.mi + 0.5 for i in range(self.mi)]).reshape(self.mi, 1) - np.log([i + 1 for i in range(self.mi)]).reshape(self.mi, 1)
+        self.weights = self.weights / np.sum(self.weights)
 
-        self.mi_eff = 1 / np.sum(self.w ** 2)
+        self.mi_eff = 1 / np.sum(self.weights ** 2)
         self.c_sigma = (self.mi_eff + 2) / (self.D + self.mi_eff + 3)
 
         self.c_mi = ((self.D + 2) / 3) * ((2 / (self.mi_eff * (self.D + np.sqrt(2)) ** 2)) + (1 - 1 / self.mi_eff) * min(1, (2 * self.mi_eff - 1) / ((self.D + 2) ** 2 + self.mi_eff)))
@@ -62,25 +51,26 @@ class esCMAgES(EvolutionaryAlgorithm):
         S_0 = np.array([]) # archive ??
 
     def initialize_population(self):
-        self.y = self.MIN + (self.MAX - self.MIN) * np.random.rand(self.NP, self.D)
-    
+        self.P = [esCMAgESIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)]
+
     def evaluate_population(self):
-        pass
+        for i in range(self.NP):
+            self.evaluate_individual(self.P[i])
+
+        self.FES += self.NP
 
     def before_start(self):
         self.x = np.zeros([1, self.D])
         for i in range(self.mi):
-            self.x += self.w[i] * self.y[i]
+            self.x += self.weights[i] * self.P[i].x
 
         self.g = 0
         self.restart = 1
 
-        y_best = [self.y[0]]
-        self.bests_values.append(self.fun(y_best))
-        self.FESs.append(0)
-
     def mutation(self):
-        self.Y = np.array([])
+        self.P = np.array([])
+        self.T = np.array([])
+        self.O = np.array([])
 
         self.MM = np.diag(np.diag(self.C) ** 0.5)
         for i in range(self.NP):
@@ -89,9 +79,7 @@ class esCMAgES(EvolutionaryAlgorithm):
             # 20
             d = self.MM @ z
             # 21
-            y = self.x + self.sigma_0 * d
-            # 22
-            self.FES += 1
+            y = self.x + self.sigma * d
             # 23
             y_d = self.box_constraints_repair(y) # TODO
             # 24
@@ -110,20 +98,22 @@ class esCMAgES(EvolutionaryAlgorithm):
                 # 32
                 y = y_d
                 # 33
-                d = (y - self.x) / self.sigma_0
+                d = (y - self.x) / self.sigma
                 # 34
                 z = 1 / np.diag(self.C) * d
 
-            self.Y = np.append(self.Y, CMAESIndividual(y, z, d))
+            self.P = np.append(self.P, esCMAgESIndividual(y[0]))
+            self.T = np.append(self.T, esCMAgESIndividual(z[0]))
+            self.O = np.append(self.O, esCMAgESIndividual(d[0]))
 
     def crossover(self):
-        return super().crossover()
+        pass
 
     def selection(self):
-        return super().selection()
+        pass
 
     def prepare_to_generate_population(self):
-        print(self.NP, self.FES)
+        pass
 
     def after_generate(self):
         self.find_best()
@@ -131,12 +121,12 @@ class esCMAgES(EvolutionaryAlgorithm):
         # 40
         x_impr = np.zeros([1, self.D])
         for i in range(self.mi):
-            x_impr += self.Y[i].d * self.w[i]
-        self.x = self.x + self.sigma_0 * x_impr
+            x_impr += self.O[i].x * self.weights[i]
+        self.x = self.x + self.sigma * x_impr
         # 41 - mi_eff to w algorytmie mi_w
         P_impr = np.zeros([1, self.D])
         for i in range(self.mi):
-            P_impr += self.Y[i].z * self.w[i]
+            P_impr += self.T[i].x * self.weights[i]
         self.P_sigma = (1 - self.c_sigma) * self.P_sigma + np.sqrt(self.mi_eff * self.c_sigma * (2 - self.c_sigma)) * P_impr
         # 42
         h_sigma = (np.linalg.norm(self.P_sigma) ** 2 / (self.D * (1 - (1 - self.c_sigma) ** (2 * self.FES / self.NP)))) < (2 + 4 / (self.D + 1))
@@ -146,18 +136,18 @@ class esCMAgES(EvolutionaryAlgorithm):
         # 44
         C_impr = np.zeros([self.D, self.D])
         for i in range(self.mi):
-            C_impr = C_impr + self.w[i] * self.Y[i].z * self.Y[i].z.reshape(self.D, 1)
+            C_impr = C_impr + self.weights[i] * self.T[i].x * self.T[i].x.reshape(self.D, 1)
 
 
         self.C = (1 - self.c_mi * (1 - 1 / self.mi_eff) * C_impr) * self.C + 1 / self.mi_eff * self.P_c * self.P_c.T
         # 45
-        self.sigma_0 = min(self.sigma_0 * np.exp(self.c_sigma / 2 * (np.linalg.norm(self.P_sigma) ** 2 / self.D - 1)), self.sigma_max)
+        self.sigma = min(self.sigma * np.exp(self.c_sigma / 2 * (np.linalg.norm(self.P_sigma) ** 2 / self.D - 1)), self.sigma_max)
         # 46
         self.g += 1
         # 47
-        #if g < T:
+        #if self.g < self.Tg:
             # 48
-            #e = e_0 * (1 - g/T) ** gamma
+            #e = e_0 * (1 - self.g/self.Tg) ** gamma
         # 49
         #else:
             # 50
@@ -172,27 +162,20 @@ class esCMAgES(EvolutionaryAlgorithm):
             restart = 0
         """
 
-    def find_best(self):
-        for individual in self.Y:
-            individual.evaluate(self.fun)
-
-        self.FES += self.NP
         if self.FES >= self.MAX_FES:
             self.stop = True
 
-        self.Y = sorted(self.Y, key=lambda x: x.objective)
-        self.global_best = self.Y[0]
-
         self.bests_values.append(self.global_best.objective)
         self.FESs.append(self.FES)
+
+    def find_best(self):
+        self.P, self.T, self.O = zip(*sorted(zip(self.P, self.T, self.O), key=lambda x: x[0].objective))
+        self.global_best = self.P[0]
 
     def gradient_repair():
         pass # TODO
 
     def box_constraints_repair(self, value):
         for i in range(len(value)):
-            if value[0][i] < self.MIN:
-                value[0][i] = self.MIN
-            elif value[0][i] > self.MAX:
-                value[0][i] = self.MAX
+            value[0][i] = np.min([np.max([value[0][i], self.MIN[i]]), self.MAX[i]])
         return value

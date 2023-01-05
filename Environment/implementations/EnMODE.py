@@ -21,7 +21,7 @@ class EnMODE(EvolutionaryAlgorithm):
         self.archive = list()
 
     def initialize_population(self):
-        self.P = [EnMODEIndividual(np.random.rand(self.D), 0.5, 0.5) for _ in range(self.NP)]
+         self.P = [EnMODEIndividual(np.random.uniform(self.MIN, self.MAX, self.D), 0.5, 0.5) for i in range(self.NP)]
 
     def evaluate_population(self):
         for i in range(self.NP):

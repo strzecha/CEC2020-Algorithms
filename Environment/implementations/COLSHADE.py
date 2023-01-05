@@ -58,7 +58,7 @@ class COLSHADE(EvolutionaryAlgorithm):
         self.M_F_L = 0.5 * np.ones([self.memory_size, 1])
 
     def initialize_population(self):
-        self.P = [COLSHADEIndividual(np.random.rand(self.D)) for _ in range(self.NP)]
+         self.P = [COLSHADEIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)]
 
     def evaluate_population(self):
         for i in range(self.NP):

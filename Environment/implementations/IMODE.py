@@ -21,7 +21,7 @@ class IMODE(EvolutionaryAlgorithm):
         self.archive = list()
 
     def initialize_population(self):
-        self.P = [IMODEIndividual(np.random.rand(self.D), 0.5, 0.5) for _ in range(self.NP)]
+         self.P = [IMODEIndividual(np.random.uniform(self.MIN, self.MAX, self.D), 0.5, 0.5) for i in range(self.NP)]
 
     def evaluate_population(self):
         for i in range(self.NP):
