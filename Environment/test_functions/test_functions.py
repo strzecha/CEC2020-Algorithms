@@ -1,4 +1,5 @@
 import benchmark_functions as bf
+import numpy as np
 
 def fun1D(x):
     # global minimum: min(fun1D(x)) = -21.501 at x = (1.5092)
@@ -7,6 +8,18 @@ def fun1D(x):
 def fun2D(x):
     # global minimum: min(fun2D(x)) = 2 at x = (-1, 0)
     return 2 * x[0] ** 2 + 4 * x[0] + 2 * x[1] ** 6 + 4
+
+def fun2Dblank(x):
+    # global minimum: min(fun2D(x)) = 2 at x = (-1, 0)
+    return 2 * x[0] ** 2 + 4 * x[0] + 2 * x[1] ** 6 + 4, [], []
+
+def fun2Dconst(x):
+    # global minimum: min(fun2Dconstr(x)) = -1.058267 at x = (5.03968, 2.51984)
+    h1 = x[0] - 2 * x[1]
+    h2 = 4 * x[1] - 2 * x[0]
+    g1 = x[1] - x[0]
+    g2 = 3 * x[1] - 2 * x[0]
+    return - x[0] ** 2 / (x[1] ** 3 + 8), [h1, h2], [g1, g2]
 
 def fun3D(x):
     # global minimum: min(fun3D(x)) = -10.2878 at x = (0.572357, 0, -0.000113599)
