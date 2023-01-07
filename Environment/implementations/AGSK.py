@@ -20,7 +20,7 @@ class AGSK(EvolutionaryAlgorithm):
         self.NP_init = self.NP
 
     def initialize_population(self):
-        self.P = [AGSKIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)]
+        self.P = np.array([AGSKIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)])
 
     def evaluate_initial_population(self):
         for i in range(self.NP):
@@ -29,7 +29,10 @@ class AGSK(EvolutionaryAlgorithm):
         self.FES += self.NP
 
     def evaluate_new_population(self):
-        self.evaluate_initial_population()
+        for i in range(self.NP):
+            self.evaluate_individual(self.O[i])
+
+        self.FES += self.NP
 
     def before_start(self):
         self.get_best()
@@ -68,7 +71,7 @@ class AGSK(EvolutionaryAlgorithm):
         self.old_P = copy.deepcopy(self.P)
 
     def mutation(self):
-        self.T = list()
+        self.T = np.array([])
         x_p_index = max(int(self.NP * self.p), 1)
         x_p_best = self.P[:x_p_index]
         x_mid = self.P[x_p_index:-x_p_index]
@@ -88,12 +91,12 @@ class AGSK(EvolutionaryAlgorithm):
             else:
                 x_better = self.P[i-1]
                 x_worse = self.P[i+1]
-            x_i_new = copy.deepcopy(x_i)
+            v = copy.deepcopy(x_i)
             for j in range(self.D_junior):
                 if x_i.objective > x_r.objective:
-                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_r.x[j] - x_i.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_r.x[j] - x_i.x[j])) * x_i.F
                 else:
-                    x_i_new.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_i.x[j] - x_r.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_better.x[j] - x_worse.x[j]) + (x_i.x[j] - x_r.x[j])) * x_i.F
 
             # senior phase
             x_pb = np.random.choice(x_p_best)
@@ -101,28 +104,26 @@ class AGSK(EvolutionaryAlgorithm):
             x_m = np.random.choice(x_mid)
             for j in range(self.D_junior, self.D_senior):
                 if x_i.objective > x_m.objective:
-                    x_i_new.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_m.x[j] - x_i.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_m.x[j] - x_i.x[j])) * x_i.F
                 else:
-                    x_i_new.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_i.x[j] - x_m.x[j])) * x_i.F
+                    v.x[j] = x_i.x[j] + ((x_pb.x[j] - x_pw.x[j]) + (x_i.x[j] - x_m.x[j])) * x_i.F
 
-            self.T.append(x_i_new)
+            self.T = np.append(self.T, v)
 
     def crossover(self):
-        self.O = list()
+        self.O = np.array([])
         for i in range(self.NP):
             x = copy.deepcopy(self.P[i])
             u = self.T[i]
             for j in range(self.D):
                 if np.random.rand() < x.CR:
                     x.x[j] = u.x[j]
-            self.O.append(x)
-
-        self.P = self.O
+            self.O = np.append(self.O, x)
 
     def selection(self):
         for i in range(self.NP):
-            if self.P[i].objective > self.old_P[i].objective:
-                self.P[i] = self.old_P[i]
+            if self.O[i].objective < self.P[i].objective:
+                self.P[i] = self.O[i]
 
     def after_generate(self):
         self.get_best()
