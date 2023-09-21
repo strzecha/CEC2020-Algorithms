@@ -1,0 +1,16 @@
+
+//
+//  Janez Brest, CEC 2020  Bound constraint optimization
+// 
+
+// CEC'2020 paper: 
+paper E-24518
+J. Brest, M. Sepesy Maucec, B. Boskovic: "Differential Evolution Algorithm for SingleObjective Bound-Constrained Optimization:Algorithm j2020"
+
+
+// To compile and run on Linux OS:
+
+make
+./main
+
+

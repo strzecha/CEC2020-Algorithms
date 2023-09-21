@@ -1,239 +1,280 @@
 import numpy as np
+from copy import deepcopy
 
-from implementations.evolutionary_algorithm import EvolutionaryAlgorithm, Individual
+from implementations.basic_algorithms.DE import DE
+from implementations.basic_algorithms.BCHM import wrapping
 
-class j2020Individual(Individual):
-    def __init__(self, x, F, CR):
-        super().__init__(x)
-        self.F = F
-        self.CR = CR
 
-    def __add__(self, individual):
-        return j2020Individual(self.x + individual.x, self.F, self.CR)
+INITIAL_EQUALITY_PERCENT = 0.25
+INITIAL_TOLERANCE = 1e-16
+INITIAL_F = 0.5
+INITIAL_CR = 0.9
+INITIAL_F_LOWER_BIG = 0.01
+INITIAL_F_LOWER_SMALL = 0.17
+INITIAL_F_UPPER = 1.1
+INITIAL_CR_LOWER_BIG = 0.0
+INITIAL_CR_LOWER_SMALL = 0.0
+INITIAL_CR_UPPER_BIG = 1.0
+INITIAL_CR_UPPER_SMALL = 0.7
+INITIAL_CR_ADAPTATION_PROBABILITY = 0.1
+INITIAL_F_ADAPTATION_PROBABILITY = 0.1
 
-    def __sub__(self, individual):
-        return j2020Individual(self.x - individual.x, self.F, self.CR)
 
-    def __mul__(self, num):
-        return j2020Individual(self.x * num, self.F, self.CR)
+class j2020(DE):
+    def __init__(self):
+        super().__init__()
+        self.name = "j2020"
 
-class j2020(EvolutionaryAlgorithm):
-    def __init__(self, bNP=None, sNP=None, F=0.5, Flb=0.01, Fls=0.17, Fu=1.1, tau1=0.1, CR=0.9, tau2=0.1, eps=10**(-16), myEqs=25):
-        self.bNP = bNP
-        self.sNP = sNP
-        self.m = 0
-        self.noImprove = 0
-        self.Flb = Flb
-        self.Fls = Fls
-        self.Fu = Fu
-        self.eps = eps
-        self.myEqs = myEqs
-        self.ageLmt = 0
-        self.tau1 = tau1
-        self.tau2 = tau2
-        self.F = F
-        self.CR = CR
-
+    # main methods
     def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
         super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
-        self.bNP = self.bNP if self.bNP else 7 * self.D
-        self.sNP = self.sNP if self.sNP else self.D
 
-        self.MIN_SNP = 3 # various individuals in mutation
+        self.sNP = max(self.D, 4)
+        self.bNP = self.sNP * 7 
+        self.NP = self.bNP + self.sNP
 
-        self.sNP = max(self.MIN_SNP, self.sNP)
+        if self.gn + self.hn > 0:
+            self.svc_default = np.inf
+        else:
+            self.svc_default = 0 
 
-        self.m = self.bNP // self.sNP
+        # parameters to reinitialize populations
+        self.my_eqs = INITIAL_EQUALITY_PERCENT
+        self.eps = INITIAL_TOLERANCE
+        self.age = 0
 
-        self.ageLmt = self.MAX_FES // 10
-        self.noImprove = 0
-
+        # parameters to adapt F and CR
+        self.F_init = INITIAL_F
+        self.CR_init = INITIAL_CR
+        self.Flb = INITIAL_F_LOWER_BIG
+        self.Fls = INITIAL_F_LOWER_SMALL        
+        self.Fu = INITIAL_F_UPPER 
+        self.CRlb = INITIAL_CR_LOWER_BIG
+        self.CRub = INITIAL_CR_UPPER_BIG
+        self.CRus = INITIAL_CR_UPPER_SMALL 
+        self.CRls = INITIAL_CR_LOWER_SMALL
+        self.tao1 = INITIAL_F_ADAPTATION_PROBABILITY
+        self.tao2 = INITIAL_CR_ADAPTATION_PROBABILITY 
 
     def initialize_population(self):
-        self.Pb = np.array([j2020Individual(np.random.uniform(self.MIN, self.MAX, self.D), self.F, self.CR) for _ in range(self.bNP)])
-        self.Ps = np.array([j2020Individual(np.random.uniform(self.MIN, self.MAX, self.D), self.F, self.CR) for _ in range(self.sNP)])
+        self.P_b = np.array([self.individual_generic(self.MIN + np.random.rand(self.D) * (self.MAX - self.MIN),
+                                            F=self.F_init, CR=self.CR_init) for i in range(self.bNP)])
+        self.P_s = np.array([self.individual_generic(self.MIN + np.random.rand(self.D) * (self.MAX - self.MIN),
+                                            F=self.F_init, CR=self.CR_init) for i in range(self.sNP)])    
 
     def evaluate_initial_population(self):
         for i in range(self.bNP):
-            self.evaluate_individual(self.Pb[i])
+            self._evaluate_individual(self.P_b[i])
+            self.P_b[i].svc = self._get_svc(self.P_b[i].g, self.P_b[i].h)
+            if i == 0 or self._is_better(self.P_b[i], self.global_best):
+                self.global_best_index = i
+                self.global_best = deepcopy(self.P_b[i])
+            self.FES += 1
+
         for i in range(self.sNP):
-            self.evaluate_individual(self.Ps[i])
-
-        self.FES += self.bNP + self.sNP
-        self.global_best = self.get_best(self.Ps)
-
-        self.FESs.append(self.FES)
-        self.bests_values.append(self.global_best.objective)
-
-    def evaluate_new_population(self):
-        for i in range(self.bNP):
-            self.evaluate_individual(self.O[i])
-
-        self.FES += self.bNP
-
-    def get_best(self, P):
-        new_P = sorted(P, key=lambda x: x.objective)
-        return new_P[0]
+            self._evaluate_individual(self.P_s[i])
+            self.P_s[i].svc = self._get_svc(self.P_s[i].g, self.P_s[i].h)
+            if self._is_better(self.P_s[i], self.global_best):
+                self.global_best_index = i + self.bNP
+                self.global_best = deepcopy(self.P_s[i])
+            self.FES += 1
 
     def before_start(self):
-        return super().before_start()
+        super().before_start()
+        self.global_best_index = 0
+        self.global_best = self.individual_generic(objective=np.inf, svc=self.svc_default)
+        self.big_population = True
+        self.current_individual_index = 0
+        self.m = 0
 
-    def prepare_to_generate_population(self):
-        self.check_reinitialize_big()
-        self.check_reinitialize_small()
+    def prepare_to_generate(self):
+        if self.big_population:
+            if self.current_individual_index == self.bNP:
+                self.big_population = False
+                self.current_individual_index = 0
+        else:
+            if self.current_individual_index == self.sNP:
+                self.current_individual_index = 0
+                self.m += 1
+                if self.m == 7:
+                    self.big_population = True
+                    self.m = 0
 
-        self.Ms_size = 1
-        if self.FES > self.MAX_FES / 3:
-            self.Ms_size = 2
-        elif self.FES > self.MAX_FES * 2 / 3:
-            self.Ms_size = 3
+        if self.current_individual_index == 0 and self.big_population:
+            self._reinitialize_big_population()
+            self._reinitialize_small_population()
 
+        if self.current_individual_index == 0 and not self.big_population and self.global_best_index < self.bNP:
+            self.P_s[0].x, self.P_s[0].objective = deepcopy(self.P_b[self.global_best_index].x), self.P_b[self.global_best_index].objective
+            self.global_best_index = self.bNP
+    
     def mutation(self):
-        self.T = np.array([])
-        for x in self.Pb:
-            Ms = np.array([self.Ps[i] for i in np.random.randint(0, self.sNP, self.Ms_size)])
-            v = self.mutation_big(x, Ms)
+        r1, r2, r3 = self._get_random_indexes()
+        F, CR = self._generate_parameters()
+        self.O.F = F
+        self.O.CR = CR
 
-            self.T = np.append(self.T, v)
+        self.T = self.individual_generic(np.zeros(self.D))
+        if r1 < self.bNP:
+            xr1 = self.P_b[r1]
+        else:
+            xr1 = self.P_s[r1 % self.bNP]
+
+        if r2 < self.bNP:
+            xr2 = self.P_b[r2]
+        else:
+            xr2 = self.P_s[r2 % self.bNP]
+
+        if r3 < self.bNP:
+            xr3 = self.P_b[r3]
+        else:
+            xr3 = self.P_s[r3 % self.bNP]
+
+        self.T = xr1 + self.O.F * (xr2 - xr3)
+
+    def repair_boundary_constraints(self):
+        self.T = wrapping(self.T, self.D, self.MIN, self.MAX)
 
     def crossover(self):
-        self.O = np.array([])
-        for i in range(self.bNP):
-            x = self.Pb[i]
-            v = self.T[i]
-            u = self.do_crossover(x, v)
-            self.O = np.append(self.O, u)
+        jrand = np.random.randint(0, self.D)
+        for j in range(self.D):
+            if np.random.rand() < self.O.CR or j == jrand:
+                self.O.x[j] = self.T.x[j]
 
-    def selection(self):
-        self.new_Pb = np.array([])
+    def evaluate_new_population(self):
+        self._evaluate_individual(self.O)
+        self.O.svc = self._get_svc(self.O.g, self.O.h)
+        self.FES += 1
 
-        for i in range(self.bNP):
-            
-            u = self.O[i]
-            closest_individual_index = self.crowding(u)
-            x = self.Pb[closest_individual_index]
-
-            if u.objective <= x.objective:
-                xi = u # x, F, CR
-            else:
-                xi = x # x, F, CR
-
-            self.new_Pb = np.append(self.Pb, xi)
-
-        self.Pb = self.new_Pb
-
-    def after_generate(self):
-        best_Pb = self.get_best(self.Pb)
-        self.check_if_improve(best_Pb)
-
-        for k in range(self.m):
-            new_Ps = np.array([])
-
-            for x in self.Ps:
-                v = self.mutation_small(x)
-                u = self.do_crossover(x, v)
-                self.evaluate_individual(u)
-                if u.objective <= x.objective:
-                    xi = u # x, F, CR
-                else:
-                    xi = x # x, F, CR
-                new_Ps = np.append(new_Ps, xi)
-
-            self.FES += self.sNP
-
-            self.Ps = new_Ps
-
-        self.global_best = self.get_best(self.Ps)
-
-        self.bests_values.append(self.global_best.objective)
-        self.FESs.append(self.FES)
-        if self.FES >= self.MAX_FES:
-            self.stop = True
-
-    def mutation_big(self, x, Ms):
-        return self.do_mutation(x, self.Pb, self.Flb, Ms)
-
-    def mutation_small(self, x):
-        return self.do_mutation(x, self.Ps, self.Fls)
-
-    def do_mutation(self, x, P, Fl, Ms=None):
-        # jDE mutation
-        F = Fl + np.random.random() * self.Fu if np.random.random() < self.tau1 else x.F
-        r1 = r2 = r3 = 0
-        
-        new_P = np.concatenate((P, Ms)) if Ms is not None else P
-
-        while r1 == r2 or r2 == r3 or r1 == r3:
-            r1 = np.random.randint(0, P.shape[0])
-            r2 = np.random.randint(0, new_P.shape[0])
-            r3 = np.random.randint(0, new_P.shape[0])
-
-        v = new_P[r1] + (new_P[r2] - new_P[r3]) * F
-        v.F = F
-
-        return v
-
-    def crowding(self, u):
-        dist = np.linalg.norm(self.Pb[0].x - u.x)
-        min_dist = dist
-        min_index = 0
-
+    def crowding(self, U):
+        min_dist = np.linalg.norm(self.P_b[0].x - U.x)
+        index = 0
         for i in range(1, self.bNP):
-            dist = np.linalg.norm(self.Pb[i].x - u.x)
+            dist = np.linalg.norm(self.P_b[i].x - U.x)
             if dist < min_dist:
                 min_dist = dist
-                min_index = i
-
-        return min_index
-
-    def do_crossover(self, x, v):
-        # jDE crossover
-        CR = np.random.random() if np.random.random() < self.tau2 else x.CR
-        
-        u = j2020Individual(v.x, v.F, CR)
-        jrand = np.random.randint(0, self.D - 1) if self.D > 1 else 0
-
-        for j in range(self.D):
-            if np.random.random() <= CR or j == jrand:
-                u.x[j] = v.x[j]
-
-                while u.x[j] < self.MIN[j]:
-                    u.x[j] += (self.MAX[j] - self.MIN[j])
-                while u.x[j] > self.MAX[j]:
-                    u.x[j] -= (self.MAX[j] - self.MIN[j])
-            else:
-                u.x[j] = x.x[j]
-        return u
-
-    def check_if_improve(self, current_best):
-        if current_best.objective < self.global_best.objective: 
-            self.Ps[self.FES % self.Ps.shape[0]] = current_best
-            self.noImprove = 0
+                index = i
+        return index
+    
+    def selection(self):
+        index = self.current_individual_index           
+            
+        if self.big_population: 
+            self.age += 1
+            index = self.crowding(self.O)
+            if self._is_better(self.O, self.P_b[index]):
+                self.P_b[index] = deepcopy(self.O)
+                if self._is_better(self.O, self.global_best):
+                    self.age = 0
+                    self.global_best_index = index
+                    self.global_best = deepcopy(self.P_b[self.global_best_index])
         else:
-            self.noImprove += 1
+            if self._is_better(self.O, self.P_s[index]):
+                self.P_s[index] = deepcopy(self.O)
+                if self._is_better(self.O, self.global_best):
+                    self.global_best_index = index + self.bNP
+                    self.global_best = deepcopy(self.P_s[self.global_best_index % self.bNP])
+    
+    def after_generate(self):
+        super().after_generate()
+        self.current_individual_index += 1
 
-    def check_reinitialize_big(self):
-        self.Pb = np.array(sorted(self.Pb, key=lambda ind: ind.objective))
-
-        self.Pb = self.check_reinitialize(self.Pb, self.noImprove >= self.ageLmt)
-
-    def check_reinitialize_small(self):
-        self.Ps = np.array(sorted(self.Ps, key=lambda ind: ind.objective))
-        best = self.Ps[0]
-
-        self.Ps = self.check_reinitialize(self.Ps)
-        self.Ps[-1] = best
-
-    def check_reinitialize(self, P, statement=True):
+    # helpful methods
+    def _is_better(self, x1, x2):
+        return ((x1.svc == 0) & (x2.svc == 0) & (x1.objective <= x2.objective)) | (x1.svc < x2.svc)
+    
+    def _is_similar_small_population(self, best_objective):
+        eqs = 0
+        for i in range(self.sNP):
+            if abs(self.P_s[i].objective - best_objective) < self.eps:
+                eqs += 1
+        return eqs > np.ceil(self.my_eqs * self.sNP)
+    
+    def _is_similar_big_population(self):
+        P = sorted(self.P_b, key=lambda x: x.objective)
         first = 0
-        last = int(P.shape[0] * self.myEqs / 100)
+        last = np.ceil(self.my_eqs * self.bNP).astype(int) - 1
+        
+        if np.abs(P[first].objective - P[last].objective) < self.eps:
+            return True
+            
+        return False
+    
+    def _reinitialize_big_population(self):
+        if self._is_similar_big_population() or self.age > self.FES_MAX / 10:
+            self.P_b = np.array([self.individual_generic(self.MIN + np.random.rand(self.D) * (self.MAX - self.MIN),
+                                        float('inf'), F=self.F_init, CR=self.CR_init, svc=self.svc_default) for i in range(self.bNP)])
+            self.age = 0
+            self.global_best_index = self.bNP
+            self.global_best = deepcopy(self.P_s[0])
+            for w in range(self.sNP):
+                if self._is_better(self.P_s[w], self.global_best):
+                    self.global_best_index = w + self.bNP
+                    self.global_best = deepcopy(self.P_s[w])
 
-        dif = P[first].objective - P[last].objective
+    def _reinitialize_small_population(self):
+        best_objective = np.min(np.array([p.objective for p in self.P_s]))
+        if self._is_similar_small_population(best_objective):
+            for w in range(self.sNP):
+                if self.P_s[w].objective == best_objective:
+                    continue
+                self.P_s[w] = self.individual_generic(self.MIN + np.random.rand(self.D) * (self.MAX - self.MIN),
+                                            float('inf'), F=self.F_init, CR=self.CR_init, svc=self.svc_default)
 
-        if abs(dif) < self.eps and statement:
-            new_P = np.array([j2020Individual(np.random.uniform(self.MIN, self.MAX, self.D), P[i].F, P[i].CR) for i in range(P.shape[0])])
-            for i in range(P.shape[0]):
-                self.evaluate_individual(new_P[i])
-            P = new_P
+    def _generate_parameters(self):
+        if self.big_population:
+            Fl = self.Flb
+            CRl = self.CRlb
+            CRu = self.CRub
+        else:
+            Fl = self.Fls
+            CRl = self.CRls
+            CRu = self.CRus
+        
+        if not self.big_population:
+            self.O = deepcopy(self.P_s[self.current_individual_index])
+        else:
+            self.O = deepcopy(self.P_b[self.current_individual_index])
 
-        return P
+        if np.random.rand() < self.tao1:
+            F = Fl + np.random.rand() * self.Fu
+        else:
+            F = self.O.F
+        if np.random.rand() < self.tao2:
+            CR = CRl + np.random.rand() * CRu
+        else:
+            CR = self.O.CR
+
+        return F, CR
+
+    def _get_random_indexes(self):
+        Ms = 0
+        if self.big_population:
+            if self.FES < self.FES_MAX/3:
+                Ms = 1
+            elif self.FES < 2*self.FES_MAX/3:
+                Ms = 2
+            else:
+                Ms = 3
+
+            NP = self.bNP
+        else:
+            NP = self.sNP
+            
+        new_arr = np.delete(np.arange(NP), self.current_individual_index)
+        r1 = np.random.choice(new_arr)
+
+        new_arr = np.delete(np.arange(NP + Ms), (self.current_individual_index, r1))
+        r2 = np.random.choice(new_arr)
+
+        new_arr = np.delete(np.arange(NP + Ms), (self.current_individual_index, r1, r2))
+        r3 = np.random.choice(new_arr)
+        
+        if not self.big_population:
+            r1 += self.bNP
+            r2 += self.bNP
+            r3 += self.bNP
+
+        return r1, r2, r3
+
+    

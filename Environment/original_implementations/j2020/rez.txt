@@ -1,0 +1,1217 @@
+******************************** 
+*** Algorithm j2020 CEC 2020 *** 
+******************************** 
+seed: 1587239028
+Function number=F1
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F1 run=1 nReset=0 sReset=4 cCopy=4 FES=25608 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=2 nReset=0 sReset=3 cCopy=5 FES=44282 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=3 nReset=0 sReset=6 cCopy=4 FES=37653 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=4 nReset=0 sReset=2 cCopy=6 FES=30926 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=5 nReset=0 sReset=3 cCopy=5 FES=33518 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=6 nReset=0 sReset=9 cCopy=3 FES=38753 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=7 nReset=0 sReset=4 cCopy=6 FES=46237 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=8 nReset=0 sReset=6 cCopy=1 FES=31818 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=9 nReset=0 sReset=4 cCopy=3 FES=39736 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=10 nReset=0 sReset=3 cCopy=4 FES=31491 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=11 nReset=0 sReset=2 cCopy=5 FES=28753 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=12 nReset=0 sReset=1 cCopy=5 FES=27137 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=13 nReset=0 sReset=5 cCopy=8 FES=45400 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=14 nReset=0 sReset=12 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=4.128773412048758473247e-08 
+Fun=F1 run=15 nReset=0 sReset=4 cCopy=8 FES=46739 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=16 nReset=0 sReset=4 cCopy=3 FES=35035 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=17 nReset=0 sReset=5 cCopy=4 FES=41634 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=18 nReset=0 sReset=2 cCopy=8 FES=27126 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=19 nReset=0 sReset=8 cCopy=5 FES=48367 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=20 nReset=0 sReset=5 cCopy=5 FES=36670 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=21 nReset=0 sReset=6 cCopy=3 FES=39031 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=22 nReset=0 sReset=1 cCopy=7 FES=35269 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=23 nReset=0 sReset=6 cCopy=3 FES=45969 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=24 nReset=0 sReset=4 cCopy=9 FES=41348 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=25 nReset=0 sReset=6 cCopy=3 FES=46949 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=26 nReset=0 sReset=6 cCopy=5 FES=37557 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=27 nReset=0 sReset=5 cCopy=6 FES=47806 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=28 nReset=0 sReset=7 cCopy=4 FES=41478 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=29 nReset=0 sReset=6 cCopy=9 FES=44367 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F1 run=30 nReset=0 sReset=4 cCopy=3 FES=34624 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Function number=F2
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F2 run=1 nReset=1 sReset=9 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1248989847335906233639 
+Fun=F2 run=2 nReset=1 sReset=8 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1248989847335906233639 
+Fun=F2 run=3 nReset=0 sReset=8 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=7.079178189612775895512 
+Fun=F2 run=4 nReset=0 sReset=7 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2497979694671812467277 
+Fun=F2 run=5 nReset=1 sReset=6 cCopy=1 FES=43721 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F2 run=6 nReset=1 sReset=14 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2497979694667264993768 
+Fun=F2 run=7 nReset=0 sReset=6 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=7.07917819005297133117 
+Fun=F2 run=8 nReset=2 sReset=4 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=7.204077176976170449052 
+Fun=F2 run=9 nReset=0 sReset=12 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=7.079178196287102764472 
+Fun=F2 run=10 nReset=0 sReset=9 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=9.5461519702307668922 
+Fun=F2 run=11 nReset=1 sReset=21 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2497979694690002361313 
+Fun=F2 run=12 nReset=0 sReset=9 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.886583294758565898519 
+Fun=F2 run=13 nReset=2 sReset=18 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.3746969541998623753898 
+Fun=F2 run=14 nReset=0 sReset=10 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.954279204861904872814 
+Fun=F2 run=15 nReset=0 sReset=5 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2535199978942728193942 
+Fun=F2 run=16 nReset=1 sReset=8 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1248989847335906233639 
+Fun=F2 run=17 nReset=1 sReset=10 cCopy=9 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.3909447303726665268186 
+Fun=F2 run=18 nReset=0 sReset=9 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.3746969542116858065128 
+Fun=F2 run=19 nReset=0 sReset=9 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2497979694690002361313 
+Fun=F2 run=20 nReset=0 sReset=8 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1248989847349548654165 
+Fun=F2 run=21 nReset=1 sReset=16 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.3746969541998623753898 
+Fun=F2 run=22 nReset=0 sReset=8 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2497979694671812467277 
+Fun=F2 run=23 nReset=1 sReset=10 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.954279204862359620165 
+Fun=F2 run=24 nReset=0 sReset=9 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.3746969541998623753898 
+Fun=F2 run=25 nReset=0 sReset=11 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=7.079178189595950243529 
+Fun=F2 run=26 nReset=0 sReset=11 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=4.124192035485975793563 
+Fun=F2 run=27 nReset=0 sReset=18 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.954279204861904872814 
+Fun=F2 run=28 nReset=0 sReset=12 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=8.695487270962985348888 
+Fun=F2 run=29 nReset=0 sReset=12 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2397890282563821529038 
+Fun=F2 run=30 nReset=1 sReset=13 cCopy=4 FES=48772 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Function number=F3
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F3 run=1 nReset=0 sReset=8 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.75790333163422474172 
+Fun=F3 run=2 nReset=0 sReset=14 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.14822796606404153863 
+Fun=F3 run=3 nReset=0 sReset=8 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.9903369300969870892 
+Fun=F3 run=4 nReset=1 sReset=2 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.244570918759336564108 
+Fun=F3 run=5 nReset=0 sReset=7 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.383116621091517117748 
+Fun=F3 run=6 nReset=0 sReset=6 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.148228909242675399582 
+Fun=F3 run=7 nReset=1 sReset=2 cCopy=11 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=2.510261545166827090725 
+Fun=F3 run=8 nReset=1 sReset=7 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.403515314083961129654 
+Fun=F3 run=9 nReset=0 sReset=15 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.9949590570938653399935 
+Fun=F3 run=10 nReset=0 sReset=9 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.190613363851412032091 
+Fun=F3 run=11 nReset=0 sReset=5 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.148277588915561864269 
+Fun=F3 run=12 nReset=1 sReset=16 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.9949590570932969058049 
+Fun=F3 run=13 nReset=0 sReset=6 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.638356399120084461174 
+Fun=F3 run=14 nReset=0 sReset=7 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.9949590575732827346656 
+Fun=F3 run=15 nReset=0 sReset=3 cCopy=1 FES=40162 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F3 run=16 nReset=0 sReset=7 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.015946326576226965699 
+Fun=F3 run=17 nReset=0 sReset=6 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.634059950567575469904 
+Fun=F3 run=18 nReset=0 sReset=10 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.98396742429906680627 
+Fun=F3 run=19 nReset=0 sReset=7 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.39516689489028067328e-05 
+Fun=F3 run=20 nReset=0 sReset=15 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.148227966062108862388 
+Fun=F3 run=21 nReset=0 sReset=5 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=4.591113655527010450896 
+Fun=F3 run=22 nReset=0 sReset=12 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.397591571629277495958 
+Fun=F3 run=23 nReset=0 sReset=10 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.149227127647804991284 
+Fun=F3 run=24 nReset=1 sReset=6 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.383116480545822923887 
+Fun=F3 run=25 nReset=0 sReset=7 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.358585191352290166833 
+Fun=F3 run=26 nReset=0 sReset=6 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=3.218008879053854798258 
+Fun=F3 run=27 nReset=0 sReset=9 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.383116480556509486632 
+Fun=F3 run=28 nReset=0 sReset=15 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.149438285395490311203 
+Fun=F3 run=29 nReset=0 sReset=10 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.148227968136893650808 
+Fun=F3 run=30 nReset=0 sReset=7 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.148228547656458431447 
+Function number=F4
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F4 run=1 nReset=2 sReset=3 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.07150854951032670214772 
+Fun=F4 run=2 nReset=0 sReset=1 cCopy=2 FES=17620 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F4 run=3 nReset=1 sReset=0 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1100338518131138698664 
+Fun=F4 run=4 nReset=0 sReset=5 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.009951527351859112968668 
+Fun=F4 run=5 nReset=3 sReset=2 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.07939433682190610852558 
+Fun=F4 run=6 nReset=0 sReset=6 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.009879217547222651774064 
+Fun=F4 run=7 nReset=1 sReset=2 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.2128223924721623916412 
+Fun=F4 run=8 nReset=0 sReset=7 cCopy=10 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0493233603122007480124 
+Fun=F4 run=9 nReset=1 sReset=5 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1289959266623554867692 
+Fun=F4 run=10 nReset=0 sReset=12 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.920183626680227462202e-05 
+Fun=F4 run=11 nReset=1 sReset=2 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1487327489405743108364 
+Fun=F4 run=12 nReset=2 sReset=2 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1363083427595483954065 
+Fun=F4 run=13 nReset=1 sReset=3 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1113558302390629251022 
+Fun=F4 run=14 nReset=0 sReset=3 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.01684189658203649742063 
+Fun=F4 run=15 nReset=0 sReset=0 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.121137226170731082675 
+Fun=F4 run=16 nReset=0 sReset=8 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.01984181747639013337903 
+Fun=F4 run=17 nReset=0 sReset=4 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.08544595998000659164973 
+Fun=F4 run=18 nReset=0 sReset=1 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1073809803763197123772 
+Fun=F4 run=19 nReset=1 sReset=1 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1326890429334071086487 
+Fun=F4 run=20 nReset=0 sReset=5 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.04932343362270330544561 
+Fun=F4 run=21 nReset=0 sReset=5 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.009871041479982523014769 
+Fun=F4 run=22 nReset=1 sReset=0 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1255348725360363459913 
+Fun=F4 run=23 nReset=0 sReset=7 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.01708481098921765806153 
+Fun=F4 run=24 nReset=0 sReset=6 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.01980230972276331158355 
+Fun=F4 run=25 nReset=0 sReset=5 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.05584127270503813633695 
+Fun=F4 run=26 nReset=1 sReset=1 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.004203047079272437258624 
+Fun=F4 run=27 nReset=0 sReset=7 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.896978574222885072231e-08 
+Fun=F4 run=28 nReset=0 sReset=1 cCopy=5 FES=35884 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F4 run=29 nReset=0 sReset=6 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.1333777601150814007269 
+Fun=F4 run=30 nReset=3 sReset=2 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.162011072160794356023 
+Function number=F5
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F5 run=1 nReset=0 sReset=5 cCopy=2 FES=31955 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=2 nReset=0 sReset=5 cCopy=3 FES=33864 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=3 nReset=0 sReset=9 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6241879704932671302231 
+Fun=F5 run=4 nReset=0 sReset=6 cCopy=2 FES=26500 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=5 nReset=0 sReset=3 cCopy=3 FES=22813 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=6 nReset=0 sReset=16 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0003678632767787348711863 
+Fun=F5 run=7 nReset=0 sReset=7 cCopy=3 FES=33495 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=8 nReset=0 sReset=9 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6348901707037839514669 
+Fun=F5 run=9 nReset=0 sReset=1 cCopy=4 FES=11320 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=10 nReset=1 sReset=18 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6240993205096856399905 
+Fun=F5 run=11 nReset=0 sReset=6 cCopy=3 FES=27081 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=12 nReset=2 sReset=22 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6240993205096856399905 
+Fun=F5 run=13 nReset=0 sReset=12 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6241190708917656593258 
+Fun=F5 run=14 nReset=0 sReset=4 cCopy=4 FES=31127 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=15 nReset=1 sReset=23 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6240993205096856399905 
+Fun=F5 run=16 nReset=0 sReset=5 cCopy=2 FES=44370 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=17 nReset=0 sReset=13 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.03615103721222112653777 
+Fun=F5 run=18 nReset=2 sReset=29 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.9949590570934105926426 
+Fun=F5 run=19 nReset=0 sReset=4 cCopy=3 FES=23276 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=20 nReset=2 sReset=22 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6240993205096856399905 
+Fun=F5 run=21 nReset=0 sReset=4 cCopy=4 FES=21617 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=22 nReset=1 sReset=20 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6240993205096856399905 
+Fun=F5 run=23 nReset=0 sReset=21 cCopy=0 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6240993205099130136659 
+Fun=F5 run=24 nReset=0 sReset=5 cCopy=2 FES=33038 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=25 nReset=1 sReset=17 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.6240993205099130136659 
+Fun=F5 run=26 nReset=0 sReset=7 cCopy=3 FES=38687 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=27 nReset=2 sReset=28 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0001742325821396661922336 
+Fun=F5 run=28 nReset=0 sReset=11 cCopy=1 FES=35127 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=29 nReset=0 sReset=8 cCopy=3 FES=40795 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F5 run=30 nReset=1 sReset=25 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.9949590570934105926426 
+Function number=F6
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F6 run=1 nReset=0 sReset=5 cCopy=2 FES=23655 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=2 nReset=0 sReset=1 cCopy=3 FES=10212 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=3 nReset=0 sReset=5 cCopy=0 FES=18598 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=4 nReset=0 sReset=12 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=2.136282546416623517871e-06 
+Fun=F6 run=5 nReset=0 sReset=3 cCopy=1 FES=25096 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=6 nReset=0 sReset=5 cCopy=1 FES=24270 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=7 nReset=0 sReset=6 cCopy=7 FES=30508 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=8 nReset=0 sReset=6 cCopy=1 FES=25188 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=9 nReset=0 sReset=3 cCopy=1 FES=15602 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=10 nReset=0 sReset=6 cCopy=5 FES=30659 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=11 nReset=1 sReset=15 cCopy=3 FES=37026 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=12 nReset=0 sReset=3 cCopy=3 FES=27433 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=13 nReset=0 sReset=12 cCopy=0 FES=33931 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=14 nReset=0 sReset=3 cCopy=4 FES=24964 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=15 nReset=0 sReset=6 cCopy=2 FES=34914 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=16 nReset=0 sReset=6 cCopy=2 FES=35275 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=17 nReset=0 sReset=8 cCopy=0 FES=38423 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=18 nReset=0 sReset=10 cCopy=1 FES=29603 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=19 nReset=0 sReset=14 cCopy=2 FES=48062 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=20 nReset=0 sReset=14 cCopy=3 FES=44025 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=21 nReset=0 sReset=3 cCopy=1 FES=14882 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=22 nReset=0 sReset=4 cCopy=1 FES=20920 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=23 nReset=0 sReset=7 cCopy=2 FES=33661 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=24 nReset=0 sReset=1 cCopy=2 FES=11829 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=25 nReset=0 sReset=5 cCopy=5 FES=27367 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=26 nReset=0 sReset=4 cCopy=3 FES=20689 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=27 nReset=0 sReset=4 cCopy=4 FES=31696 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=28 nReset=0 sReset=3 cCopy=2 FES=23772 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=29 nReset=0 sReset=11 cCopy=5 FES=47936 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F6 run=30 nReset=0 sReset=7 cCopy=3 FES=35977 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Function number=F7
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F7 run=1 nReset=0 sReset=1 cCopy=0 FES=6409 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=2 nReset=0 sReset=5 cCopy=2 FES=15323 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=3 nReset=0 sReset=4 cCopy=6 FES=16564 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=4 nReset=0 sReset=2 cCopy=3 FES=10135 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=5 nReset=0 sReset=2 cCopy=2 FES=7954 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=6 nReset=0 sReset=3 cCopy=1 FES=9629 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=7 nReset=0 sReset=2 cCopy=3 FES=9091 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=8 nReset=0 sReset=4 cCopy=6 FES=13552 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=9 nReset=0 sReset=1 cCopy=2 FES=6557 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=10 nReset=0 sReset=2 cCopy=2 FES=11402 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=11 nReset=0 sReset=1 cCopy=4 FES=9999 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=12 nReset=0 sReset=1 cCopy=7 FES=15796 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=13 nReset=0 sReset=3 cCopy=3 FES=12937 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=14 nReset=0 sReset=3 cCopy=1 FES=12090 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=15 nReset=0 sReset=0 cCopy=2 FES=4936 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=16 nReset=0 sReset=1 cCopy=2 FES=7955 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=17 nReset=0 sReset=0 cCopy=3 FES=10886 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=18 nReset=0 sReset=7 cCopy=4 FES=18315 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=19 nReset=0 sReset=3 cCopy=2 FES=8469 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=20 nReset=0 sReset=6 cCopy=5 FES=16208 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=21 nReset=0 sReset=2 cCopy=4 FES=12727 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=22 nReset=0 sReset=5 cCopy=4 FES=16994 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=23 nReset=0 sReset=3 cCopy=2 FES=12592 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=24 nReset=0 sReset=3 cCopy=3 FES=9649 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=25 nReset=0 sReset=2 cCopy=9 FES=14183 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=26 nReset=0 sReset=1 cCopy=2 FES=5635 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=27 nReset=0 sReset=1 cCopy=1 FES=6214 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=28 nReset=0 sReset=4 cCopy=10 FES=23076 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=29 nReset=0 sReset=3 cCopy=1 FES=13013 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F7 run=30 nReset=0 sReset=5 cCopy=4 FES=15441 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Function number=F8
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F8 run=1 nReset=0 sReset=9 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0009333054717899358365685 
+Fun=F8 run=2 nReset=0 sReset=8 cCopy=2 FES=27002 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=3 nReset=0 sReset=8 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0002601725132080900948495 
+Fun=F8 run=4 nReset=0 sReset=12 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=7.751261819066712632775e-06 
+Fun=F8 run=5 nReset=0 sReset=13 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.016173882817383855581e-07 
+Fun=F8 run=6 nReset=0 sReset=2 cCopy=1 FES=13572 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=7 nReset=0 sReset=7 cCopy=3 FES=36045 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=8 nReset=0 sReset=5 cCopy=0 FES=19372 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=9 nReset=0 sReset=12 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.606009985772743675625 
+Fun=F8 run=10 nReset=0 sReset=12 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0001088489557332650292665 
+Fun=F8 run=11 nReset=0 sReset=12 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.61635864638265047688 
+Fun=F8 run=12 nReset=0 sReset=6 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=3.057117646676488220692e-05 
+Fun=F8 run=13 nReset=0 sReset=6 cCopy=2 FES=19376 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=14 nReset=0 sReset=7 cCopy=3 FES=37287 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=15 nReset=0 sReset=10 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=10.25583643752679563477 
+Fun=F8 run=16 nReset=0 sReset=11 cCopy=1 FES=41195 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=17 nReset=0 sReset=17 cCopy=2 FES=46128 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=18 nReset=0 sReset=6 cCopy=1 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=3.079685484408400952816e-08 
+Fun=F8 run=19 nReset=0 sReset=13 cCopy=4 FES=47645 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=20 nReset=0 sReset=7 cCopy=3 FES=44441 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=21 nReset=0 sReset=10 cCopy=1 FES=43390 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=22 nReset=0 sReset=9 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=7.943705895741004496813e-06 
+Fun=F8 run=23 nReset=0 sReset=7 cCopy=4 FES=45773 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=24 nReset=0 sReset=9 cCopy=3 FES=49397 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=25 nReset=0 sReset=3 cCopy=1 FES=11828 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=26 nReset=0 sReset=8 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.477549631090369075537e-06 
+Fun=F8 run=27 nReset=0 sReset=13 cCopy=0 FES=45988 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=28 nReset=0 sReset=8 cCopy=3 FES=47584 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F8 run=29 nReset=0 sReset=8 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.301805888142553158104e-05 
+Fun=F8 run=30 nReset=0 sReset=7 cCopy=2 FES=34645 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Function number=F9
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F9 run=1 nReset=0 sReset=9 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.315071914286818355322e-07 
+Fun=F9 run=2 nReset=0 sReset=6 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.724996299250051379204e-07 
+Fun=F9 run=3 nReset=0 sReset=4 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.764573026353446039138 
+Fun=F9 run=4 nReset=0 sReset=7 cCopy=3 FES=41284 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F9 run=5 nReset=0 sReset=6 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0002155959423362219240516 
+Fun=F9 run=6 nReset=0 sReset=4 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.0002066341412501060403883 
+Fun=F9 run=7 nReset=0 sReset=4 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=24.45036842342597083189 
+Fun=F9 run=8 nReset=0 sReset=7 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.03500147409158671507612 
+Fun=F9 run=9 nReset=0 sReset=6 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.01272579693204534123652 
+Fun=F9 run=10 nReset=0 sReset=5 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.4585332549586382810958 
+Fun=F9 run=11 nReset=0 sReset=9 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=2.13341081689577549696e-07 
+Fun=F9 run=12 nReset=0 sReset=5 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.201446041503004380502 
+Fun=F9 run=13 nReset=0 sReset=10 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.563739715493284165859e-08 
+Fun=F9 run=14 nReset=0 sReset=8 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=3.59929890692001208663e-06 
+Fun=F9 run=15 nReset=0 sReset=5 cCopy=5 FES=45619 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F9 run=16 nReset=0 sReset=9 cCopy=3 FES=40035 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F9 run=17 nReset=0 sReset=5 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.01263504392591130454093 
+Fun=F9 run=18 nReset=0 sReset=7 cCopy=6 FES=45969 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F9 run=19 nReset=0 sReset=9 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.9428413587120303418487 
+Fun=F9 run=20 nReset=0 sReset=10 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.006376526266649307217449 
+Fun=F9 run=21 nReset=0 sReset=8 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=5.878609954379498958588e-08 
+Fun=F9 run=22 nReset=0 sReset=6 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=32.53989097782232420286 
+Fun=F9 run=23 nReset=0 sReset=7 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=3.778450263780541718006e-08 
+Fun=F9 run=24 nReset=0 sReset=4 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=19.80029750243511443841 
+Fun=F9 run=25 nReset=0 sReset=17 cCopy=2 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0000000000004547474 
+Fun=F9 run=26 nReset=0 sReset=3 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.440616915715509094298e-05 
+Fun=F9 run=27 nReset=0 sReset=5 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=1.086418965620396193117 
+Fun=F9 run=28 nReset=0 sReset=4 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=3.49476263893166105845 
+Fun=F9 run=29 nReset=0 sReset=9 cCopy=5 FES=47851 NP=40 (bNP=35 sNP5) D=5  bestValue=0 
+Fun=F9 run=30 nReset=0 sReset=13 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0000000000022737368 
+Function number=F10
+Dimension D=5
+Search range: Xmin=-100 Xmax=100
+Population size NP=40 (bNP=35 sNP5) 
+Fun=F10 run=1 nReset=0 sReset=3 cCopy=11 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.093661354391315399 
+Fun=F10 run=2 nReset=0 sReset=6 cCopy=9 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=200.0077319670635915827 
+Fun=F10 run=3 nReset=0 sReset=0 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0526190885366304428 
+Fun=F10 run=4 nReset=0 sReset=5 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=3.514394848025403916836e-06 
+Fun=F10 run=5 nReset=0 sReset=9 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=200.0000000010563780961 
+Fun=F10 run=6 nReset=0 sReset=2 cCopy=12 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0066353412476019002 
+Fun=F10 run=7 nReset=0 sReset=7 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=200.0042394919205435144 
+Fun=F10 run=8 nReset=0 sReset=3 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0741064364478916104 
+Fun=F10 run=9 nReset=0 sReset=7 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=131.6095020530201509246 
+Fun=F10 run=10 nReset=0 sReset=1 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0512283281163945503 
+Fun=F10 run=11 nReset=0 sReset=2 cCopy=9 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=101.3433229180268426717 
+Fun=F10 run=12 nReset=0 sReset=4 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0488399819587357342 
+Fun=F10 run=13 nReset=0 sReset=11 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=300.0000000002455635695 
+Fun=F10 run=14 nReset=0 sReset=1 cCopy=5 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0874314848683752643 
+Fun=F10 run=15 nReset=0 sReset=6 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.1420830589245269948 
+Fun=F10 run=16 nReset=0 sReset=12 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=200.0000000000263753464 
+Fun=F10 run=17 nReset=0 sReset=7 cCopy=16 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=272.5404817337939675781 
+Fun=F10 run=18 nReset=0 sReset=7 cCopy=6 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.003425402265293087111786 
+Fun=F10 run=19 nReset=0 sReset=1 cCopy=13 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.1182659966370920301 
+Fun=F10 run=20 nReset=0 sReset=11 cCopy=12 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=200.0000747701628824871 
+Fun=F10 run=21 nReset=0 sReset=0 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.9717803748594633362 
+Fun=F10 run=22 nReset=0 sReset=3 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0454058658956455474 
+Fun=F10 run=23 nReset=0 sReset=16 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=347.3710586165425411309 
+Fun=F10 run=24 nReset=0 sReset=5 cCopy=9 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=139.4639798558437178144 
+Fun=F10 run=25 nReset=0 sReset=10 cCopy=3 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=300.0000000000054569682 
+Fun=F10 run=26 nReset=0 sReset=4 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=200.0351179865842823347 
+Fun=F10 run=27 nReset=0 sReset=2 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=100.0678812762657798885 
+Fun=F10 run=28 nReset=0 sReset=5 cCopy=8 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=6.869655081353812420275 
+Fun=F10 run=29 nReset=0 sReset=2 cCopy=4 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=0.216048262346248520771 
+Fun=F10 run=30 nReset=0 sReset=5 cCopy=7 FES=50000 NP=40 (bNP=35 sNP5) D=5  bestValue=27.65104776365524230641 
+Function number=F1
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F1 run=1 nReset=0 sReset=0 cCopy=0 FES=39566 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=2 nReset=0 sReset=0 cCopy=0 FES=52589 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=3 nReset=0 sReset=0 cCopy=1 FES=48703 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=4 nReset=0 sReset=0 cCopy=1 FES=47149 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=5 nReset=0 sReset=0 cCopy=0 FES=41289 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=6 nReset=0 sReset=0 cCopy=0 FES=47431 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=7 nReset=0 sReset=0 cCopy=0 FES=48964 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=8 nReset=0 sReset=0 cCopy=1 FES=36247 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=9 nReset=0 sReset=0 cCopy=1 FES=41701 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=10 nReset=0 sReset=0 cCopy=0 FES=39338 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=11 nReset=0 sReset=0 cCopy=1 FES=38327 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=12 nReset=0 sReset=0 cCopy=0 FES=37372 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=13 nReset=0 sReset=0 cCopy=0 FES=60570 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=14 nReset=0 sReset=0 cCopy=0 FES=46025 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=15 nReset=0 sReset=0 cCopy=0 FES=70688 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=16 nReset=0 sReset=0 cCopy=0 FES=51934 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=17 nReset=0 sReset=0 cCopy=0 FES=44630 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=18 nReset=0 sReset=0 cCopy=1 FES=39855 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=19 nReset=0 sReset=0 cCopy=0 FES=30892 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=20 nReset=0 sReset=0 cCopy=1 FES=40159 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=21 nReset=0 sReset=0 cCopy=0 FES=41264 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=22 nReset=0 sReset=0 cCopy=1 FES=30600 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=23 nReset=0 sReset=0 cCopy=0 FES=50063 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=24 nReset=0 sReset=0 cCopy=1 FES=46423 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=25 nReset=0 sReset=0 cCopy=0 FES=58328 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=26 nReset=0 sReset=0 cCopy=1 FES=43347 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=27 nReset=0 sReset=0 cCopy=0 FES=29252 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=28 nReset=0 sReset=0 cCopy=2 FES=42548 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=29 nReset=0 sReset=0 cCopy=0 FES=60147 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F1 run=30 nReset=0 sReset=0 cCopy=0 FES=58790 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Function number=F2
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F2 run=1 nReset=0 sReset=11 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231198255089112 
+Fun=F2 run=2 nReset=1 sReset=4 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=3.539869569771326496266 
+Fun=F2 run=3 nReset=0 sReset=2 cCopy=25 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231207350036129 
+Fun=F2 run=4 nReset=1 sReset=8 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2498177641573420260102 
+Fun=F2 run=5 nReset=1 sReset=7 cCopy=12 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231170970248058 
+Fun=F2 run=6 nReset=0 sReset=6 cCopy=11 FES=906877 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F2 run=7 nReset=1 sReset=9 cCopy=12 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3122722051966775325127 
+Fun=F2 run=8 nReset=1 sReset=12 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2498177641555230366066 
+Fun=F2 run=9 nReset=1 sReset=17 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2498177641564325313084 
+Fun=F2 run=10 nReset=1 sReset=8 cCopy=17 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231189160142094 
+Fun=F2 run=11 nReset=2 sReset=15 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231170970248058 
+Fun=F2 run=12 nReset=1 sReset=14 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=6.954830257461253495421 
+Fun=F2 run=13 nReset=0 sReset=15 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2498177641564325313084 
+Fun=F2 run=14 nReset=1 sReset=10 cCopy=13 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3747266462423795019276 
+Fun=F2 run=15 nReset=0 sReset=7 cCopy=8 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4863319230398701620288 
+Fun=F2 run=16 nReset=3 sReset=6 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.06245444103933550650254 
+Fun=F2 run=17 nReset=1 sReset=10 cCopy=11 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3122722051948585431091 
+Fun=F2 run=18 nReset=1 sReset=15 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231170970248058 
+Fun=F2 run=19 nReset=0 sReset=5 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3747266462414700072259 
+Fun=F2 run=20 nReset=1 sReset=11 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231180065195076 
+Fun=F2 run=21 nReset=1 sReset=10 cCopy=15 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3122722128728128154762 
+Fun=F2 run=22 nReset=3 sReset=12 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=3.727232892885695036966 
+Fun=F2 run=23 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=3.772611480559135088697 
+Fun=F2 run=24 nReset=2 sReset=6 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.335746010753609880339 
+Fun=F2 run=25 nReset=0 sReset=8 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1249088820804900024086 
+Fun=F2 run=26 nReset=2 sReset=6 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1873633231180065195076 
+Fun=F2 run=27 nReset=0 sReset=6 cCopy=15 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2498177641600705101155 
+Fun=F2 run=28 nReset=3 sReset=6 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3747266462332845549099 
+Fun=F2 run=29 nReset=1 sReset=11 cCopy=15 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=3.539869569772235990968 
+Fun=F2 run=30 nReset=1 sReset=8 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1249088820795805077069 
+Function number=F3
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F3 run=1 nReset=0 sReset=17 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.6121911599349232346867 
+Fun=F3 run=2 nReset=1 sReset=9 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.72587713659402197663 
+Fun=F3 run=3 nReset=0 sReset=9 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242537379789 
+Fun=F3 run=4 nReset=0 sReset=6 cCopy=14 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=9.228274609130039607408 
+Fun=F3 run=5 nReset=1 sReset=10 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.43588814320594337914 
+Fun=F3 run=6 nReset=1 sReset=9 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.79484450737720635516 
+Fun=F3 run=7 nReset=0 sReset=11 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242264531378 
+Fun=F3 run=8 nReset=1 sReset=6 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242253162694 
+Fun=F3 run=9 nReset=1 sReset=6 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242355480848 
+Fun=F3 run=10 nReset=0 sReset=8 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.43588814320594337914 
+Fun=F3 run=11 nReset=1 sReset=11 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.43588814320605706598 
+Fun=F3 run=12 nReset=0 sReset=5 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=2.602109274121744419972 
+Fun=F3 run=13 nReset=0 sReset=3 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=4.599024327120559973991 
+Fun=F3 run=14 nReset=1 sReset=7 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242082632438 
+Fun=F3 run=15 nReset=1 sReset=8 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242048526386 
+Fun=F3 run=16 nReset=0 sReset=12 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242082632438 
+Fun=F3 run=17 nReset=1 sReset=12 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.82909687760184169747 
+Fun=F3 run=18 nReset=0 sReset=4 cCopy=13 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=5.448841189265408502251 
+Fun=F3 run=19 nReset=1 sReset=9 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.43588814320617075282 
+Fun=F3 run=20 nReset=2 sReset=8 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.3669207724205989507 
+Fun=F3 run=21 nReset=1 sReset=16 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242048526386 
+Fun=F3 run=22 nReset=0 sReset=6 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.67236984484941331175 
+Fun=F3 run=23 nReset=0 sReset=10 cCopy=9 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=7.792072288954955183726 
+Fun=F3 run=24 nReset=1 sReset=7 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.36692077242116738489 
+Fun=F3 run=25 nReset=2 sReset=13 cCopy=21 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.65845082957844169869 
+Fun=F3 run=26 nReset=0 sReset=1 cCopy=0 FES=366642 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F3 run=27 nReset=2 sReset=11 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=11.01740719374765831162 
+Fun=F3 run=28 nReset=0 sReset=1 cCopy=9 FES=645204 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F3 run=29 nReset=1 sReset=7 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=10.3669207724205989507 
+Fun=F3 run=30 nReset=0 sReset=10 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.989918114191482345632 
+Function number=F4
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F4 run=1 nReset=1 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1059776797121685376624 
+Fun=F4 run=2 nReset=0 sReset=4 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.009876901010329675045796 
+Fun=F4 run=3 nReset=0 sReset=6 cCopy=1 FES=966924 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=4 nReset=2 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1626102028185414383188 
+Fun=F4 run=5 nReset=2 sReset=1 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.06415293886857398319989 
+Fun=F4 run=6 nReset=0 sReset=1 cCopy=2 FES=595959 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=7 nReset=0 sReset=0 cCopy=16 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1502613783809465530794 
+Fun=F4 run=8 nReset=0 sReset=3 cCopy=3 FES=999728 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=9 nReset=1 sReset=1 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1868271216012544755358 
+Fun=F4 run=10 nReset=0 sReset=3 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.09014194716382917249575 
+Fun=F4 run=11 nReset=0 sReset=6 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.001570487754634086741135 
+Fun=F4 run=12 nReset=0 sReset=0 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.185034759870632115053 
+Fun=F4 run=13 nReset=0 sReset=0 cCopy=11 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1757692847770613298053 
+Fun=F4 run=14 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.122840864847830744111 
+Fun=F4 run=15 nReset=0 sReset=4 cCopy=7 FES=610661 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=16 nReset=0 sReset=0 cCopy=8 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1226052222239104594337 
+Fun=F4 run=17 nReset=0 sReset=0 cCopy=20 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1169616176357521908358 
+Fun=F4 run=18 nReset=0 sReset=0 cCopy=24 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1506500290799976937706 
+Fun=F4 run=19 nReset=0 sReset=1 cCopy=1 FES=260107 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=20 nReset=1 sReset=0 cCopy=19 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.09990163101770122011658 
+Fun=F4 run=21 nReset=0 sReset=3 cCopy=1 FES=518390 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=22 nReset=0 sReset=4 cCopy=1 FES=711181 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=23 nReset=2 sReset=1 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2657919620496613788418 
+Fun=F4 run=24 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1581240026146133459406 
+Fun=F4 run=25 nReset=2 sReset=2 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.01981916189765797753353 
+Fun=F4 run=26 nReset=1 sReset=0 cCopy=21 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1523895521795566310175 
+Fun=F4 run=27 nReset=0 sReset=0 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1075522418841501348652 
+Fun=F4 run=28 nReset=3 sReset=2 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.02960516404050395067316 
+Fun=F4 run=29 nReset=0 sReset=3 cCopy=0 FES=351935 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F4 run=30 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1619886946548376727151 
+Function number=F5
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F5 run=1 nReset=0 sReset=32 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429846459741384024 
+Fun=F5 run=2 nReset=0 sReset=28 cCopy=9 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429847050912940176 
+Fun=F5 run=3 nReset=1 sReset=32 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429846459741384024 
+Fun=F5 run=4 nReset=0 sReset=26 cCopy=8 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859692919482768048 
+Fun=F5 run=5 nReset=0 sReset=2 cCopy=2 FES=232057 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F5 run=6 nReset=2 sReset=34 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.203102041739384731045 
+Fun=F5 run=7 nReset=0 sReset=29 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859692914935294539 
+Fun=F5 run=8 nReset=1 sReset=27 cCopy=13 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429846466562594287 
+Fun=F5 run=9 nReset=0 sReset=27 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429868965187779395 
+Fun=F5 run=10 nReset=1 sReset=29 cCopy=14 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859692917209031293 
+Fun=F5 run=11 nReset=0 sReset=14 cCopy=3 FES=996616 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F5 run=12 nReset=0 sReset=28 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429846496121172095 
+Fun=F5 run=13 nReset=1 sReset=32 cCopy=8 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859692917209031293 
+Fun=F5 run=14 nReset=0 sReset=18 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429846459741384024 
+Fun=F5 run=15 nReset=0 sReset=19 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.411245026385358869447 
+Fun=F5 run=16 nReset=1 sReset=34 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.20310204173915735737 
+Fun=F5 run=17 nReset=0 sReset=32 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.203102041740976346773 
+Fun=F5 run=18 nReset=0 sReset=7 cCopy=5 FES=463107 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F5 run=19 nReset=0 sReset=6 cCopy=2 FES=439954 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F5 run=20 nReset=1 sReset=36 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081446244212656893069 
+Fun=F5 run=21 nReset=1 sReset=37 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.203102041739384731045 
+Fun=F5 run=22 nReset=1 sReset=25 cCopy=36 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=4.066655492351856082678e-07 
+Fun=F5 run=23 nReset=1 sReset=31 cCopy=11 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.6244289539431520097423 
+Fun=F5 run=24 nReset=0 sReset=29 cCopy=20 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429846459741384024 
+Fun=F5 run=25 nReset=0 sReset=17 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2153831276996243104804 
+Fun=F5 run=26 nReset=1 sReset=28 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2081429846464288857533 
+Fun=F5 run=27 nReset=0 sReset=32 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859692921756504802 
+Fun=F5 run=28 nReset=0 sReset=33 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859693051359499805 
+Fun=F5 run=29 nReset=0 sReset=32 cCopy=14 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859692919482768048 
+Fun=F5 run=30 nReset=2 sReset=36 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4162859692917209031293 
+Function number=F6
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F6 run=1 nReset=0 sReset=1 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4217039000029672024539 
+Fun=F6 run=2 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2367745462370294262655 
+Fun=F6 run=3 nReset=0 sReset=0 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2708082314513831079239 
+Fun=F6 run=4 nReset=0 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3263239545565284061013 
+Fun=F6 run=5 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.7302998993345681810752 
+Fun=F6 run=6 nReset=0 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4377277512137425219407 
+Fun=F6 run=7 nReset=0 sReset=0 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.6706355009728213190101 
+Fun=F6 run=8 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.6789615232321466464782 
+Fun=F6 run=9 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.5092617074619738559704 
+Fun=F6 run=10 nReset=0 sReset=2 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.5278520201595711114351 
+Fun=F6 run=11 nReset=0 sReset=0 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4186021837911084730877 
+Fun=F6 run=12 nReset=0 sReset=1 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2407499862458735151449 
+Fun=F6 run=13 nReset=0 sReset=1 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.230467197466623474611 
+Fun=F6 run=14 nReset=0 sReset=0 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.8342027678093018039363 
+Fun=F6 run=15 nReset=0 sReset=0 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.02504319869376558926888 
+Fun=F6 run=16 nReset=0 sReset=0 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4598349806858550437028 
+Fun=F6 run=17 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2221830904782109428197 
+Fun=F6 run=18 nReset=1 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.5660934295856350217946 
+Fun=F6 run=19 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=2.099650966254557715729 
+Fun=F6 run=20 nReset=0 sReset=0 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.05537090209145389962941 
+Fun=F6 run=21 nReset=0 sReset=0 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3008931752192438580096 
+Fun=F6 run=22 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=1.173581755703253293177 
+Fun=F6 run=23 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3812256638314011070179 
+Fun=F6 run=24 nReset=0 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2470813609829747292679 
+Fun=F6 run=25 nReset=3 sReset=0 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.5307916844756164209684 
+Fun=F6 run=26 nReset=0 sReset=1 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.2303626839791377278743 
+Fun=F6 run=27 nReset=0 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1627767884560853417497 
+Fun=F6 run=28 nReset=0 sReset=0 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1674629699759861978237 
+Fun=F6 run=29 nReset=1 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.6723438117269324720837 
+Fun=F6 run=30 nReset=3 sReset=0 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.4185214890808310883585 
+Function number=F7
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F7 run=1 nReset=0 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.004991221396721812197939 
+Fun=F7 run=2 nReset=0 sReset=0 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0003224063511879649013281 
+Fun=F7 run=3 nReset=0 sReset=0 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.001137474072947952663526 
+Fun=F7 run=4 nReset=0 sReset=1 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0006653857299170340411365 
+Fun=F7 run=5 nReset=0 sReset=3 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0003390241281522321514785 
+Fun=F7 run=6 nReset=0 sReset=2 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.001344428490483551286161 
+Fun=F7 run=7 nReset=0 sReset=7 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.000220609767893620301038 
+Fun=F7 run=8 nReset=0 sReset=12 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=8.120105121633969247341e-08 
+Fun=F7 run=9 nReset=0 sReset=0 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.006050894429336040047929 
+Fun=F7 run=10 nReset=0 sReset=0 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0004041607253384427167475 
+Fun=F7 run=11 nReset=0 sReset=2 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0007541446552750130649656 
+Fun=F7 run=12 nReset=0 sReset=12 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.3121732583713310305029 
+Fun=F7 run=13 nReset=0 sReset=1 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0004863444946749950759113 
+Fun=F7 run=14 nReset=0 sReset=1 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.01731165766250342130661 
+Fun=F7 run=15 nReset=0 sReset=8 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=8.631988293927861377597e-06 
+Fun=F7 run=16 nReset=0 sReset=3 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0003474682098385528661311 
+Fun=F7 run=17 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.01103781648725998820737 
+Fun=F7 run=18 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.1430435046986531233415 
+Fun=F7 run=19 nReset=0 sReset=2 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0006647553514085302595049 
+Fun=F7 run=20 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.02420061698103381786495 
+Fun=F7 run=21 nReset=0 sReset=1 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=8.329629054060205817223e-06 
+Fun=F7 run=22 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.004262075486167304916307 
+Fun=F7 run=23 nReset=0 sReset=1 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.007452989022567635402083 
+Fun=F7 run=24 nReset=0 sReset=0 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.0004306158712097385432571 
+Fun=F7 run=25 nReset=0 sReset=1 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.005300573178374179406092 
+Fun=F7 run=26 nReset=0 sReset=0 cCopy=0 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.004649247542147350031883 
+Fun=F7 run=27 nReset=0 sReset=0 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.003321851098007755354047 
+Fun=F7 run=28 nReset=0 sReset=6 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=2.636026192703866399825e-05 
+Fun=F7 run=29 nReset=0 sReset=0 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.01270466868345465627499 
+Fun=F7 run=30 nReset=0 sReset=0 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=0.001789625673154660034925 
+Function number=F8
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F8 run=1 nReset=0 sReset=44 cCopy=2 FES=836490 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=2 nReset=0 sReset=10 cCopy=8 FES=202667 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=3 nReset=0 sReset=11 cCopy=4 FES=159419 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=4 nReset=0 sReset=16 cCopy=2 FES=235477 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=5 nReset=0 sReset=4 cCopy=4 FES=312191 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=6 nReset=0 sReset=4 cCopy=5 FES=164577 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=7 nReset=0 sReset=8 cCopy=9 FES=177349 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=8 nReset=0 sReset=21 cCopy=2 FES=510845 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=9 nReset=1 sReset=46 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=11.56305735264686518349 
+Fun=F8 run=10 nReset=0 sReset=1 cCopy=19 FES=139984 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=11 nReset=0 sReset=24 cCopy=6 FES=328829 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=12 nReset=0 sReset=32 cCopy=43 FES=805217 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=13 nReset=0 sReset=16 cCopy=3 FES=244274 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=14 nReset=0 sReset=6 cCopy=3 FES=247099 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=15 nReset=0 sReset=3 cCopy=4 FES=134538 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=16 nReset=0 sReset=1 cCopy=9 FES=116157 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=17 nReset=0 sReset=7 cCopy=6 FES=156646 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=18 nReset=0 sReset=3 cCopy=3 FES=116145 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=19 nReset=0 sReset=44 cCopy=3 FES=388624 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=20 nReset=0 sReset=6 cCopy=9 FES=192042 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=21 nReset=0 sReset=7 cCopy=6 FES=163741 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=22 nReset=0 sReset=33 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=11.56305735264641043614 
+Fun=F8 run=23 nReset=0 sReset=46 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=11.56305735266869305633 
+Fun=F8 run=24 nReset=0 sReset=12 cCopy=3 FES=207292 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=25 nReset=0 sReset=33 cCopy=2 FES=985812 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=26 nReset=0 sReset=14 cCopy=4 FES=196214 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=27 nReset=0 sReset=32 cCopy=6 FES=833391 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=28 nReset=0 sReset=36 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=11.56305735264868417289 
+Fun=F8 run=29 nReset=0 sReset=16 cCopy=1 FES=672830 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F8 run=30 nReset=0 sReset=40 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=11.56305735265186740435 
+Function number=F9
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F9 run=1 nReset=3 sReset=89 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=2 nReset=0 sReset=1 cCopy=6 FES=53715 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F9 run=3 nReset=3 sReset=88 cCopy=9 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=4 nReset=2 sReset=91 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=5 nReset=4 sReset=90 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=6 nReset=3 sReset=87 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=7 nReset=2 sReset=78 cCopy=18 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=8 nReset=3 sReset=86 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=9 nReset=1 sReset=66 cCopy=11 FES=768555 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F9 run=10 nReset=3 sReset=77 cCopy=24 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=11 nReset=3 sReset=89 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=12 nReset=3 sReset=85 cCopy=9 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=13 nReset=3 sReset=91 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=14 nReset=3 sReset=90 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=15 nReset=3 sReset=87 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=16 nReset=3 sReset=88 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000009094947 
+Fun=F9 run=17 nReset=4 sReset=92 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000009094947 
+Fun=F9 run=18 nReset=3 sReset=84 cCopy=9 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=19 nReset=3 sReset=84 cCopy=23 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=20 nReset=3 sReset=83 cCopy=16 FES=909933 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F9 run=21 nReset=1 sReset=49 cCopy=2 FES=610947 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F9 run=22 nReset=4 sReset=95 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000009094947 
+Fun=F9 run=23 nReset=3 sReset=87 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=24 nReset=2 sReset=88 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=25 nReset=4 sReset=83 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=26 nReset=3 sReset=82 cCopy=3 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=27 nReset=3 sReset=90 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=28 nReset=3 sReset=92 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000004547474 
+Fun=F9 run=29 nReset=1 sReset=44 cCopy=9 FES=551441 NP=80 (bNP=70 sNP10) D=10  bestValue=0 
+Fun=F9 run=30 nReset=3 sReset=86 cCopy=12 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0000000000009094947 
+Function number=F10
+Dimension D=10
+Search range: Xmin=-100 Xmax=100
+Population size NP=80 (bNP=70 sNP10) 
+Fun=F10 run=1 nReset=1 sReset=79 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.157764776853582589 
+Fun=F10 run=2 nReset=1 sReset=82 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0110423661562890629 
+Fun=F10 run=3 nReset=1 sReset=89 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0597755495909950696 
+Fun=F10 run=4 nReset=0 sReset=21 cCopy=10 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.011730893544608989 
+Fun=F10 run=5 nReset=0 sReset=28 cCopy=20 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0140578357818412769 
+Fun=F10 run=6 nReset=0 sReset=5 cCopy=2 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0058365763275105564 
+Fun=F10 run=7 nReset=2 sReset=54 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=200.0000000000004547474 
+Fun=F10 run=8 nReset=0 sReset=25 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0095562830529161147 
+Fun=F10 run=9 nReset=0 sReset=15 cCopy=20 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0318586890575716097 
+Fun=F10 run=10 nReset=0 sReset=7 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0047385147795466764 
+Fun=F10 run=11 nReset=4 sReset=178 cCopy=11 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=397.7428694699874540675 
+Fun=F10 run=12 nReset=3 sReset=176 cCopy=1 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=397.7428694699874540675 
+Fun=F10 run=13 nReset=0 sReset=24 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.4247995630025798164 
+Fun=F10 run=14 nReset=1 sReset=62 cCopy=12 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0120113420430243423 
+Fun=F10 run=15 nReset=1 sReset=100 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=200.0000000000009094947 
+Fun=F10 run=16 nReset=0 sReset=61 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.2358558381538387039 
+Fun=F10 run=17 nReset=0 sReset=2 cCopy=10 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0288044216422349564 
+Fun=F10 run=18 nReset=1 sReset=111 cCopy=8 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=300.0000000000018189894 
+Fun=F10 run=19 nReset=0 sReset=0 cCopy=12 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.1185050037124710798 
+Fun=F10 run=20 nReset=0 sReset=12 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0175903735544125084 
+Fun=F10 run=21 nReset=3 sReset=156 cCopy=5 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=397.7428694699879088148 
+Fun=F10 run=22 nReset=4 sReset=172 cCopy=6 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=397.7428694699879088148 
+Fun=F10 run=23 nReset=3 sReset=167 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=397.7428694699879088148 
+Fun=F10 run=24 nReset=1 sReset=63 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0967111761251544522 
+Fun=F10 run=25 nReset=0 sReset=9 cCopy=21 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0068999661889392883 
+Fun=F10 run=26 nReset=0 sReset=31 cCopy=8 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=101.478935251958318986 
+Fun=F10 run=27 nReset=0 sReset=5 cCopy=4 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0657225950458268926 
+Fun=F10 run=28 nReset=1 sReset=83 cCopy=14 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0171013805570510158 
+Fun=F10 run=29 nReset=0 sReset=6 cCopy=14 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.2109766354424209567 
+Fun=F10 run=30 nReset=1 sReset=49 cCopy=7 FES=1000000 NP=80 (bNP=70 sNP10) D=10  bestValue=100.0132374770787464513 
+Function number=F1
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F1 run=1 nReset=0 sReset=0 cCopy=1 FES=108940 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=2 nReset=0 sReset=0 cCopy=0 FES=83554 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=3 nReset=0 sReset=0 cCopy=1 FES=80344 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=4 nReset=0 sReset=0 cCopy=1 FES=87130 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=5 nReset=0 sReset=0 cCopy=0 FES=92341 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=6 nReset=0 sReset=0 cCopy=0 FES=80378 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=7 nReset=0 sReset=0 cCopy=1 FES=76610 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=8 nReset=0 sReset=0 cCopy=1 FES=87097 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=9 nReset=0 sReset=0 cCopy=1 FES=82107 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=10 nReset=0 sReset=0 cCopy=0 FES=96530 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=11 nReset=0 sReset=0 cCopy=0 FES=102046 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=12 nReset=0 sReset=0 cCopy=0 FES=85035 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=13 nReset=0 sReset=0 cCopy=1 FES=88616 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=14 nReset=0 sReset=0 cCopy=1 FES=86684 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=15 nReset=0 sReset=0 cCopy=1 FES=89358 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=16 nReset=0 sReset=0 cCopy=0 FES=78738 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=17 nReset=0 sReset=0 cCopy=0 FES=90230 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=18 nReset=0 sReset=0 cCopy=0 FES=91474 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=19 nReset=0 sReset=0 cCopy=0 FES=91885 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=20 nReset=0 sReset=0 cCopy=0 FES=86668 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=21 nReset=0 sReset=0 cCopy=1 FES=90414 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=22 nReset=0 sReset=0 cCopy=0 FES=95489 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=23 nReset=0 sReset=0 cCopy=0 FES=88826 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=24 nReset=0 sReset=0 cCopy=0 FES=78443 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=25 nReset=0 sReset=0 cCopy=0 FES=88140 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=26 nReset=0 sReset=0 cCopy=0 FES=89566 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=27 nReset=0 sReset=0 cCopy=0 FES=91301 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=28 nReset=0 sReset=0 cCopy=1 FES=85837 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=29 nReset=0 sReset=0 cCopy=1 FES=84837 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F1 run=30 nReset=0 sReset=0 cCopy=1 FES=89436 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Function number=F2
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F2 run=1 nReset=0 sReset=6 cCopy=30 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770388552220538 
+Fun=F2 run=2 nReset=1 sReset=7 cCopy=17 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770206653280184 
+Fun=F2 run=3 nReset=1 sReset=5 cCopy=8 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.04163739385239750845358 
+Fun=F2 run=4 nReset=0 sReset=6 cCopy=30 FES=2735017 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F2 run=5 nReset=0 sReset=4 cCopy=19 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1249121815535545465536 
+Fun=F2 run=6 nReset=0 sReset=5 cCopy=14 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.0416373938514880137518 
+Fun=F2 run=7 nReset=1 sReset=7 cCopy=16 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770752350101247 
+Fun=F2 run=8 nReset=1 sReset=5 cCopy=26 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770115703810006 
+Fun=F2 run=9 nReset=0 sReset=7 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770115703810006 
+Fun=F2 run=10 nReset=1 sReset=4 cCopy=11 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.0416373938514880137518 
+Fun=F2 run=11 nReset=1 sReset=2 cCopy=20 FES=2806430 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F2 run=12 nReset=1 sReset=6 cCopy=24 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770297602750361 
+Fun=F2 run=13 nReset=0 sReset=8 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770297602750361 
+Fun=F2 run=14 nReset=2 sReset=6 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.04163739385057851905003 
+Fun=F2 run=15 nReset=1 sReset=3 cCopy=18 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1014619298048273776658 
+Fun=F2 run=16 nReset=0 sReset=6 cCopy=21 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1665495754023140762001 
+Fun=F2 run=17 nReset=1 sReset=7 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770206653280184 
+Fun=F2 run=18 nReset=1 sReset=5 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770115703810006 
+Fun=F2 run=19 nReset=0 sReset=5 cCopy=41 FES=2063148 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F2 run=20 nReset=2 sReset=5 cCopy=23 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1249121815517355571501 
+Fun=F2 run=21 nReset=0 sReset=3 cCopy=10 FES=1949350 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F2 run=22 nReset=0 sReset=5 cCopy=18 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1249121815526450518519 
+Fun=F2 run=23 nReset=0 sReset=7 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.0416373938514880137518 
+Fun=F2 run=24 nReset=0 sReset=4 cCopy=18 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770843299571425 
+Fun=F2 run=25 nReset=2 sReset=7 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770206653280184 
+Fun=F2 run=26 nReset=3 sReset=7 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1249121815517355571501 
+Fun=F2 run=27 nReset=1 sReset=4 cCopy=17 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1665495754032235709019 
+Fun=F2 run=28 nReset=0 sReset=7 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.04163739385239750845358 
+Fun=F2 run=29 nReset=0 sReset=3 cCopy=51 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2081869692528925952502 
+Fun=F2 run=30 nReset=2 sReset=4 cCopy=6 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08327478770479501690716 
+Function number=F3
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F3 run=1 nReset=1 sReset=15 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=2 nReset=2 sReset=12 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303909424314 
+Fun=F3 run=3 nReset=0 sReset=16 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303909424314 
+Fun=F3 run=4 nReset=2 sReset=15 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303909424314 
+Fun=F3 run=5 nReset=1 sReset=19 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303909424314 
+Fun=F3 run=6 nReset=2 sReset=12 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=7 nReset=1 sReset=11 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=8 nReset=1 sReset=16 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303932161682 
+Fun=F3 run=9 nReset=2 sReset=15 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=10 nReset=0 sReset=11 cCopy=25 FES=2459651 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F3 run=11 nReset=2 sReset=11 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=12 nReset=2 sReset=13 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=13 nReset=2 sReset=17 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=14 nReset=0 sReset=11 cCopy=11 FES=2474986 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F3 run=15 nReset=0 sReset=7 cCopy=13 FES=1979029 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F3 run=16 nReset=3 sReset=14 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303909424314 
+Fun=F3 run=17 nReset=3 sReset=15 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=18 nReset=2 sReset=16 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=19 nReset=2 sReset=13 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303909424314 
+Fun=F3 run=20 nReset=1 sReset=10 cCopy=25 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.9949590570937516531558 
+Fun=F3 run=21 nReset=1 sReset=11 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=22 nReset=0 sReset=10 cCopy=17 FES=2177390 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F3 run=23 nReset=2 sReset=17 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=24 nReset=0 sReset=8 cCopy=32 FES=2251323 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F3 run=25 nReset=0 sReset=9 cCopy=4 FES=2311025 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F3 run=26 nReset=3 sReset=12 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=27 nReset=3 sReset=13 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=28 nReset=1 sReset=15 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.5669765130389805563 
+Fun=F3 run=29 nReset=0 sReset=17 cCopy=46 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.4129260100528426846722 
+Fun=F3 run=30 nReset=2 sReset=18 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=15.56697651303909424314 
+Function number=F4
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F4 run=1 nReset=1 sReset=0 cCopy=27 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.127478104082456411561 
+Fun=F4 run=2 nReset=1 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1562507646119684068253 
+Fun=F4 run=3 nReset=2 sReset=0 cCopy=17 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1968644963433234806871 
+Fun=F4 run=4 nReset=2 sReset=0 cCopy=45 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.06046028291302718571387 
+Fun=F4 run=5 nReset=0 sReset=0 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2506152755822768085636 
+Fun=F4 run=6 nReset=1 sReset=0 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2582194699987212516135 
+Fun=F4 run=7 nReset=0 sReset=1 cCopy=0 FES=1855722 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F4 run=8 nReset=2 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2268668324240934452973 
+Fun=F4 run=9 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.0573259789700841793092 
+Fun=F4 run=10 nReset=0 sReset=0 cCopy=18 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2118938385717683559051 
+Fun=F4 run=11 nReset=0 sReset=0 cCopy=8 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.09658610530709665908944 
+Fun=F4 run=12 nReset=0 sReset=0 cCopy=41 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1670496371448280115146 
+Fun=F4 run=13 nReset=0 sReset=1 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.06556226265615805459674 
+Fun=F4 run=14 nReset=0 sReset=0 cCopy=67 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.09491681022791453870013 
+Fun=F4 run=15 nReset=0 sReset=0 cCopy=7 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1807275105247754254378 
+Fun=F4 run=16 nReset=0 sReset=0 cCopy=13 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1750479104978239774937 
+Fun=F4 run=17 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2783737303082034486579 
+Fun=F4 run=18 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1982574832345562754199 
+Fun=F4 run=19 nReset=0 sReset=0 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1313398183383469586261 
+Fun=F4 run=20 nReset=0 sReset=0 cCopy=70 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2753380274045866826782 
+Fun=F4 run=21 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.07390419551120430696756 
+Fun=F4 run=22 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.06190313304159644758329 
+Fun=F4 run=23 nReset=0 sReset=0 cCopy=7 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1637592542128913919441 
+Fun=F4 run=24 nReset=0 sReset=0 cCopy=15 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.03650523085502754838672 
+Fun=F4 run=25 nReset=0 sReset=6 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.009876840929791796952486 
+Fun=F4 run=26 nReset=0 sReset=0 cCopy=72 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2669076106874399556546 
+Fun=F4 run=27 nReset=1 sReset=0 cCopy=6 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2700506693133775115712 
+Fun=F4 run=28 nReset=0 sReset=0 cCopy=10 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1965725917752934037708 
+Fun=F4 run=29 nReset=0 sReset=0 cCopy=13 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2890552334217773022829 
+Fun=F4 run=30 nReset=0 sReset=0 cCopy=20 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.0575118241022209986113 
+Function number=F5
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F5 run=1 nReset=1 sReset=17 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=3.140994717116427636938 
+Fun=F5 run=2 nReset=0 sReset=8 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.30215320585602967185 
+Fun=F5 run=3 nReset=1 sReset=1 cCopy=54 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=7.774898859134964368423 
+Fun=F5 run=4 nReset=0 sReset=16 cCopy=25 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.146035660024153912673 
+Fun=F5 run=5 nReset=0 sReset=15 cCopy=14 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.458270751688814925728 
+Fun=F5 run=6 nReset=1 sReset=19 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=5.287025339315732708201 
+Fun=F5 run=7 nReset=0 sReset=10 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=5.443142885150109577808 
+Fun=F5 run=8 nReset=0 sReset=14 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=4.448188865876772979391 
+Fun=F5 run=9 nReset=0 sReset=24 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.458270751688814925728 
+Fun=F5 run=10 nReset=1 sReset=23 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=12.51622333021578015178 
+Fun=F5 run=11 nReset=0 sReset=9 cCopy=14 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.302153206136381413671 
+Fun=F5 run=12 nReset=0 sReset=14 cCopy=6 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=5.130907793482265333296 
+Fun=F5 run=13 nReset=2 sReset=24 cCopy=10 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=3.297112262947848648764 
+Fun=F5 run=14 nReset=0 sReset=10 cCopy=21 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.458270751690861288807 
+Fun=F5 run=15 nReset=1 sReset=17 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=11.58215680084981613618 
+Fun=F5 run=16 nReset=0 sReset=6 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.61438829752296442166 
+Fun=F5 run=17 nReset=2 sReset=10 cCopy=10 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.302153205858758155955 
+Fun=F5 run=18 nReset=2 sReset=18 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.162017154650811789907 
+Fun=F5 run=19 nReset=0 sReset=27 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=6.125866850574766431237 
+Fun=F5 run=20 nReset=0 sReset=19 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=5.443142885149427456781 
+Fun=F5 run=21 nReset=1 sReset=19 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=4.292071320045351967565 
+Fun=F5 run=22 nReset=0 sReset=0 cCopy=23 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=26.21792733375104944571 
+Fun=F5 run=23 nReset=1 sReset=20 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=5.287025339316642202903 
+Fun=F5 run=24 nReset=0 sReset=0 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=5.152597712712122302037 
+Fun=F5 run=25 nReset=1 sReset=8 cCopy=23 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=4.135953774208019240177 
+Fun=F5 run=26 nReset=0 sReset=14 cCopy=25 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=26.60166655432453808316 
+Fun=F5 run=27 nReset=1 sReset=15 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=6.438101942244429665152 
+Fun=F5 run=28 nReset=2 sReset=17 cCopy=11 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=10.37018767019594633894 
+Fun=F5 run=29 nReset=0 sReset=14 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=1.151076602930061199004 
+Fun=F5 run=30 nReset=0 sReset=16 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=2.302153205854892803472 
+Function number=F6
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F6 run=1 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2907062386041161516914 
+Fun=F6 run=2 nReset=0 sReset=0 cCopy=8 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1782472622580826282501 
+Fun=F6 run=3 nReset=0 sReset=0 cCopy=12 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1874217664881143718958 
+Fun=F6 run=4 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=8.679573807682572805788 
+Fun=F6 run=5 nReset=0 sReset=1 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1856354338735854980769 
+Fun=F6 run=6 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.4620733934730196779128 
+Fun=F6 run=7 nReset=0 sReset=0 cCopy=20 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.186423739081419626018 
+Fun=F6 run=8 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.5297364888422180229099 
+Fun=F6 run=9 nReset=0 sReset=0 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.5919550788403284968808 
+Fun=F6 run=10 nReset=0 sReset=0 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1785383028202431887621 
+Fun=F6 run=11 nReset=0 sReset=0 cCopy=12 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.1568757189222651504679 
+Fun=F6 run=12 nReset=0 sReset=0 cCopy=19 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.3420704875034061842598 
+Fun=F6 run=13 nReset=0 sReset=0 cCopy=12 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=8.557573805664105748292 
+Fun=F6 run=14 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.4143226141097784420708 
+Fun=F6 run=15 nReset=0 sReset=0 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=8.713615779282918083481 
+Fun=F6 run=16 nReset=0 sReset=1 cCopy=19 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=8.55613533015252869518 
+Fun=F6 run=17 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.3907575334692410251591 
+Fun=F6 run=18 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.05377004694310016930103 
+Fun=F6 run=19 nReset=0 sReset=0 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.02120505400580441346392 
+Fun=F6 run=20 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.4942382008580352703575 
+Fun=F6 run=21 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.3459332141778759250883 
+Fun=F6 run=22 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=9.001703739069171206211 
+Fun=F6 run=23 nReset=0 sReset=1 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.02053124184453736233991 
+Fun=F6 run=24 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=8.556312886018531571608 
+Fun=F6 run=25 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.3483100588071010861313 
+Fun=F6 run=26 nReset=0 sReset=0 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=8.567356340906826517312 
+Fun=F6 run=27 nReset=0 sReset=1 cCopy=14 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.4683829056309605221031 
+Fun=F6 run=28 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.5312500344218733516755 
+Fun=F6 run=29 nReset=0 sReset=0 cCopy=6 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.4894110030397769151023 
+Fun=F6 run=30 nReset=0 sReset=0 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.3520992908520383934956 
+Function number=F7
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F7 run=1 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.6685915279217624629382 
+Fun=F7 run=2 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2461417274375889974181 
+Fun=F7 run=3 nReset=0 sReset=0 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=1.028342157962470082566 
+Fun=F7 run=4 nReset=0 sReset=0 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2297133674187534779776 
+Fun=F7 run=5 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.7147005097381224913988 
+Fun=F7 run=6 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2308859473914708360098 
+Fun=F7 run=7 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2827596632182576286141 
+Fun=F7 run=8 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=1.040538571030992898159 
+Fun=F7 run=9 nReset=0 sReset=0 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.08050134850782342255116 
+Fun=F7 run=10 nReset=0 sReset=0 cCopy=6 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.5625795022792772215325 
+Fun=F7 run=11 nReset=0 sReset=0 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.5330124211050133453682 
+Fun=F7 run=12 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=1.173643226467902422883 
+Fun=F7 run=13 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.704117382558251847513 
+Fun=F7 run=14 nReset=0 sReset=0 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.512280739125344553031 
+Fun=F7 run=15 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2969741453443930367939 
+Fun=F7 run=16 nReset=0 sReset=0 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.04189169145865889731795 
+Fun=F7 run=17 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=1.234621000774950516643 
+Fun=F7 run=18 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2301864343166926119011 
+Fun=F7 run=19 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.4103605929640252725221 
+Fun=F7 run=20 nReset=0 sReset=0 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.8417438827145815594122 
+Fun=F7 run=21 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.7026605231335452117492 
+Fun=F7 run=22 nReset=0 sReset=0 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=1.021570349046214687405 
+Fun=F7 run=23 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.9427792053111261338927 
+Fun=F7 run=24 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=12.0649316820858985011 
+Fun=F7 run=25 nReset=0 sReset=0 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2688197677325661061332 
+Fun=F7 run=26 nReset=0 sReset=0 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.2408628125890572846401 
+Fun=F7 run=27 nReset=0 sReset=0 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.9973374259138836350758 
+Fun=F7 run=28 nReset=0 sReset=0 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.7607073380431756959297 
+Fun=F7 run=29 nReset=0 sReset=0 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=1.191419766961189452559 
+Fun=F7 run=30 nReset=0 sReset=0 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=0.5242520080087160749827 
+Function number=F8
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F8 run=1 nReset=4 sReset=185 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F8 run=2 nReset=3 sReset=157 cCopy=13 FES=2750484 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=3 nReset=4 sReset=187 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F8 run=4 nReset=2 sReset=138 cCopy=3 FES=2355467 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=5 nReset=1 sReset=92 cCopy=4 FES=1592427 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=6 nReset=0 sReset=30 cCopy=3 FES=691098 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=7 nReset=1 sReset=115 cCopy=5 FES=2261472 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=8 nReset=0 sReset=23 cCopy=8 FES=473029 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=9 nReset=3 sReset=185 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F8 run=10 nReset=1 sReset=111 cCopy=6 FES=1954661 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=11 nReset=0 sReset=28 cCopy=6 FES=588337 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=12 nReset=1 sReset=78 cCopy=8 FES=1331335 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=13 nReset=1 sReset=59 cCopy=2 FES=1057481 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=14 nReset=1 sReset=127 cCopy=4 FES=2167333 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=15 nReset=3 sReset=186 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F8 run=16 nReset=1 sReset=132 cCopy=6 FES=2230612 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=17 nReset=0 sReset=47 cCopy=8 FES=873576 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=18 nReset=4 sReset=184 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F8 run=19 nReset=3 sReset=170 cCopy=6 FES=2820840 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=20 nReset=0 sReset=14 cCopy=14 FES=424364 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=21 nReset=2 sReset=139 cCopy=4 FES=2492875 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=22 nReset=3 sReset=183 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F8 run=23 nReset=2 sReset=156 cCopy=15 FES=2597854 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=24 nReset=2 sReset=122 cCopy=3 FES=2053967 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=25 nReset=3 sReset=183 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F8 run=26 nReset=0 sReset=25 cCopy=8 FES=510430 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=27 nReset=0 sReset=12 cCopy=8 FES=420138 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=28 nReset=0 sReset=50 cCopy=4 FES=1222950 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=29 nReset=1 sReset=58 cCopy=4 FES=1001813 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Fun=F8 run=30 nReset=1 sReset=88 cCopy=6 FES=1476497 NP=120 (bNP=105 sNP15) D=15  bestValue=0 
+Function number=F9
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F9 run=1 nReset=1 sReset=94 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=200.0000000000040927262 
+Fun=F9 run=2 nReset=2 sReset=59 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=3 nReset=2 sReset=57 cCopy=6 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=4 nReset=3 sReset=63 cCopy=12 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=5 nReset=2 sReset=55 cCopy=19 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=6 nReset=2 sReset=69 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=7 nReset=2 sReset=57 cCopy=33 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=8 nReset=3 sReset=53 cCopy=19 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=9 nReset=2 sReset=53 cCopy=13 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=10 nReset=3 sReset=61 cCopy=11 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=11 nReset=1 sReset=55 cCopy=56 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000031832315 
+Fun=F9 run=12 nReset=3 sReset=64 cCopy=25 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=13 nReset=3 sReset=65 cCopy=63 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=14 nReset=3 sReset=55 cCopy=12 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=15 nReset=1 sReset=78 cCopy=6 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=16 nReset=2 sReset=54 cCopy=48 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=17 nReset=1 sReset=68 cCopy=3 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=18 nReset=2 sReset=73 cCopy=9 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=19 nReset=2 sReset=63 cCopy=24 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=20 nReset=2 sReset=65 cCopy=25 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=21 nReset=4 sReset=50 cCopy=10 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=200.0000000000013642421 
+Fun=F9 run=22 nReset=1 sReset=68 cCopy=48 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=23 nReset=3 sReset=62 cCopy=7 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=24 nReset=3 sReset=64 cCopy=7 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=25 nReset=1 sReset=101 cCopy=5 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000315825827783556 
+Fun=F9 run=26 nReset=2 sReset=46 cCopy=15 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=200.0000000000009094947 
+Fun=F9 run=27 nReset=3 sReset=61 cCopy=9 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=28 nReset=3 sReset=62 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Fun=F9 run=29 nReset=3 sReset=62 cCopy=4 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000009094947 
+Fun=F9 run=30 nReset=3 sReset=56 cCopy=67 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=100.0000000000013642421 
+Function number=F10
+Dimension D=15
+Search range: Xmin=-100 Xmax=100
+Population size NP=120 (bNP=105 sNP15) 
+Fun=F10 run=1 nReset=4 sReset=178 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=2 nReset=4 sReset=176 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=3 nReset=4 sReset=173 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=4 nReset=3 sReset=176 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000004547474 
+Fun=F10 run=5 nReset=4 sReset=177 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=6 nReset=4 sReset=175 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=7 nReset=4 sReset=177 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=8 nReset=4 sReset=176 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=9 nReset=4 sReset=177 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=10 nReset=4 sReset=176 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=11 nReset=3 sReset=179 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=12 nReset=4 sReset=176 cCopy=2 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=13 nReset=4 sReset=177 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=14 nReset=4 sReset=179 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=15 nReset=4 sReset=176 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=16 nReset=4 sReset=175 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=17 nReset=4 sReset=178 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=18 nReset=4 sReset=176 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=19 nReset=4 sReset=178 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=20 nReset=4 sReset=179 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=21 nReset=3 sReset=175 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=22 nReset=3 sReset=177 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=23 nReset=4 sReset=176 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=24 nReset=4 sReset=176 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=25 nReset=4 sReset=177 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=26 nReset=3 sReset=178 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=27 nReset=4 sReset=176 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=28 nReset=3 sReset=176 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=29 nReset=4 sReset=177 cCopy=1 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Fun=F10 run=30 nReset=4 sReset=176 cCopy=0 FES=3000000 NP=120 (bNP=105 sNP15) D=15  bestValue=400.0000000000009094947 
+Function number=F1
+Dimension D=20
+Search range: Xmin=-100 Xmax=100
+Population size NP=160 (bNP=140 sNP20) 
+Fun=F1 run=1 nReset=0 sReset=0 cCopy=0 FES=77179 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=2 nReset=0 sReset=0 cCopy=1 FES=76140 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=3 nReset=0 sReset=0 cCopy=1 FES=72460 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=4 nReset=0 sReset=0 cCopy=0 FES=80511 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=5 nReset=0 sReset=0 cCopy=0 FES=78029 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=6 nReset=0 sReset=0 cCopy=0 FES=79467 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=7 nReset=0 sReset=0 cCopy=1 FES=76654 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=8 nReset=0 sReset=0 cCopy=0 FES=68806 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=9 nReset=0 sReset=0 cCopy=1 FES=70186 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=10 nReset=0 sReset=0 cCopy=1 FES=84170 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=11 nReset=0 sReset=0 cCopy=1 FES=76935 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=12 nReset=0 sReset=0 cCopy=0 FES=74700 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=13 nReset=0 sReset=0 cCopy=0 FES=75743 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=14 nReset=0 sReset=0 cCopy=0 FES=80852 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=15 nReset=0 sReset=0 cCopy=0 FES=80341 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=16 nReset=0 sReset=0 cCopy=0 FES=77815 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=17 nReset=0 sReset=0 cCopy=0 FES=81963 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=18 nReset=0 sReset=0 cCopy=0 FES=77821 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=19 nReset=0 sReset=0 cCopy=0 FES=86222 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=20 nReset=0 sReset=0 cCopy=0 FES=78606 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=21 nReset=0 sReset=0 cCopy=1 FES=78563 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=22 nReset=0 sReset=0 cCopy=1 FES=79953 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=23 nReset=0 sReset=0 cCopy=0 FES=75580 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=24 nReset=0 sReset=0 cCopy=0 FES=69438 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=25 nReset=0 sReset=0 cCopy=2 FES=81670 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=26 nReset=0 sReset=0 cCopy=0 FES=78606 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=27 nReset=0 sReset=0 cCopy=2 FES=75468 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=28 nReset=0 sReset=0 cCopy=1 FES=71672 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=29 nReset=0 sReset=0 cCopy=1 FES=72384 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F1 run=30 nReset=0 sReset=0 cCopy=0 FES=74414 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Function number=F2
+Dimension D=20
+Search range: Xmin=-100 Xmax=100
+Population size NP=160 (bNP=140 sNP20) 
+Fun=F2 run=1 nReset=2 sReset=8 cCopy=6 FES=7494172 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=2 nReset=2 sReset=12 cCopy=26 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=3 nReset=2 sReset=12 cCopy=77 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=4 nReset=0 sReset=3 cCopy=24 FES=2552399 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=5 nReset=3 sReset=10 cCopy=53 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=6 nReset=3 sReset=9 cCopy=3 FES=9526682 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=7 nReset=1 sReset=13 cCopy=13 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=8 nReset=0 sReset=5 cCopy=110 FES=5617031 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=9 nReset=3 sReset=10 cCopy=12 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.06245691567892208695412 
+Fun=F2 run=10 nReset=0 sReset=5 cCopy=1 FES=5138147 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=11 nReset=2 sReset=8 cCopy=55 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=12 nReset=0 sReset=4 cCopy=86 FES=5208735 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=13 nReset=1 sReset=10 cCopy=57 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=14 nReset=3 sReset=12 cCopy=20 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=15 nReset=1 sReset=5 cCopy=54 FES=6015507 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=16 nReset=3 sReset=12 cCopy=29 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=17 nReset=2 sReset=9 cCopy=28 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=18 nReset=3 sReset=9 cCopy=79 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=19 nReset=2 sReset=10 cCopy=16 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.06245691567710309755057 
+Fun=F2 run=20 nReset=1 sReset=10 cCopy=41 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=21 nReset=2 sReset=10 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.06245691567892208695412 
+Fun=F2 run=22 nReset=0 sReset=4 cCopy=81 FES=5289733 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=23 nReset=1 sReset=6 cCopy=38 FES=6967670 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=24 nReset=2 sReset=10 cCopy=21 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=25 nReset=0 sReset=3 cCopy=31 FES=4188175 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=26 nReset=3 sReset=11 cCopy=47 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=27 nReset=2 sReset=8 cCopy=48 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.03122845783946104347706 
+Fun=F2 run=28 nReset=0 sReset=6 cCopy=40 FES=7024045 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F2 run=29 nReset=2 sReset=10 cCopy=24 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.06245691567892208695412 
+Fun=F2 run=30 nReset=0 sReset=1 cCopy=17 FES=2603052 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Function number=F3
+Dimension D=20
+Search range: Xmin=-100 Xmax=100
+Population size NP=160 (bNP=140 sNP20) 
+Fun=F3 run=1 nReset=2 sReset=18 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006254725886 
+Fun=F3 run=2 nReset=3 sReset=21 cCopy=7 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006254725886 
+Fun=F3 run=3 nReset=0 sReset=10 cCopy=6 FES=6080118 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F3 run=4 nReset=3 sReset=17 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=5 nReset=3 sReset=17 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=6 nReset=2 sReset=16 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=7 nReset=3 sReset=19 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006254725886 
+Fun=F3 run=8 nReset=2 sReset=18 cCopy=2 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=9 nReset=2 sReset=21 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=10 nReset=3 sReset=17 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006254725886 
+Fun=F3 run=11 nReset=3 sReset=17 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=12 nReset=0 sReset=6 cCopy=33 FES=4201834 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F3 run=13 nReset=3 sReset=19 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=14 nReset=2 sReset=19 cCopy=3 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006254725886 
+Fun=F3 run=15 nReset=0 sReset=5 cCopy=21 FES=6035644 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F3 run=16 nReset=3 sReset=19 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=17 nReset=3 sReset=17 cCopy=8 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=18 nReset=3 sReset=23 cCopy=2 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=19 nReset=0 sReset=10 cCopy=13 FES=6644677 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F3 run=20 nReset=2 sReset=18 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=21 nReset=3 sReset=19 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=22 nReset=2 sReset=19 cCopy=10 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006254725886 
+Fun=F3 run=23 nReset=2 sReset=19 cCopy=2 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=24 nReset=3 sReset=18 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=25 nReset=1 sReset=18 cCopy=6 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=26 nReset=3 sReset=18 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006254725886 
+Fun=F3 run=27 nReset=3 sReset=23 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=28 nReset=0 sReset=8 cCopy=5 FES=5321933 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Fun=F3 run=29 nReset=3 sReset=18 cCopy=3 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.38721535006243357202 
+Fun=F3 run=30 nReset=0 sReset=10 cCopy=37 FES=6788230 NP=160 (bNP=140 sNP20) D=20  bestValue=0 
+Function number=F4
+Dimension D=20
+Search range: Xmin=-100 Xmax=100
+Population size NP=160 (bNP=140 sNP20) 
+Fun=F4 run=1 nReset=0 sReset=0 cCopy=6 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.0775275284395320340991 
+Fun=F4 run=2 nReset=0 sReset=0 cCopy=2 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1362181687666179641383 
+Fun=F4 run=3 nReset=0 sReset=0 cCopy=26 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1403781555736713926308 
+Fun=F4 run=4 nReset=0 sReset=0 cCopy=16 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2195129295585047657369 
+Fun=F4 run=5 nReset=0 sReset=0 cCopy=20 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1934765364708255219739 
+Fun=F4 run=6 nReset=0 sReset=0 cCopy=36 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2200909066543772496516 
+Fun=F4 run=7 nReset=0 sReset=0 cCopy=57 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.3340376836720224673627 
+Fun=F4 run=8 nReset=3 sReset=0 cCopy=33 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1030173554815974057419 
+Fun=F4 run=9 nReset=0 sReset=0 cCopy=12 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1397552555254151229747 
+Fun=F4 run=10 nReset=0 sReset=0 cCopy=7 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2284582541799409227679 
+Fun=F4 run=11 nReset=0 sReset=0 cCopy=72 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.08998104422971664462239 
+Fun=F4 run=12 nReset=0 sReset=0 cCopy=13 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1021796997547426144592 
+Fun=F4 run=13 nReset=0 sReset=0 cCopy=18 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.3038305330530874925898 
+Fun=F4 run=14 nReset=0 sReset=0 cCopy=17 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1506226237156624847557 
+Fun=F4 run=15 nReset=0 sReset=0 cCopy=2 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2312447061594866681844 
+Fun=F4 run=16 nReset=0 sReset=0 cCopy=14 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2037819782983660843456 
+Fun=F4 run=17 nReset=0 sReset=0 cCopy=40 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.06479001341608636721503 
+Fun=F4 run=18 nReset=0 sReset=0 cCopy=18 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.08413284221683170471806 
+Fun=F4 run=19 nReset=0 sReset=0 cCopy=60 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1337545470717032003449 
+Fun=F4 run=20 nReset=0 sReset=0 cCopy=52 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1448755865596922376426 
+Fun=F4 run=21 nReset=0 sReset=0 cCopy=19 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1358954832883227936691 
+Fun=F4 run=22 nReset=0 sReset=0 cCopy=24 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1277599358236329862848 
+Fun=F4 run=23 nReset=0 sReset=0 cCopy=42 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2857847148341079446254 
+Fun=F4 run=24 nReset=0 sReset=0 cCopy=9 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.09730930605041976377834 
+Fun=F4 run=25 nReset=0 sReset=0 cCopy=77 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2631602681931326515041 
+Fun=F4 run=26 nReset=0 sReset=0 cCopy=42 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.09371657506244446267374 
+Fun=F4 run=27 nReset=0 sReset=0 cCopy=54 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1282981343442770594265 
+Fun=F4 run=28 nReset=0 sReset=0 cCopy=62 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2214972684778331313282 
+Fun=F4 run=29 nReset=1 sReset=0 cCopy=19 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.165750229127752390923 
+Fun=F4 run=30 nReset=0 sReset=0 cCopy=85 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1842273081233543052804 
+Function number=F5
+Dimension D=20
+Search range: Xmin=-100 Xmax=100
+Population size NP=160 (bNP=140 sNP20) 
+Fun=F5 run=1 nReset=0 sReset=0 cCopy=25 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=107.7562188273448100517 
+Fun=F5 run=2 nReset=0 sReset=0 cCopy=72 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=2.302390562681466690265 
+Fun=F5 run=3 nReset=0 sReset=0 cCopy=28 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=137.8396310967884801357 
+Fun=F5 run=4 nReset=0 sReset=0 cCopy=12 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=48.01361019620048864454 
+Fun=F5 run=5 nReset=1 sReset=3 cCopy=66 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=27.08379677328002799186 
+Fun=F5 run=6 nReset=1 sReset=2 cCopy=37 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=6.808577079607630366809 
+Fun=F5 run=7 nReset=0 sReset=0 cCopy=117 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=148.0163584466365591652 
+Fun=F5 run=8 nReset=1 sReset=0 cCopy=35 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=162.0587077611653512577 
+Fun=F5 run=9 nReset=0 sReset=0 cCopy=163 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=158.099591560070621199 
+Fun=F5 run=10 nReset=0 sReset=0 cCopy=82 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=128.0147535232381414971 
+Fun=F5 run=11 nReset=1 sReset=1 cCopy=138 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=20.60570769427295090281 
+Fun=F5 run=12 nReset=0 sReset=0 cCopy=44 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=101.9946607077538374142 
+Fun=F5 run=13 nReset=0 sReset=0 cCopy=83 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=72.31797236552574759116 
+Fun=F5 run=14 nReset=0 sReset=0 cCopy=37 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=205.6005710588422061846 
+Fun=F5 run=15 nReset=0 sReset=3 cCopy=49 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=43.06092297679242619779 
+Fun=F5 run=16 nReset=0 sReset=12 cCopy=105 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=128.9513846141858266492 
+Fun=F5 run=17 nReset=0 sReset=0 cCopy=64 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=188.8786818560770370823 
+Fun=F5 run=18 nReset=0 sReset=0 cCopy=69 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=22.59562594673684543523 
+Fun=F5 run=19 nReset=0 sReset=4 cCopy=136 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=21.80883722416319869808 
+Fun=F5 run=20 nReset=0 sReset=0 cCopy=87 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=138.5484494111217372847 
+Fun=F5 run=21 nReset=0 sReset=0 cCopy=58 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=139.2080278578050638316 
+Fun=F5 run=22 nReset=0 sReset=0 cCopy=99 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=134.6617322176698507974 
+Fun=F5 run=23 nReset=0 sReset=4 cCopy=87 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=4.500262410328332407516 
+Fun=F5 run=24 nReset=0 sReset=0 cCopy=33 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=117.1474340071163169341 
+Fun=F5 run=25 nReset=0 sReset=0 cCopy=120 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=61.55517691465274765505 
+Fun=F5 run=26 nReset=0 sReset=0 cCopy=77 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=143.3897269077656346781 
+Fun=F5 run=27 nReset=0 sReset=0 cCopy=156 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=47.34840965137368584692 
+Fun=F5 run=28 nReset=1 sReset=10 cCopy=26 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=5.8994709675087051437 
+Fun=F5 run=29 nReset=0 sReset=0 cCopy=85 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=182.3859869762925427494 
+Fun=F5 run=30 nReset=0 sReset=0 cCopy=111 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=183.4252390396839018649 
+Function number=F6
+Dimension D=20
+Search range: Xmin=-100 Xmax=100
+Population size NP=160 (bNP=140 sNP20) 
+Fun=F6 run=1 nReset=0 sReset=0 cCopy=5 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1212410911111874156632 
+Fun=F6 run=2 nReset=0 sReset=0 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.3099145017602040752536 
+Fun=F6 run=3 nReset=0 sReset=0 cCopy=44 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1703346931878968462115 
+Fun=F6 run=4 nReset=0 sReset=0 cCopy=2 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1323256266400676395278 
+Fun=F6 run=5 nReset=0 sReset=0 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2366756826243090472417 
+Fun=F6 run=6 nReset=0 sReset=0 cCopy=27 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1057723282406186626758 
+Fun=F6 run=7 nReset=0 sReset=0 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.3947950087194840307347 
+Fun=F6 run=8 nReset=0 sReset=0 cCopy=4 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.155027800073412436177 
+Fun=F6 run=9 nReset=0 sReset=0 cCopy=3 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.08790236391746475419495 
+Fun=F6 run=10 nReset=0 sReset=0 cCopy=3 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1162861208142658142606 
+Fun=F6 run=11 nReset=0 sReset=0 cCopy=0 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2214913720274580555269 
+Fun=F6 run=12 nReset=2 sReset=0 cCopy=2 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1692759744378236064222 
+Fun=F6 run=13 nReset=0 sReset=0 cCopy=3 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1831225613220794912195 
+Fun=F6 run=14 nReset=0 sReset=0 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2486861424260951025644 
+Fun=F6 run=15 nReset=0 sReset=0 cCopy=40 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2260793447997002658667 
+Fun=F6 run=16 nReset=0 sReset=0 cCopy=37 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.2679373222663343767636 
+Fun=F6 run=17 nReset=0 sReset=0 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.1783034686197879636893 
+Fun=F6 run=18 nReset=0 sReset=0 cCopy=3 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.06336923254821158479899 
+Fun=F6 run=19 nReset=0 sReset=0 cCopy=1 FES=10000000 NP=160 (bNP=140 sNP20) D=20  bestValue=0.4941283087530337070348 

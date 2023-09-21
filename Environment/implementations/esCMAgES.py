@@ -1,184 +1,262 @@
 import numpy as np
-import scipy as sp
-import matplotlib.pyplot as plt
-import copy
-from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm
+from scipy.optimize import minimize
+from copy import deepcopy
 
-class esCMAgESIndividual:
-    def __init__(self, y):
-        self.x = y
-        self.objective = 0
+from implementations.basic_algorithms.evolutionary_algorithm_with_constraints import EvolutionaryAlgorithmWithConstraints
+from implementations.basic_algorithms.BCHM import projection
 
-    def evaluate(self, fun):
-        self.objective = fun(self.x)
 
-    def __repr__(self):
-        return f"{self.y} {self.z} {self.d}: obj:{self.objective}"
+INITIAL_T = 500
+INITIAL_DELTA_MIN = 3
+INITIAL_SIGMA_MAX = 100
+INITIAL_TOLERANCE_SIGMA = 1e-16
+INITIAL_TOLERANCE_FUN = 1e-16
+INITIAL_AGE_LIMIT = 300
 
-    def __lt__(self, individual):
-        return list(self.x) < list(individual.x)
 
-class esCMAgES(EvolutionaryAlgorithm):
-    def __init__(self, teta_p=-1, teta_r=0, gamma_min=3, sigma_max=100, Tg=500):
-        #teta_p = 0.2
-        self.teta_p = teta_p
-        self.teta_r = teta_r
-        self.gamma_min = gamma_min
-        self.sigma_max = sigma_max
-        self.Tg = Tg
-
+class esCMAgES(EvolutionaryAlgorithmWithConstraints):
+    def __init__(self):
+        super().__init__()
+        self.name = "esCMAgES"
+    
+    # main methods
     def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
         super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
-        # 1
-        self.NP = int(4 + np.floor(3 * np.log(self.D)))
-        self.mi = int(np.floor(self.NP / 3))
-        self.sigma = 1
-        self.P_sigma = np.zeros([1, self.D])
-        self.P_c = np.zeros([1, self.D])
-        self.C = np.identity(self.D)
-        self.S_1 = np.array([])
 
-        self.c_c = 4 / (self.D + 4)
+        self.NP = 4 + np.floor(3 * np.log(self.D)).astype(int)
 
-        self.weights = np.log([self.mi + 0.5 for i in range(self.mi)]).reshape(self.mi, 1) - np.log([i + 1 for i in range(self.mi)]).reshape(self.mi, 1)
-        self.weights = self.weights / np.sum(self.weights)
+        self.age = 0
+        self.Tt = INITIAL_T
+        self.constraint_number = max(self.gn + self.hn, 1)
+        self.delta_min = INITIAL_DELTA_MIN
+        self.sigmaMAX = INITIAL_SIGMA_MAX
 
-        self.mi_eff = 1 / np.sum(self.weights ** 2)
-        self.c_sigma = (self.mi_eff + 2) / (self.D + self.mi_eff + 3)
+        self.age_limit = INITIAL_AGE_LIMIT
+        self.tolerance_sigma = INITIAL_TOLERANCE_SIGMA
+        self.tolerance_fun = INITIAL_TOLERANCE_FUN
 
-        self.c_mi = ((self.D + 2) / 3) * ((2 / (self.mi_eff * (self.D + np.sqrt(2)) ** 2)) + (1 - 1 / self.mi_eff) * min(1, (2 * self.mi_eff - 1) / ((self.D + 2) ** 2 + self.mi_eff)))
-
-        S_0 = np.array([]) # archive ??
-
-    def initialize_population(self):
-        self.P = [esCMAgESIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)]
-
-    def evaluate_initial_population(self):
-        for i in range(self.NP):
-            self.evaluate_individual(self.P[i])
-
-        self.FES += self.NP
-
-    def evaluate_new_population(self):
-        self.evaluate_initial_population()
+        self._start_parameters()
 
     def before_start(self):
-        self.x = np.zeros([1, self.D])
-        for i in range(self.mi):
-            self.x += self.weights[i] * self.P[i].x
+        super().before_start()
+        self._initialize_tolerance()
 
-        self.g = 0
-        self.restart = 1
+        sorted_index = self._get_sorted_population_index(self.tolerance)
+        mu_best = np.array([self.P[i].x for i in range(self.NP)])[sorted_index[:self.mu]].T
+        self.m = np.dot(mu_best, self.weights)
 
-    def mutation(self):
-        self.P = np.array([])
-        self.T = np.array([])
-        self.O = np.array([])
+        best_new = self.P[sorted_index[0]]
+        self.old_best_objective = best_new.objective
 
-        self.MM = np.diag(np.diag(self.C) ** 0.5)
+        self.global_best = deepcopy(best_new)
+        self.local_best = deepcopy(best_new)
+        self.restart = 0
+
+    def prepare_to_generate(self):
+        if self.restart == 1:
+            self._reinitialize()
+            self.restart = 0
+
+    def genetics_operations(self):
+        z = np.random.randn(self.D, self.NP)
+        self.R = np.array([self.individual_generic(np.zeros(self.D)) for i in range(self.NP)])
+        self.T = np.array([self.individual_generic(np.zeros(self.D)) for i in range(self.NP)])
+        self.P = np.array([self.individual_generic(np.zeros(self.D)) for i in range(self.NP)])
         for i in range(self.NP):
-            # 19
-            z = np.random.multivariate_normal(np.zeros(self.D), np.identity(self.D))
-            # 20
-            d = self.MM @ z
-            # 21
-            y = self.x + self.sigma * d
-            # 23
-            y_d = self.box_constraints_repair(y) # TODO
-            # 24
-            if self.g % self.D == 0 and np.random.rand() < self.teta_p:
-                # 25
-                h = 1
-                # 26
-                while h <= self.teta_r: # ????
-                    # 27
-                    y_d = gradient_repair(y)
-                    # 28
-                    self.FES += 1
-            # 29, 30 end
-            # 31
-            if not np.array_equal(y, y_d):
-                # 32
-                y = y_d
-                # 33
-                d = (y - self.x) / self.sigma
-                # 34
-                z = 1 / np.diag(self.C) * d
+            for j in range(self.D):
+                self.R[i].x[j] = z[j][i]
+            self.T[i].x = np.diag(np.diag(self.C ** 0.5)).dot(self.R[i].x)
+            self.P[i].x = self.m + self.sigma * self.T[i].x
 
-            self.P = np.append(self.P, esCMAgESIndividual(y[0]))
-            self.T = np.append(self.T, esCMAgESIndividual(z[0]))
-            self.O = np.append(self.O, esCMAgESIndividual(d[0]))
+        done_repairs = np.zeros(self.NP).astype(bool)
+        self.P_new = deepcopy(self.P)
+        for i in range(self.NP):
+            self.P_new[i] = self.repair_boundary_constraints(deepcopy(self.P[i]))
+            done_repairs[i] = np.logical_not(np.array_equal(self.P[i].x, self.P_new[i].x))
+            self._evaluate_individual(self.P_new[i])
+            self.P_new[i].svc = self._get_svc(self.P_new[i].g, self.P_new[i].h)
+            
+        self.FES += self.NP
 
-    def crossover(self):
-        pass
+        # Solution Repair
+        if (self.hn > 0 and self.D < 20) or self.hn == 0:
+            self.maxiter = 4
+            pnb = 1
+        else:
+            self.maxiter = 3000
+            pnb = 0.2
+
+        if np.mod(self.t, self.D) == 0:
+            for i in range(self.NP):
+                if np.random.rand() <= pnb and self.P_new[i].svc > 0:
+                    self.P_new[i], FES = self._constraints_repair(self.P_new[i].x)
+                    self.P_new[i] = self.repair_boundary_constraints(self.P_new[i])
+                    self._evaluate_individual(self.P_new[i])
+                    self.FES += FES + 1
+                    self.P_new[i].svc = self._get_svc(self.P_new[i].g, self.P_new[i].h)
+                    done_repairs[i] = True
+
+
+        for i in range(self.NP):
+            if done_repairs[i]:
+                self.T[i].x = (self.P_new[i].x - self.m) / self.sigma
+                self.R[i].x = np.dot(np.linalg.inv(np.diag(np.diag(self.C))), self.T[i].x)
+
+    def repair_boundary_constraints(self, x):
+        return projection(x, self.D, self.MIN, self.MAX)
 
     def selection(self):
-        pass
-
-    def prepare_to_generate_population(self):
-        pass
+        self.P = self.P_new
 
     def after_generate(self):
-        self.find_best()
+        sorted_index_final_tolerance = self._get_sorted_population_index(0)
+        best_new = self.P[sorted_index_final_tolerance[0]]
+
+        sorted_index = self._get_sorted_population_index(self.tolerance)
+        fun_improvement = np.abs(self.old_best_objective - best_new.objective)
+        self.old_best_objective = best_new.objective
+
+        if self._is_better(best_new, self.local_best):
+            self.local_best = deepcopy(best_new)
+            self.age = 0
+        else:
+            self.age += 1
+
+        if self._is_better(self.local_best, self.global_best):
+            self.global_best = deepcopy(self.local_best)
         
-        # 40
-        x_impr = np.zeros([1, self.D])
-        for i in range(self.mi):
-            x_impr += self.O[i].x * self.weights[i]
-        self.x = self.x + self.sigma * x_impr
-        # 41 - mi_eff to w algorytmie mi_w
-        P_impr = np.zeros([1, self.D])
-        for i in range(self.mi):
-            P_impr += self.T[i].x * self.weights[i]
-        self.P_sigma = (1 - self.c_sigma) * self.P_sigma + np.sqrt(self.mi_eff * self.c_sigma * (2 - self.c_sigma)) * P_impr
-        # 42
-        h_sigma = (np.linalg.norm(self.P_sigma) ** 2 / (self.D * (1 - (1 - self.c_sigma) ** (2 * self.FES / self.NP)))) < (2 + 4 / (self.D + 1))
-        h_sigma = int(h_sigma)
-        # 43
-        self.P_c = (1 - self.c_c) * self.P_c + h_sigma * np.sqrt(self.mi_eff * self.c_c * (2 - self.c_c)) * x_impr
-        # 44
-        C_impr = np.zeros([self.D, self.D])
-        for i in range(self.mi):
-            C_impr = C_impr + self.weights[i] * self.T[i].x * self.T[i].x.reshape(self.D, 1)
+        T_sum = np.zeros((self.mu, self.D))
+        R_sum = np.zeros((self.mu, self.D))
+        
+        j = 0
+        for i in sorted_index[:self.mu]:
+            T_sum[j] = self.T[i].x * self.weights[j]
+            R_sum[j] = self.R[i].x * self.weights[j]
+            
+            j += 1
 
+        T_sum = np.sum(T_sum, axis=0).reshape(self.D, 1)
+        R_sum = np.sum(R_sum, axis=0).reshape(self.D, 1)
 
-        self.C = (1 - self.c_mi * (1 - 1 / self.mi_eff) * C_impr) * self.C + 1 / self.mi_eff * self.P_c * self.P_c.T
-        # 45
-        self.sigma = min(self.sigma * np.exp(self.c_sigma / 2 * (np.linalg.norm(self.P_sigma) ** 2 / self.D - 1)), self.sigma_max)
-        # 46
-        self.g += 1
-        # 47
-        #if self.g < self.Tg:
-            # 48
-            #e = e_0 * (1 - self.g/self.Tg) ** gamma
-        # 49
-        #else:
-            # 50
-            #e = 0
-        # 51 end
-        # 52
-        """
-        if stop:
-            # 53
-            self.NP = 1.5 * self.NP
-            # 54
-            restart = 0
-        """
+        self.m = self.m + self.sigma * T_sum.reshape(self.D)
 
-        if self.FES >= self.MAX_FES:
-            self.stop = True
+        self._update_p_sigma(R_sum)
+        self._update_pc(T_sum)
+        self._update_C(sorted_index)                                          
+        self._update_sigma()
 
-        self.bests_values.append(self.global_best.objective)
-        self.FESs.append(self.FES)
+        if not np.all(np.isfinite(self.C)) or np.max(self.C) > 1e16:
+            self.C = np.eye(self.D)
 
-    def find_best(self):
-        self.P, self.T, self.O = zip(*sorted(zip(self.P, self.T, self.O), key=lambda x: x[0].objective))
-        self.global_best = self.P[0]
+        if self._reinitialize_statements(fun_improvement):
+            self.restart = 1
+            self.local_best = self.individual_generic(np.zeros(self.D), float('inf'), float('inf'))
 
-    def gradient_repair():
-        pass # TODO
+        self.t = self.t + 1
+        self._update_tolerance()
 
-    def box_constraints_repair(self, value):
-        for i in range(len(value)):
-            value[0][i] = np.min([np.max([value[0][i], self.MIN[i]]), self.MAX[i]])
-        return value
+        super().after_generate()
+
+    # helpful methods
+    def _update_pc(self, T_sum):
+        h_sigma = np.sum(self.p_sigma ** 2) / ((1 - (1 - self.c_sigma) ** (2 * self.FES / self.NP)) * self.D) < 2 + 4 / (self.D + 1)
+        self.pc = (1 - self.cc) * self.pc + h_sigma * np.sqrt(self.cc * (2 - self.cc) * self.mu_eff) * T_sum
+
+    def _update_p_sigma(self, R_sum):
+        self.p_sigma = (1 - self.c_sigma) * self.p_sigma + np.sqrt(self.c_sigma * (2 - self.c_sigma) * self.mu_eff) * R_sum
+
+    def _update_C(self, sorted_index):
+        Tx = np.array([x.x for x in self.T]).T
+        self.C = (1 - self.cmu) * self.C + np.dot(self.cmu * (1 - 1 / self.mu_eff) * Tx[:, sorted_index[0:self.mu]], \
+                    np.dot(np.diag(self.weights), Tx[:, sorted_index[0:self.mu]].T)) + 1 / self.mu_eff * np.dot(self.pc, self.pc.T)
+
+    def _update_sigma(self):
+        self.sigma = np.minimum(self.sigma * np.exp((self.c_sigma / 2) * (np.linalg.norm(self.p_sigma) ** 2 / self.D - 1)),
+                          self.sigmaMAX)
+
+    def _reinitialize_statements(self, fun_improvement):
+        return (self.sigma < self.tolerance_sigma or 
+                self.age > self.age_limit or 
+                fun_improvement < self.tolerance_fun) and self.t > self.Tt
+
+    def _get_sorted_population_index(self, E):
+        f = np.array([x.objective for x in self.P])
+        g = np.array([x.g for x in self.P]).reshape(self.NP, max(self.gn, 1))
+        h = np.array([x.h for x in self.P]).reshape(self.NP, max(self.hn, 1))
+        G = np.sum(np.maximum(0, g - E), axis=1)
+        H = np.sum(np.maximum(0, np.abs(h) - (E + 0.0001)), axis=1)
+        svc = G + H
+        sorted_index = np.lexsort(np.column_stack((svc, f)).T[::-1])
+        return sorted_index
+
+    def _initialize_tolerance(self):
+        f = np.array([x.objective for x in self.P])
+        svc = np.array([x.svc for x in self.P])
+        i = np.lexsort(np.column_stack((svc, f)).T[::-1])
+        n = np.ceil(0.9 * self.NP).astype(int)
+        self.tolerance = np.median(svc[i[:n]])
+
+        self.initial_tolerance = self.tolerance
+        
+        self.delta_tolerance = np.maximum(self.delta_min, (-5 - np.log(self.tolerance)) / np.log(0.05))
+
+    def _update_tolerance(self):
+        if self.t > 1 and self.t < self.Tt:
+            self.tolerance = self.initial_tolerance * ((1 - self.t / self.Tt) ** self.delta_tolerance)
+        elif self.t + 1 >= self.Tt:
+            self.tolerance = 0
+
+    def _constraints_repair(self, x0):
+        options = {'disp': False, 'maxiter': self.maxiter}
+    
+        cons = [{'type': 'ineq', 
+                'fun': lambda x, idx=i: self.fun(np.array([x]))[1][0][idx]} for i in range(self.gn)]
+        cons.extend([{'type': 'eq', 'fun': lambda x, idx=i: self.fun(np.array([x]))[2][0][idx]} for i in range(self.hn)])
+
+        bounds = [(mini, maxi) for mini, maxi in zip(self.MIN, self.MAX)]
+        func = lambda x: self.fun(np.array([x]))[0]
+        
+        res = minimize(func, x0, method='SLSQP', options=options,
+                        bounds=bounds, constraints=cons)
+        new_mutant = self.individual_generic(res.x)
+        fes = res.nfev
+
+        return new_mutant, fes
+
+    def _get_svc(self, g, h):
+        return super()._get_svc(g, h) / self.constraint_number
+
+    def _reinitialize(self):       
+        self.NP = np.floor(1.5 * self.NP)
+        self.NP = self.NP.astype(int)
+
+        self._start_parameters()
+        self.initialize_population()   
+        self.evaluate_initial_population()       
+        self._initialize_tolerance()
+        
+        sorted_index = self._get_sorted_population_index(self.tolerance)
+        ParentPop = np.array([self.P[i].x for i in range(self.NP)])[sorted_index[:self.mu]].T
+        
+        self.m = np.dot(ParentPop, self.weights)
+
+    def _start_parameters(self):
+        self.sigma = 1
+        self.mu = np.floor(self.NP / 3).astype(int)
+        self.weights = np.log(self.mu + 1/2) - np.log(range(1, self.mu + 1))
+        self.weights = self.weights / np.sum(self.weights)
+        self.mu_eff = 1 / np.sum(self.weights ** 2)
+        self.c_sigma = (self.mu_eff + 2) / (self.D + self.mu_eff + 3)
+        self.cmu = ((self.D + 2) / 3) * ((2 / (self.mu_eff * (self.D + np.sqrt(2)) ** 2)) + \
+                    (1 - 1 / self.mu_eff) * min([1, (2 * self.mu_eff - 1) / ((self.D + 2) ** 2 + self.mu_eff)]))
+        self.cc = 4 / (self.D + 4)
+
+        self.p_sigma = np.zeros((self.D, 1))
+        self.pc = np.zeros((self.D, 1))
+        self.C = np.eye(self.D)
+
+        self.t = 0
+
+    def _is_better(self, x1, x2):
+        return (x1.svc == x2.svc == 0 and x1.objective <= x2.objective) or (x1.svc == x2.svc and x1.objective <= x2.objective) or (x1.svc < x2.svc)
+

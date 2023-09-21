@@ -1,327 +1,313 @@
 import numpy as np
-import copy
-import matplotlib.pyplot as plt
-from scipy import stats as sp_stats
-from implementations.evolutionary_algorithm import EvolutionaryAlgorithm, Individual
+from scipy.stats import norm, levy_stable
+from copy import deepcopy
 
-alfa = 0.5
-beta = 1
-gamma = 0.01
-delta = 0
-mi = 0.25
-e_f = 10 ** (-4)
-p = 0.11 # proportion of best solutions
-H = 6 # size of memory
+from random_generator import random_generator
+from implementations.basic_algorithms.MODE import MODEIndividual, MODE
+from implementations.basic_algorithms.DE_basic_mutations import current_to_pbest_with_archive
+from implementations.basic_algorithms.BCHM import rand_base_1
 
-class COLSHADEIndividual(Individual):
-    def __init__(self, x, F=0, CR=0):
-        super().__init__(x)
-        self.F = F
-        self.CR = CR
-        self.h = None
-        self.g = None
 
-    def is_efeasible(self, e):
-        for i in range(np.size(self.h)):
-            if self.h[i] - e[i] > 0:
-                return False
-        return True
+INITIAL_NP_RATE = 18
+INITIAL_NP_MIN = 4
+INITIAL_ARCHIVE_RATE = 2.6
+INITIAL_PROBABILITY_RATE = 0.25
+INITIAL_PROBABILITY_LEVY_MIN = 1e-3
+INITIAL_P_BEST_RATE = 0.11
+INITIAL_P_TOLERANCE = 0.2
+INITIAL_MEMORY_SIZE = 6
 
-    def __repr__(self):
-        return f"{self.x}, {self.objective}, {self.h}, {self.g}"
 
-    def __add__(self, individual):
-        return COLSHADEIndividual(self.x + individual.x, self.F, self.CR)
+class COLSHADEIndividual(MODEIndividual):
+    def __init__(self, x=None, objective=None, svc_current=None, svc=None, g=None, h=None, F=None, CR=None):
+        super().__init__(x, objective, svc, g, h, F, CR)
+        self.svc_current = svc_current
 
-    def __sub__(self, individual):
-        return COLSHADEIndividual(self.x - individual.x, self.F, self.CR)
 
-    def __mul__(self, num):
-        return COLSHADEIndividual(self.x * num, self.F, self.CR)
+class COLSHADE(MODE):
+    def __init__(self):
+        self.name = "COLSHADE"
+        self.individual_generic = COLSHADEIndividual
 
-class COLSHADE(EvolutionaryAlgorithm):
-    def __init__(self, alpha=0.5, beta=1, gamma=0.01, delta=0, mi=0.25, p=0.11, 
-                memory_size=6, r_NP_init=18, r_arc=2.6, NP_min=4, p_m=0.5, p_m_min=10**(-3), p_f=0.2):
-        self.alpha = alpha
-        self.beta = beta
-        self.gamma = gamma
-        self.delta = delta
-        self.mi = mi
-        self.p = p # proportion of best solutions
-        self.p_f = p_f # proportion of e-feasible solutions
-        self.memory_size = memory_size # size of memory
-        self.r_NP_init = r_NP_init
-        self.r_arc = r_arc
-        self.NP_min = NP_min
-        self.p_m = p_m
-        self.p_m_min = p_m_min
-
+    # main methods
     def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
         super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
-        self.FESe = 0.6 * self.MAX_FES
 
-        self.NP_init = np.round(self.D * self.r_NP_init)
+        self.pd_normal = norm(loc=0, scale=0.1)
+        self.pd_cauchy = levy_stable(alpha=1.0, beta=0, loc=0, scale=0.1)
+        self.pd_levy = levy_stable(alpha=0.5, beta=1, loc=0.01, scale=0.01)
+
+        self.pd_normal.rvs = random_generator.get_normal
+        self.pd_cauchy.rvs = random_generator.get_cauchy
+        self.pd_levy.rvs = random_generator.custom_levy0
+
+        self.NP_rate = INITIAL_NP_RATE
+        self.NP_init = np.ceil(self.NP_rate * self.D).astype(int)
         self.NP = self.NP_init
+        self.NP_min = INITIAL_NP_MIN
 
-        self.archive_size = np.round(self.NP_init * self.r_arc)
-        self.archive = np.array([])
+        self.A_rate = INITIAL_ARCHIVE_RATE
+        self.P_archive = np.array([])
+        self.NP_archive = 0
 
-        self.M_CR = 0.5 * np.ones([self.memory_size, 1])
-        self.M_F = 0.5 * np.ones([self.memory_size, 1])
-        self.M_CR_L = 0.5 * np.ones([self.memory_size, 1])
-        self.M_F_L = 0.5 * np.ones([self.memory_size, 1])
+        # parameters to mutation
+        self.probability_rate = INITIAL_PROBABILITY_RATE
+        self.prob_levy_min = INITIAL_PROBABILITY_LEVY_MIN
+        self.p_best_rate = INITIAL_P_BEST_RATE
+        self._mutation_strategies = np.array([
+            self.levy, current_to_pbest_with_archive
+        ])
 
-    def initialize_population(self):
-         self.P = np.array([COLSHADEIndividual(np.random.uniform(self.MIN, self.MAX, self.D)) for i in range(self.NP)])
+        # parameters to handling constraints
+        self.tolerance_final = self.equality_tolerance
+        self.FES_tolerance = 0.6 * self.FES_MAX
+        self.p_tolerance = INITIAL_P_TOLERANCE
+
+        # memories
+        self.H = INITIAL_MEMORY_SIZE
+        self.M_F_P = 0.5 * np.ones(self.H)
+        self.M_CR_P = 0.5 * np.ones(self.H)
+        self.memory_index_P = 0
+        self.M_F_L = 0.5 * np.ones(self.H)
+        self.M_CR_L = 0.5 * np.ones(self.H)
+        self.memory_index_L = 0
 
     def evaluate_initial_population(self):
-        for i in range(self.NP):
-            objective, h, g = self.fun(self.P[i].x)
-            self.P[i].objective = objective
-            self.P[i].h = h
-            self.P[i].g = g
-        self.FES += self.NP
-
-        
-
-    def get_pbest(self):
-        best = sorted(self.P, key=lambda x: self.svc(x, self.e_t))
-
-        for i in range(self.NP):
-            if self.svc(best[i], self.e_t) > 0:
-                end = i
-                break
-
-        best[:i] = sorted(best[:i], key=lambda x: x.objective)
-
-        ind = int(np.round(self.p * np.size(self.P)))
-        ind = np.max([ind, 1])
-        self.pbest = best[:ind]
-        self.global_best = self.pbest[0]
+        for x in self.P:
+            self._evaluate_individual(x)
+            x.svc_current = self._get_svc(x, 0)
+            self.FES += 1
 
     def before_start(self):
-        self.e_t = np.amax(abs(np.array([self.P[i].h for i in range(self.NP)])), axis=0)
-        self.e_f = np.array(np.size(self.e_t) * [ 10 ** (-4) ])
-        self.get_pbest()
-        self.FESs.append(self.FES)
-        self.bests_values.append(self.global_best.objective)
+        super().before_start()
 
-    def prepare_to_generate_population(self):
-        self.S_CR = np.array([])
-        self.S_F = np.array([])
-        self.S_CR_L = np.array([])
-        self.S_F_L = np.array([])
-        # 8
-        self.delta_f = np.array([])
-        self.delta_f_L = np.array([])
+        # initial tolerance
+        h = np.array([x.h for x in self.P]).reshape(self.NP, np.maximum(self.hn, 1))
+        self.tolerance = np.max(np.abs(h), axis=0)
+        self.tolerance = np.maximum(self.tolerance, self.tolerance_final)
 
-        self.l = np.random.rand()
+        for x in self.P:
+            x.svc_current = self._get_svc(x, self.tolerance)
+            x.svc = self._get_svc(x, self.tolerance_final)
 
-        self.old_P = copy.deepcopy(self.P)
+        sorted_index = self._get_sorted_index(self.P)
+        self.P = self.P[sorted_index]
 
-    def mutation(self):
-        self.T = np.array([])
-
-        for i in range(self.NP):
-            if self.l <= self.p_m:
-                # 12
-                self.P[i].CR, self.P[i].F = self.generate_parameters(self.M_CR_L, self.M_F_L)
-                # 13
-                v = current_to_pbest(self.P[i], self.P[i].CR, self.P[i].F, self.P, self.pbest, self.archive)
-            # 14
-            else:
-                # 15
-                self.P[i].CR, self.P[i].F = self.generate_parameters(self.M_CR, self.M_F)
-                # 16
-                v = levy(self.P[i], self.P[i].CR, self.P[i].F, self.P, self.pbest, self.NP)
-
-            self.T = np.append(self.T, v)
+    def repair_boundary_constraints(self):
+        for v, x in zip(self.T, self.P):
+            v = rand_base_1(v, x, self.D, self.MIN, self.MAX)
 
     def crossover(self):
-        self.O = np.array([])
-        
+        self.O = deepcopy(self.P)
 
-        for i in range(self.NP):
-            j_rand = np.random.randint(0, self.D)
-            v = self.T[i]
-            x = self.P[i]
-            u = np.array([])
+        for u, v in zip(self.O, self.T):
+            jrand = np.random.randint(0, self.D)
             for j in range(self.D):
-                if np.random.rand() < v.CR or j == j_rand:
-                    u = np.append(u, v.x[j])
-                else:
-                    u = np.append(u, x.x[j])
-
-                # handling boundary constraints
-                while u[j] > self.MAX[j]:
-                    r = np.random.rand() / 10
-                    u[j] = (1 - r) * self.MAX[j] + r * x.x[j]
-                while u[j] < self.MIN[j]:
-                    r = np.random.rand() / 10
-                    u[j] = (1 - r) * self.MIN[j] + r * x.x[j]
-            
-            self.O = np.append(self.O, COLSHADEIndividual(u, x.F, x.CR))
+                if np.random.rand() <= u.CR or j == jrand:
+                    u.x[j] = v.x[j]
 
     def evaluate_new_population(self):
-        for i in range(self.NP):
-            objective, h, g = self.fun(self.O[i].x)
-            self.O[i].objective = objective
-            self.O[i].h = h
-            self.O[i].g = g
+        for u in self.O:
+            self._evaluate_individual(u)
+            u.svc_current = self._get_svc(u, self.tolerance)
+            u.svc = self._get_svc(u, self.tolerance_final)
+            self.FES += 1
 
-        self.FES += self.NP
-                
     def selection(self):
-        new_P = self.feasibility_binary_tournament()
-        self.P = new_P
-
-    def feasibility_binary_tournament(self):
-        delta_f = np.zeros([self.NP, 1])
-        delta_svc = np.zeros([self.NP, 1])
-
-        new_P = np.array([])
+        # feasibility tournament
+        delta_objective = np.zeros(self.NP)
+        delta_svc = np.zeros(self.NP)
 
         for i in range(self.NP):
-            u = self.O[i]
-            x = self.old_P[i]
+            if i == 0:
+                if self.O[i].svc_current == self.P[i].svc_current == 0 and self.O[i].objective < self.P[i].objective:
+                    delta_objective[i] = self.P[i].objective - self.O[i].objective
+                elif self.O[i].svc_current == self.P[i].svc_current == 0 and self.O[i].svc < self.P[i].svc:
+                    delta_svc[i] = self.P[i].svc - self.O[i].svc
+            else:
+                if self.O[i].svc_current == self.P[i].svc_current == 0 and self.O[i].objective < self.P[i].objective:
+                    delta_objective[i] = self.P[i].objective - self.O[i].objective
+                elif self.O[i].svc_current < self.P[i].svc_current:
+                    delta_svc[i] = self.P[i].svc_current - self.O[i].svc_current
+                elif self.O[i].svc_current == self.P[i].svc_current == 0 and self.O[i].svc < self.P[i].svc:
+                    delta_svc[i] = self.P[i].svc - self.O[i].svc
 
-            svc_u = self.svc(u, self.e_t)
-            svc_x = self.svc(x, self.e_t)
-            svc_u_abs = self.svc(u, self.e_f)
-            svc_x_abs = self.svc(x, self.e_f)
-
-            if svc_u < svc_x:
-                delta_svc[i] = svc_x - svc_u # feasibility
-            elif svc_u == svc_x == 0 and u.objective < x.objective:
-                delta_f[i] = x.objective - u.objective # optimality
-            elif self.svc(u, self.e_t) == self.svc(x, self.e_t) == 0 and svc_u_abs < svc_x_abs:
-                delta_svc[i] = svc_x_abs - svc_u_abs # feasibility
-
-        delta_f_max = np.max(delta_f)
+        delta_objective_max = np.max(delta_objective)
         delta_svc_max = np.max(delta_svc)
 
-        if delta_f_max > 0:
-            delta_f = delta_f / delta_f_max
+        if delta_objective_max > 0:
+            delta_objective = delta_objective / delta_objective_max
         if delta_svc_max > 0:
             delta_svc = delta_svc / delta_svc_max
 
-        delta_f = delta_f + delta_svc
+        self.improvement = delta_objective + delta_svc
 
         for i in range(self.NP):
-            u = self.O[i]
-            x = self.P[i]
-            if delta_f[i] > 0:
-                new_P = np.append(new_P, u)
-                self.update_archive(x)
-                if self.l <= self.p_m:
-                    self.S_CR_L = np.append(self.S_CR_L, u.CR)
-                    self.S_F_L = np.append(self.S_F_L, u.F)
-                    self.delta_f_L = delta_f
-                else:
-                    self.S_CR = np.append(self.S_CR, u.CR)
-                    self.S_F = np.append(self.S_F, u.F)
-                    self.delta_f = delta_f
-            else:
-                new_P = np.append(new_P, x)
-
-        return new_P       
+            if self.improvement[i] > 0:
+                self.P_archive = np.append(self.P_archive, self.P[i])
+                self.P[i] = self.O[i]
 
     def after_generate(self):
-        if self.FES >= self.MAX_FES:
-            self.stop = True
+        self._calculate_improvement()
+        self._update_memories()
+        self._update_probabilities_of_mutations_strategies()
 
-        self.get_pbest()
-        self.FESs.append(self.FES)
-        self.bests_values.append(self.global_best.objective)
-
-        self.M_CR, self.M_F = self.update_memories(self.M_CR, self.M_F, self.S_CR, self.S_F, self.delta_f)
-        self.M_CR_L, self.M_F_L = self.update_memories(self.M_CR_L, self.M_F_L, self.S_CR_L, self.S_F_L, self.delta_f_L)
-        self.update_probability()
-        self.update_tolerance()
-        self.NP = self.LPSR(self.NP_min, self.NP_init, self.MAX_FES, self.FES)
-        self.archive_size = int(self.NP  * self.r_arc)
-
-    def update_probability(self):
-        if not (np.size(self.delta_f_L) == 0 and np.size(self.delta_f) == 0):
-            total = (np.sum(self.delta_f_L) + np.sum(self.delta_f))
-            if total != 0:
-                self.p_m_s = np.sum(self.delta_f_L) / total
-                self.p_m = self.mi * self.p_m + (1 - self.mi) * self.p_m_s
-                self.p_m = np.min([np.max([self.p_m, self.p_m_min]), 1 - self.p_m_min])
-
-####### handling constraints #######
-    def svc(self, x, e):
-        E_h = np.sum([max(x.h[i] - e[i], 0) for i in range(len(x.h))])
-        E_g = np.sum([max(x.g[i], 0) for i in range(len(x.g))])
-
-        return E_g + E_h
-
-    def L2(self, S, delta_f):
-        w = [delta_f[s] / sum(delta_f[i] for i in range(len(delta_f))) for s in range(len(S))]
-        total = np.sum([w[s] * S[s] for s in range(len(S))])
-        if total == 0:
-            total = 10 ** (-4)
-        return np.sum([w[s] * S[s] ** 2 for s in range(len(S))]) / total
-
-    def update_tolerance(self):
-        if self.is_efeasible():
-            self.e_t = self.e_t * (self.e_f / self.e_t) ** (self.NP / (self.FESe - self.FES))
-            self.e_t = np.amax([self.e_t, self.e_f], axis=0)
-
-    def is_efeasible(self):
-        total = 0
-
+        self._update_tolerance()
         for i in range(self.NP):
-            if self.P[i].is_efeasible(self.e_t):
-                total += 1
+            self.P[i].svc_current = self._get_svc(self.P[i], self.tolerance)
 
-        return total >= self.p_f * self.NP
+        # sort population
+        sorted_index = self._get_sorted_index(self.P)
+        self.P = self.P[sorted_index]
 
-    def update_memories(self, M_CR, M_F, S_CR, S_F, delta_f):
-        M_CR_k = self.L2(S_CR, delta_f) if np.size(S_CR) > 0 else M_CR[-1]
-        M_F_k = self.L2(S_F, delta_f) if np.size(S_F) > 0 else M_F[-1]
-        M_CR = np.delete(np.append(M_CR, M_CR_k), 0)
-        M_F = np.delete(np.append(M_F, M_F_k), 0)
-        return M_CR, M_F
+        # update NP
+        self.NP = np.round(self.NP_min + (1 - (self.FES / self.FES_MAX)) * (self.NP_init - self.NP_min))
+        self.P = self.P[:self.NP]
 
-    def generate_parameters(self, M_CR, M_F):
-        ri = np.random.randint(0, np.size(M_CR))
-        CR_i = np.random.normal(M_CR[ri], 0.1) if M_CR[ri] > 0 else -1
-        F_i = M_F[ri] + 0.1 * np.random.standard_cauchy()
+        self._update_archive()
 
-        F_crit = np.sqrt((1 - CR_i/2) / self.NP)
-        F_i = np.min([np.max([F_crit, F_i]), 1])
+        # find global best
+        self.global_best = self.P[0]
 
-        return CR_i, F_i
+        super().after_generate()
 
-    def update_archive(self, x):
-        self.archive = np.append(self.archive, x)
+    # mutation strategies    
+    def levy(self, x, P, P_with_archive, r, pbest):
+        levy_rand = self.pd_levy.rvs(size=(1, self.D)).reshape(self.D)
+        return self.individual_generic(x.x + x.F * levy_rand * (pbest.x - x.x))
 
-        while np.size(self.archive) > self.archive_size:
-            index = np.random.randint(0, np.size(self.archive_size))
-            self.archive = np.delete(self.archive, index)
+    # helpful methods
+    def _calculate_improvement(self):
+        self.improvement_pbest = np.zeros(self.NP)
+        self.improvement_levy = np.zeros(self.NP)
 
-def current_to_pbest(x_i, CR_i, F_i, P, pbest, archive):
-    x_pbest = np.random.choice(pbest)
-    r1 = r2 = None
+        for i, x in enumerate(self.P):
+            if x.mutation_num == 0: # levy
+                self.improvement_levy[i] = self.improvement[i]
+            else:
+                self.improvement_pbest[i] = self.improvement[i]
 
-    P_A = np.append(P, archive)
+    def _update_probabilities_of_mutations_strategies(self):
+        if np.any(self.improvement_pbest > 0) or np.any(self.improvement_levy > 0):
+            delta_mean = np.sum(self.improvement_levy) / (np.sum(self.improvement_levy) + np.sum(self.improvement_pbest))
+            prob_levy = self.probability_rate * self._probability_of_mutation_strategies[0] + (1 - self.probability_rate) * delta_mean
+            prob_levy = np.clip(prob_levy, self.prob_levy_min, 1 - self.prob_levy_min)
+
+            self._probability_of_mutation_strategies[0] = prob_levy
+            self._probability_of_mutation_strategies[1] = 1 - prob_levy
+
+    def _update_archive(self):
+        # update archive
+        self.NP_archive_max = np.round(self.NP * self.A_rate)
+        self.NP_archive = self.P_archive.shape[0]
+
+        if self.NP_archive > self.NP_archive_max:
+            idx = np.random.permutation(self.NP_archive)
+            idx = idx[:self.NP_archive - self.NP_archive_max]
+            self.P_archive = np.delete(self.P_archive, idx, axis=0)
+            self.NP_archive = self.P_archive.shape[0]
+
+    def _check_best_feasibility(self):
+        return self.global_best.svc == 0 and not self.is_feasible
     
-    while r1 == r2:
-        r1, r2 = np.random.randint(0, np.size(P_A), 2)
+    def _check_optimum_reached(self):
+        return self.global_best.svc == 0 and np.abs(self.global_best.objective - self.optimum) < self.objective_tolerance      
 
-    x_r1 = P_A[r1]
-    x_r2 = P_A[r2]
+    def _generate_parameters(self):
+        for x in self.P:
+            r = np.random.randint(0, self.H)
+            if x.mutation_num == 0:
+                m_cr = self.M_CR_L[r]
+                m_f = self.M_F_L[r]
+            else:
+                m_cr = self.M_CR_P[r]
+                m_f = self.M_F_P[r]
+            if m_cr != -1:
+                x.CR = m_cr + self.pd_normal.rvs()
+                
+            
+            F_crit = np.sqrt((1 - x.CR / 2) / self.NP)
 
-    return x_i + (x_pbest - x_i) * F_i + (x_r1 - x_r2) * F_i
+            x.F = 0
+            while x.F <= F_crit:
+                x.F = m_f + self.pd_cauchy.rvs()
+            
+            x.F = np.nanmin([x.F, 1])
+            x.CR = np.nanmax([np.nanmin([x.CR, 1]), 0])
 
-def levy(x_i, CR_i, F_i, P, pbest, NP):
-    
-    x_pbest = np.random.choice(pbest)
-    F_levy = F_i * sp_stats.levy_stable.rvs(alfa, beta, gamma, gamma + delta)
+    def _get_p_best_indexes(self):
+        pNP = np.ceil(self.p_best_rate * self.NP).astype(int)
+        p_best = np.random.randint(0, pNP, size=self.NP)
+        return p_best
 
-    return x_i + (x_pbest - x_i) * F_levy
-    
+    def _get_random_indexes(self, NP2):
+        r1 = np.zeros(self.NP).astype(int)
+        r2 = np.zeros(self.NP).astype(int)
+        
+        for i in range(self.NP):
+            new_arr = np.delete(np.arange(self.NP), i)
+            r1[i] = np.random.choice(new_arr)
 
+            new_arr = np.delete(np.arange(NP2), (i, r1[i]))
+            r2[i] = np.random.choice(new_arr)
+        
+        return r1, np.zeros(self.NP), r2
 
+    def _get_svc(self, x, equality_tolerance):
+        return np.sum(np.maximum(x.g, 0)) + np.sum(np.maximum(np.abs(x.h) - equality_tolerance, 0))
 
+    def _update_tolerance(self):
+        feasible_individuals = np.sum([1 if x.svc_current == 0 else 0 for x in self.P])
+
+        if (self.FES < self.FES_tolerance):
+            for j in range(self.hn):
+                if feasible_individuals >= self.p_tolerance * self.NP:
+                    decay = (self.tolerance_final / self.tolerance[j]) ** (self.NP / (self.FES_tolerance - self.FES))
+                    self.tolerance[j] = self.tolerance[j] * decay
+                    self.tolerance[j] = np.maximum(self.tolerance[j], self.tolerance_final)
+        else:
+            self.tolerance = self.tolerance_final
+
+    def _update_memories(self):
+        S_F = np.array([])
+        S_CR = np.array([])
+
+        S_F_L = np.array([])
+        S_CR_L = np.array([])
+
+        for i, x in enumerate(self.P):
+            if self.improvement[i] > 0:
+                if x.mutation_num == 0: # levy
+                    S_F_L = np.append(S_F_L, x.F)
+                    S_CR_L = np.append(S_CR_L, x.CR)
+                else:
+                    S_F = np.append(S_F, x.F)
+                    S_CR = np.append(S_CR, x.CR)           
+
+        if np.size(S_F) > 0:
+            nonzero_index = np.where(self.improvement_pbest != 0)
+            total_improvement_pbest = self.improvement_pbest[nonzero_index]
+
+            w = total_improvement_pbest / np.sum(total_improvement_pbest)
+
+            if (self.M_CR_P[self.memory_index_P] == -1) or (np.max(S_CR) == 0):
+                self.M_CR_P[self.memory_index_P] = -1
+            else:
+                self.M_CR_P[self.memory_index_P] = self._count_lehmer_mean(S_CR, w)
+
+            self.M_F_P[self.memory_index_P] = self._count_lehmer_mean(S_F, w)
+            self.memory_index_P = (self.memory_index_P + 1) % self.H
+
+        if np.size(S_F_L) > 0:
+            nonzero_index = np.where(self.improvement_levy != 0)
+            total_improvement_levy = self.improvement_levy[nonzero_index]
+
+            w = total_improvement_levy / np.sum(total_improvement_levy)
+
+            if (self.M_CR_L[self.memory_index_L] == -1) or (np.max(S_CR_L) == 0):
+                self.M_CR_L[self.memory_index_L] = -1
+            else:
+                self.M_CR_L[self.memory_index_L] = self._count_lehmer_mean(S_CR_L, w)
+
+            self.M_F_L[self.memory_index_L] = self._count_lehmer_mean(S_F_L, w)
+            self.memory_index_L = (self.memory_index_L + 1) % self.H

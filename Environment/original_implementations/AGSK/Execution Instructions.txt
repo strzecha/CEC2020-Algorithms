@@ -1,0 +1,3 @@
+NOTE:
+The main file is Adaptive_GSK_ALI. Thus, you have to run this file only.It is ready for all specified dimensions [5 10 15 20].
+As you know, cec20_func.mexw64 is blocked to be attached for security reasons. Please insert this file before executing the main file.

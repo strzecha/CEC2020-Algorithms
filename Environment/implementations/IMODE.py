@@ -1,279 +1,186 @@
 import numpy as np
-import scipy as sp
-import copy
-from implementations.evolutionary_algorithm import Individual, EvolutionaryAlgorithm
+from scipy.optimize import minimize
+from copy import deepcopy
 
-p = 0.1 # pbest
+from implementations.basic_algorithms.improved_MODE import ImprovedMODE
+from implementations.basic_algorithms.DE_basic_mutations import (current_to_pbest_with_archive, 
+                                                                current_to_pbest_without_archive,
+                                                                weighted_rand_to_pbest)
 
-class IMODE(EvolutionaryAlgorithm):
-    def __init__(self, p=0.1, nop=3, prob_ls=0.1, prob_1=1, prob_2=2, archive_rate=2.6):
+INITIAL_PROBABILITY_LOCAL_SEARCH = 0.1
+INITIAL_NP_MIN = 4
+INITIAL_ARCHIVE_RATE = 2.6
+INITIAL_P_BEST_RATE = 0.1
+INITIAL_CR = 0.2
+INITIAL_F = 0.2
+
+
+class IMODE(ImprovedMODE):  
+    def __init__(self):
         super().__init__()
-        self.p = 0.1 # p best solutions
-        self.nop = nop
-        self.p_ls = prob_ls
-        self.p_1 = prob_1
-        self.p_2 = prob_2
-        self.archive_rate = archive_rate
+        self.name = "IMODE"
 
+    # main methods 
     def initialize_parameters(self, fun, dimensionality, budget_FES, MAX, MIN):
         super().initialize_parameters(fun, dimensionality, budget_FES, MAX, MIN)
+
+        self.prob_ls = INITIAL_PROBABILITY_LOCAL_SEARCH
+
         self.NP = 6 * self.D * self.D
-        self.archive_size = int(self.archive_rate * self.NP)
-        self.archive = np.array([])
+        self.NP_min = INITIAL_NP_MIN
 
-    def initialize_population(self):
-         self.P = np.array([IMODEIndividual(np.random.uniform(self.MIN, self.MAX, self.D), 0.5, 0.5) for i in range(self.NP)])
-    def evaluate_initial_population(self):
-        for i in range(self.NP):
-            self.evaluate_individual(self.P[i])
+        self.A_rate = INITIAL_ARCHIVE_RATE
+        self.P_archive = np.array([])
+        self.NP_archive = int(self.A_rate * self.NP)
 
-        self.FES += self.NP
+        self.hist_pos = 0
+        self.H = 20 * self.D
+        self.M_F = np.ones(self.H) * INITIAL_F
+        self.M_CR = np.ones(self.H) * INITIAL_CR
 
-    def evaluate_new_population(self):
-        for i in range(self.NP):
-            self.evaluate_individual(self.O[i])
+        self.NP_init = self.NP
 
-        self.FES += self.NP
+        self.pbest_rate = INITIAL_P_BEST_RATE
 
-    def before_start(self):
-        # prepare DE operators
-        op_1 = Operator(current_to_pbest_archive, self.NP // 3, self.D)
-        op_2 = Operator(current_to_pbest_without_archive, self.NP // 3, self.D)
-        op_3 = Operator(weighted_to_to_pbest, self.NP // 3, self.D)
+        self.limit_all = self.FES_MAX
 
-        self.ops = [op_1, op_2, op_3]
-
-    def prepare_to_generate_population(self):
-        self.pbest = get_pbest(self.P)
-
-        self.shuffled_P = copy.deepcopy(self.P)
-
-        np.random.shuffle(self.shuffled_P)
-
-        index = 0
-        for i in range(self.nop):
-            if self.ops[i].NP > 0:
-                self.ops[i].P = self.shuffled_P[index:index+self.ops[i].NP]
-                index = self.ops[i].NP
-                self.ops[i].x_best = get_pbest(self.ops[i].P)[0]
-
-    def mutation(self):
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].mutation(self.P, self.archive, self.pbest)
-
-    def crossover(self):
-        self.O = np.array([])
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].crossover()
-                self.O = np.append(self.O, self.ops[i].P)
+        self._mutation_strategies = np.array([current_to_pbest_with_archive, 
+                                   current_to_pbest_without_archive,
+                                   weighted_rand_to_pbest])
     
-    def after_generate(self):
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].calculate_diversity()
+    def before_start(self):
+        super().before_start()
 
-        for i in range(len(self.ops)):
-                if self.ops[i].NP > 0:
-                    self.ops[i].x_best = get_pbest(self.ops[i].P)[0]
-
-        # 9
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].calculate_diversity_rate(self.ops)
-                self.ops[i].calculate_quality_rate(self.ops)
-                self.ops[i].calculate_improvment_rate_value()
-        
-        for i in range(len(self.ops)):
-            if self.ops[i].NP > 0:
-                self.ops[i].calculate_new_size_of_population(self.ops, self.NP)
-
-        # 10, 11
-        self.archive = update_archive(self.archive, self.P, self.archive_size)
-
-        if self.FES >= 0.85 * self.MAX_FES and self.FES < self.MAX_FES:
-            self.local_search()
-
-        pbest = get_pbest(self.P)
-        self.global_best = pbest[0]
-        self.FESs.append(self.FES)
-        self.bests_values.append(self.global_best.objective)
-
-        self.update_NP()
-
-        if self.FES >= self.MAX_FES:
-            self.stop = True
-
-    def update_NP(self):
-        self.new_NP = 0
-        for i in range(self.nop):
-            self.new_NP += self.ops[i].NP
-
-        if self.new_NP < self.NP:
-            sub = self.NP - self.new_NP
-            while sub > 0:
-                self.ops[sub % self.nop].NP += 1
-                sub -= 1
-
-    def selection(self):
-        new_P = np.array([])
-        for i in range(self.NP):
-            x = self.P[i]
-            u = self.O[i]
-
-            if x.objective < u.objective:
-                new_P = np.append(new_P, x)
-            else:
-                new_P = np.append(new_P, u)
-        self.P = new_P
+        sorted_index = self._get_sorted_index(self.P)
+        self.global_best = deepcopy(self.P[sorted_index[0]])
+        self.P = self.P[sorted_index]   
 
     def local_search(self):
-        if np.random.rand() < self.p_ls:
-            CFE_ls = np.min([np.ceil(0.02 * self.MAX_FES), self.MAX_FES - self.FES])
-            x_sqp = IMODEIndividual(sp.optimize.minimize(self.fun, self.global_best.x, method="SLSQP", tol=1e-6, options={"maxiter": CFE_ls}).x)
-            x_sqp.evaluate(self.fun)
-            if x_sqp.objective < self.global_best.objective:
-                self.p_ls = 0.1
-                self.P[0] = x_sqp
-            else:
-                self.p_ls = 0.0001
-            self.FES += CFE_ls
-        
-class IMODEIndividual(Individual):
-    def __init__(self, x, CR=0.5, F=0.5):
-        super().__init__(x)
-        self.CR = CR
-        self.F = F
-
-class Operator:
-    def __init__(self, strategy, NP_op, dim):
-        self.strategy = strategy
-        self.NP = NP_op
-        self.P = None
-        self.D = None
-        self.DR = None
-        self.QR = None
-        self.IRV = None
-        self.x_best = None
-        self.dim = dim
-
-    def do_crossover(self, x_i, v_i, CR_i):
-        j_rand = np.random.randint(0, np.size(x_i))
-
-        for j in range(np.size(x_i)):
-            u_i = copy.deepcopy(x_i)
-            if np.random.rand() <= 0.3:
-                if np.random.rand() <= CR_i or j == j_rand:
-                    u_i.x[j] = v_i.x[j]
+        if np.random.rand() < self.prob_ls:
+            LS_FE = min(np.ceil(0.02 * self.FES_MAX), (self.FES_MAX - self.FES)) / 10
+    
+            options = {'maxiter': LS_FE}
+            cons = [{'type': 'ineq', 
+             'fun': lambda x, idx=i: self.fun(np.array([x]))[1][0][idx]} for i in range(self.gn)]
+            cons.extend([{'type': 'eq', 
+                        'fun': lambda x, idx=i: self.fun(np.array([x]))[2][0][idx]} for i in range(self.hn)])
             
+            res = minimize(lambda x: self.fun(np.array([x]))[0], 
+                            self.global_best.x,
+                            method='SLSQP', 
+                            bounds=[(mini, maxi) for mini, maxi in zip(self.MIN, self.MAX)],
+                            options=options,
+                            constraints=cons)
+            new_x = self.individual_generic(res.x)
+            self._evaluate_individual(new_x)
+            new_x.svc = np.sum(self._get_svc(new_x.g, new_x.h))
+
+            if self._is_better(new_x, self.global_best):
+                if self.FES + res.nfev <= self.FES_MAX:
+                    self.global_best = new_x
+
+                    self.P[-1] = deepcopy(self.global_best)
+                    sorted_index = self._get_sorted_index(self.P)
+                    self.P = self.P[sorted_index]
+                
+                self.prob_ls = 0.1
             else:
-                u_i.x[j] = x_i.x[j]
+                self.prob_ls = 0.0001
 
-        return u_i
-
-    def regenerate(self):
-        if self.NP > len(self.P):
-            print("mało")
-            for i in range(self.NP - len(self.P)):
-                self.P = np.append(self.P, IMODEIndividual(np.random.rand(self.dim), 0.5, 0.5))
-
-        elif self.NP < len(self.P):
-            print("dużo")
-            bests = sorted(self.P, key=lambda x: x.objective)
-            self.P = bests[:self.NP]
-
-    def mutation(self, P, archive, pbest):
-        self.O = np.array([])
-        self.regenerate()
-
-        for i in range(self.NP):
-            v_i = self.strategy(self.P[i], self.P[i].CR, self.P[i].F, P, archive, pbest)
-            self.O = np.append(self.O, v_i)
+            if self.FES + res.nfev + 1 <= self.FES_MAX:
+                self.FES += (res.nfev + 1)
 
     def crossover(self):
-        new_P = np.array([])
+        if np.random.rand() < 0.3:
+            self.O = deepcopy(self.P)
+            for i in range(self.NP):
+                jrand = np.floor(np.random.rand() * self.D).astype(int)
+                for j in range(self.D):
+                    if np.random.rand() <= self.P[i].CR or j == jrand:
+                        self.O[i].x[j] = self.T[i].x[j]
+
+        else:
+            self.O = deepcopy(self.P)
+            for i in range(self.NP):
+                j = np.random.randint(0, self.D)
+                L = 1
+                while (np.random.rand() < self.P[i].CR and (L <= self.D)):
+                    self.O[i].x[j] = self.T[i].x[j]
+                    j = (j + 1) % self.D
+                    L += 1
+
+    def selection(self):
+        self.better_index = np.zeros(self.NP).astype(bool)
+        for i in range(self.NP):
+            self.better_index[i] = self._is_better(self.O[i], self.P[i])
+        
+        if self.hn + self.gn > 0:
+            beta = np.zeros(self.NP)
+            for i in range(self.NP):
+                if self.O[i].svc > 0 and self.P[i].svc > 0:
+                    beta[i] = np.nanmax([(self.P[i].svc - self.O[i].svc) / self.P[i].svc, 0]) + \
+                        np.nanmax([(self.P[i].objective - self.O[i].objective) / np.abs(self.P[i].objective), 0])
+                    
+            delta = np.zeros(self.NP)
+            beta_max = np.nanmax(beta)
+            for i in range(self.NP):
+                if self.O[i].svc == 0:
+                    objective = self.P[i].objective if self.P[i].objective != 0 else 1
+                    delta[i] = beta_max + np.nanmax([(self.P[i].svc - self.O[i].svc) / self.P[i].svc, 0]) + \
+                        np.nanmax([(self.P[i].objective - self.O[i].objective) / np.abs(objective), 0])
+                    
+            self.diff = beta + delta
+            self.diff2 = np.maximum(self.diff, 0)
+        else:
+            self.diff = np.array([])
+            self.diff2 = np.array([])
+            for i in range(self.NP):
+                self.diff = np.append(self.diff, np.abs(self.P[i].objective - self.O[i].objective))
+                self.diff2 = np.append(self.diff2, np.maximum(0, (self.P[i].objective - self.O[i].objective)) / np.abs(self.P[i].objective))
+        
+        # update archive
+        self._update_archive(self.P[self.better_index])
+        
+
+        # update x and fitx
+        self.P[self.better_index] = self.O[self.better_index]
+
+    def after_generate(self):
+        super().after_generate()
+
+        sorted_index = self._get_sorted_index(self.P)
+        self.P = self.P[sorted_index]
+
+        if self.FES > 0.85 * self.FES_MAX and self.FES < self.FES_MAX:
+            self.local_search()
+    
+    # helpful methods
+    def _generate_parameters(self):
+        F, CR = self._generate_F_and_CR()
+
+        sorted_index = self._get_sorted_index(self.P)
+        self.P = self.P[sorted_index]
+        CR = np.sort(CR)
 
         for i in range(self.NP):
-            v_i = self.O[i]
-            u_i = self.do_crossover(self.P[i], v_i, self.P[i].CR)
+            self.P[i].F = F[i]
+            self.P[i].CR = CR[i]
 
-            new_P = np.append(new_P, u_i)
+    def _get_p_best_indexes(self):
+        sorted_index = self._get_sorted_index(self.P)
+        pNP = max(np.round(self.pbest_rate * self.NP), 2)
+        randindex = np.floor(np.random.rand(self.NP) * pNP).astype(int)
 
-        self.P = new_P
+        return sorted_index[randindex]
 
-    def generate(self, P, archive, pbest):
-        new_P = np.array([])
-        self.regenerate()
-        for i in range(self.NP):
-            v_i = self.strategy(self.P[i], self.P[i].CR, self.P[i].F, P, archive, pbest)
-            u_i = self.do_crossover(self.P[i], v_i, self.P[i].CR)
-
-            new_P = np.append(new_P, u_i)
-
-        self.P = new_P
-    
-    def calculate_diversity(self):
-        self.D = 1 / self.NP * np.sum([np.linalg.norm(self.P[i].x - self.x_best.x) for i in range(self.NP)])
-
-    def calculate_diversity_rate(self, ops):
-        self.DR =  self.D / np.sum([op.D for op in ops])
-
-    def calculate_quality_rate(self, ops):
-        self.QR = self.x_best.objective / np.sum([op.x_best.objective for op in ops])
-
-    def calculate_improvment_rate_value(self):
-        self.IRV = (1 - self.QR) + self.DR
-
-    def calculate_new_size_of_population(self, other_ops, NP):
-        self.NP = int(max(0.1, min(0.9, self.IRV / np.sum([op.IRV for op in other_ops]))) * NP)
-
-
-
-def get_pbest(P):
-    best = sorted(P, key=lambda x: x.objective)
-    ind = int(np.ceil(p * np.size(P)))
-    ind = max(ind, 1)
-    return best[:ind]
-
-def update_archive(archive, new_P, archive_size):
-    archive = np.append(archive, new_P)
-    archive = np.unique(archive)
-
-    if np.size(archive) > archive_size:
-        archive = np.sort(archive)
-        archive = archive[:archive_size]
-
-    #return archive
-    return new_P
-
-def evaluate(x, fun):
-    return fun(x.x)
-
-def current_to_pbest_archive(x_i, CR_i, F_i, P, archive, pbest):
-    P_A = np.append(P, archive)
-    x_pbest = np.random.choice(pbest)
-    x_r1 = x_r2 = None
-    
-    while x_r1 == x_r2:
-        x_r1, x_r2 = np.random.choice(P_A, 2)
-
-    return x_i + (x_pbest - x_i) * F_i + (x_r1 - x_r2) * F_i
-
-def current_to_pbest_without_archive(x_i, CR_i, F_i, P, archive, pbest):
-    x_pbest = np.random.choice(pbest)
-    x_r1 = x_r3 = None
-    
-    while x_r1 == x_r3:
-        x_r1, x_r3 = np.random.choice(P, 2)
-
-    return x_i + (x_pbest - x_i) * F_i + (x_r1 - x_r3) * F_i
-
-def weighted_to_to_pbest(x_i, CR_i, F_i, P, archive, pbest):
-    x_pbest = np.random.choice(pbest)
-    x_r1 = x_r3 = None
-    
-    while x_r1 == x_r3:
-        x_r1, x_r3 = np.random.choice(P, 2)
-
-    return x_r1 * F_i + (x_pbest - x_r3)
+    def _update_NP(self):
+        NP_new = np.round((((self.NP_min - self.NP_init) / self.FES_MAX) * self.FES) + self.NP_init)
+        if self.NP > NP_new:
+            sorted_indx = self._get_sorted_index(self.P)
+            self.P = np.delete(self.P, sorted_indx[NP_new:], axis=0)
+            self.NP = NP_new
+            
+            self.NP_archive = np.round(self.A_rate * self.NP)
+            if self.P_archive.shape[0] > self.NP_archive:
+                sorted_index = self._get_sorted_index(self.P_archive)[:self.NP_archive]
+                self.P_archive = self.P_archive[sorted_index]

@@ -1,6 +1,0 @@
-docs
-.vscode
-.pytest_cache
-**/__pycache__
-original_implementations
-original_results
