@@ -46,7 +46,6 @@ def initialize_cec2020_nonconstrained_parameters(D):
     return FES_Max, MIN, MAX
 
 def get_dim_and_constraints_cec20_constrained(fun_num):
-    par = {}
     d = [9, 11, 7, 6, 9, 38, 48, 2, 3, 3, 7, 7, 5, 10, 7, 14, 3, 4, 4, 2, 5, 9, 5, 7, 4]
     D = d[fun_num-1]
     gn = [0, 0, 14, 1, 2, 0, 0, 2, 1, 3, 4, 9, 3, 10, 11, 15, 4, 4, 5, 3, 8, 10, 8, 7, 7]
@@ -54,7 +53,6 @@ def get_dim_and_constraints_cec20_constrained(fun_num):
     G = gn[fun_num-1]
     H = hn[fun_num-1]
 
-    
     return D, G, H
 
 def initialize_cec2020_constrained_parameters(fun_num):
@@ -71,7 +69,6 @@ def initialize_cec2020_constrained_parameters(fun_num):
     else:
         FES_Max = 1000000
 
-    # Range
     xmin1 = np.array([0, 0, 0, 0, 1000, 0, 100, 100, 100])
     xmax1 = np.array([10, 200, 100, 200, 2000000, 600, 600, 600, 900])
     xmin2 = np.array([10 ** 4, 10 ** 4, 10 ** 4, 0, 0, 0, 100, 100, 100, 100, 100])

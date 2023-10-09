@@ -22,7 +22,6 @@ def get_mean_violation_constraints(fun, x, equality_tolerance):
 
     return svc / constraints_num
 
-
 def perform_optimization(alg, benchmark, fun, path, filename, FES, MIN, MAX, runs):
     os.makedirs(path, exist_ok=True)
 
@@ -38,8 +37,8 @@ def perform_optimization(alg, benchmark, fun, path, filename, FES, MIN, MAX, run
     print(f"Problem: {fun.ID}")
     print(f"Algorithm: {alg.name}")
     for run in range(runs):
-        #random_generator.restart_generator()
-        #np.random.rand((run + 1) * 99)
+        random_generator.restart_generator()
+        np.random.rand((run + 1) * 99)
         best_ind, FES_feasible, FES_reached, bests = alg.optimize(fun, dimensionality, FES, MAX, MIN)
         mean_vio = get_mean_violation_constraints(fun, best_ind.x, 1e-4)
         print(f"Run {run+1}. best = {best_ind.objective} mean constraints violation = {mean_vio} FES: {FES_reached}, FES feasible: {FES_feasible}")

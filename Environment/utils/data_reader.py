@@ -10,7 +10,6 @@ def get_properties(file_name="properties"):
 
     return configs
 
-
 def get_results_from_file(filename):
     results = np.array([])
     with open(filename, newline='') as csvfile:

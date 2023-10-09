@@ -42,11 +42,10 @@ def get_labels(optimality):
 
     return name, criterion
     
-
 def ECDF_group(algs, funs, dims, FES_budgets, n_runs, optimality=True, show=False, save=False):
     name, criterion = get_labels(optimality)
     markers = ('*', 'h', 'H', 'D', 'd', 'P', 'X')
-    fig, ax = plt.subplots(1, 1, figsize=(7, 6))
+    _, ax = plt.subplots(1, 1, figsize=(7, 6))
     for i, (alg_name, root) in enumerate(algs):
         style = f"-{markers[i]}"
         Xs = []
@@ -70,12 +69,10 @@ def ECDF_group(algs, funs, dims, FES_budgets, n_runs, optimality=True, show=Fals
 
     save_or_show(save, show, name)
 
-
-
 def ECDF_per_function(algs, funs, dims, FES_budgets, n_runs, row, col, optimality=True, show=False, save=False):
     width = col * 5.25
     height = row * 4
-    fig, ax = plt.subplots(row, col, figsize=(width, height))
+    _, ax = plt.subplots(row, col, figsize=(width, height))
     if row == 1 and col != 1:
         ax = ax.reshape(1, col)
     name, criterion = get_labels(optimality)
@@ -111,31 +108,31 @@ def ECDF_per_function(algs, funs, dims, FES_budgets, n_runs, row, col, optimalit
 
     return areas, SR
 
-def get_X_Y(a, max_fes, choice):
+def get_X_Y(results, max_fes, choice):
     thresholds = 10 ** np.linspace(np.log10(1e3), np.log10(1e-8), 51)
-    bests = np.zeros(len(a))
+    bests = np.zeros(len(results))
     Xs = np.linspace(0, 1, 1001)
 
-    for j in range(len(a)):
-        bests[j] = float(a[j][0][choice])
+    for j in range(len(results)):
+        bests[j] = float(results[j][0][choice])
 
     X = []
     Y = [0]
     i = 0
 
-    indexes = np.zeros(len(a)).astype(int)
+    indexes = np.zeros(len(results)).astype(int)
     feasible = False
     for i in range(len(Xs) - 1):
         sum = 0
-        for j in range(len(a)):
+        for j in range(len(results)):
             val_show = bests[j]
-            if a[j].shape[0] > indexes[j]:
-                while indexes[j] < a[j].shape[0] and (float(a[j][indexes[j]][0]) / max_fes) <= Xs[i]:
-                    val = float(a[j][indexes[j]][choice])
+            if results[j].shape[0] > indexes[j]:
+                while indexes[j] < results[j].shape[0] and (float(results[j][indexes[j]][0]) / max_fes) <= Xs[i]:
+                    val = float(results[j][indexes[j]][choice])
                     val_show = min(val, bests[j])
 
-                    if a[j].shape[1] > 2:
-                        svc = float(a[j][indexes[j]][2])
+                    if results[j].shape[1] > 2:
+                        svc = float(results[j][indexes[j]][2])
                     else:
                         svc = 0
                     if svc == 0:
@@ -146,16 +143,14 @@ def get_X_Y(a, max_fes, choice):
             sum += (np.sum(val_show < thresholds) / len(thresholds))
         X.append(Xs[i])
         if (choice == 1 and feasible) or choice == 2: 
-            Y.append(sum / len(a)) 
+            Y.append(sum / len(results)) 
         else:
             Y.append(0)
 
-    
     X.append(Xs[-1])
 
     return X, Y
     
-
 def draw_ECDF(X, Y, ax, title, label, style):
     first_non_zero = np.argmax(np.array(Y) > 0)
     ax.plot(X, Y, style, label=label, markevery=50)

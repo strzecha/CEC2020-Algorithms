@@ -83,11 +83,9 @@ def main():
 
     path  =f"{root}/{args.algorithm}/{args.benchmark}"
     file_name = f"F{args.function}-{D}D"
-    start = time.time()
+
     perform_optimization(alg, args.benchmark, fun, path, file_name,
                         FES_MAX, MIN, MAX, args.runs)
-    stop = start - time.time()
-    print(stop, "s")
 
 if __name__ == "__main__":
     main()

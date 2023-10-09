@@ -196,10 +196,9 @@ def assign_ranks(arr, ascending=True):
         
     sorted_arr = arr[sorted_indices]
     
-    unique_vals, unique_indices = np.unique(sorted_arr, return_index=True)
+    _, unique_indices = np.unique(sorted_arr, return_index=True)
     
     ranks = np.empty(len(sorted_indices), dtype=float)
-    current_rank = 1
     
     for idx in unique_indices:
         same_val_indices = np.where(sorted_arr == sorted_arr[idx])[0]
@@ -318,7 +317,7 @@ def calculate_normalize_Af(bests, bests_conv, algs, funs):
         worst_feasible_solution = bests[worst_solution_index[i],i] if bests_conv[worst_solution_index[i], i] == 0 else 0
         worsts_feasible_solutions[i] = worst_feasible_solution
 
-    for n, alg_name in enumerate(algs):
+    for n in range(len(algs)):
         for fun in funs:
             if bests_conv[n][fun-1] > 0:
                 Af_best[n][fun-1] = worsts_feasible_solutions[fun-1] + bests_conv[n][fun-1]

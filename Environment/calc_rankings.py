@@ -2,7 +2,6 @@ import argparse
 import warnings
 warnings.filterwarnings('ignore')
 
-from utils.cec20_parameters import initialize_cec2020_constrained_parameters, initialize_cec2020_nonconstrained_parameters, get_dim_and_constraints_cec20_constrained
 from utils.stats import calculate_cec2020constrained_ranking, calculate_cec2020nonconstrained_ranking
 from utils.data_reader import get_properties
 
@@ -14,8 +13,6 @@ def main():
     BENCHMARKS_NONCONSTRAINED = properties.get("BENCHMARKS_NONCONSTRAINED").data.split(",")
     BENCHMARKS_NAMES = BENCHMARKS_CONSTRAINED + BENCHMARKS_NONCONSTRAINED
     ALGORITHMS_NAMES = properties.get("ALGORITHMS").data.split(",")
-    RESULTS_DIR = properties.get("RESULTS_DIR").data
-
 
     parser = argparse.ArgumentParser()
 
