@@ -1,3 +1,5 @@
+"""Module with getters of CEC2020 parameters
+"""
 import numpy as np
 
 def get_cec2020_nonconstrained_optimum():

@@ -9,6 +9,7 @@ class MODEIndividual(DEIndividual):
         super().__init__(x, objective, svc, g, h, F, CR)
         self.mutation_num = mutation_num
 
+
 class MODE(DE):
     def __init__(self):
         self.individual_generic = MODEIndividual

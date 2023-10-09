@@ -1,5 +1,7 @@
+"""Module with pseudo-random generator
+"""
+
 import numpy as np
-from scipy.stats import norm, levy_stable
 
 print("random imported")
 
@@ -109,23 +111,17 @@ def custom_randn(a=1, b=None):
 
 def randint_custom(low, high, size=None):
     if size is None:
-        # Jeśli argument `size` nie jest podany, zwróć pojedynczą liczbę całkowitą
         num = get_num_randint()
         return low + int(num * (high - low))
     else:
-        # Jeśli podany jest argument `size`, zwróć tablicę losowych liczb całkowitych
-        size = np.array(size)  # Konwertuj `size` na tablicę numpy
-        random_integers = np.zeros(size, dtype=int)  # Inicjalizuj tablicę wynikową
+        size = np.array(size)
+        random_integers = np.zeros(size, dtype=int)
 
-        # Generowanie losowych liczb całkowitych dla każdego elementu tablicy
-        for index, element in np.ndenumerate(random_integers):
+        for index, _ in np.ndenumerate(random_integers):
             num = get_num_randint()
             random_integers[index] = low + int(num * (high - low))
 
         return random_integers
-
-def custom_levy(size=None):
-    return np.array([np.array([get_levy() for i in range(size[1])]) for j in range(size[0])])
 
 def custom_levy0(size=None):
     return np.array([np.array([get_levy0() for i in range(size[1])]) for j in range(size[0])])
@@ -134,8 +130,6 @@ def my_round(arr, decimals=0):
     multiplier = 10 ** decimals
     rounded_values = np.floor(arr * multiplier + 0.5) / multiplier
     return rounded_values.astype(int) if decimals == 0 else rounded_values
-
-np.round = my_round
 
 def restart_generator():
     global file_rand
@@ -168,3 +162,4 @@ np.random.randint = randint_custom
 np.random.normal = random_normal_custom
 np.random.randn = custom_randn
 np.random.permutation = my_permutation
+np.round = my_round

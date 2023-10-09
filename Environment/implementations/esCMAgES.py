@@ -259,4 +259,3 @@ class esCMAgES(EvolutionaryAlgorithmWithConstraints):
 
     def _is_better(self, x1, x2):
         return (x1.svc == x2.svc == 0 and x1.objective <= x2.objective) or (x1.svc == x2.svc and x1.objective <= x2.objective) or (x1.svc < x2.svc)
-

@@ -1,3 +1,5 @@
+"""Module with functions to perform optimization
+"""
 import csv
 import numpy as np
 import os

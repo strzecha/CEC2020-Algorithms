@@ -1,4 +1,7 @@
+"""Module with Bound Constraints Handling Methods (BCHM)
+"""
 import numpy as np
+
 
 def midpoint_target(v, x, D, MIN, MAX):
     for j in range(D):

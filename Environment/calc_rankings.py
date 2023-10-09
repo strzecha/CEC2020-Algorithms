@@ -1,3 +1,5 @@
+"""Script to calculate CEC2020 rankings
+"""
 import argparse
 import warnings
 warnings.filterwarnings('ignore')

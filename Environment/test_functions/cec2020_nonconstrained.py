@@ -1,3 +1,5 @@
+"""Module with test functions from CEC2020 SOBC benchmark
+"""
 import ctypes
 import numpy as np
 

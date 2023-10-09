@@ -2,6 +2,7 @@ import numpy as np
 
 from implementations.basic_algorithms.evolutionary_algorithm import EvolutionaryAlgorithm, Individual
 
+
 class IndividualWithConstrains(Individual):
     def __init__(self, x=None, objective=None, svc=None, g=None, h=None):
         super().__init__(x, objective)
@@ -11,6 +12,7 @@ class IndividualWithConstrains(Individual):
 
     def __repr__(self):
         return f"{self.x} = {self.objective}, {self.svc}"
+
 
 class EvolutionaryAlgorithmWithConstraints(EvolutionaryAlgorithm):
     def __init__(self):

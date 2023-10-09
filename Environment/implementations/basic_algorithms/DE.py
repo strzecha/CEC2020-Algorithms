@@ -9,6 +9,7 @@ class DEIndividual(IndividualWithConstrains):
         self.F = F
         self.CR = CR
 
+
 class DE(EvolutionaryAlgorithmWithConstraints):
     def __init__(self):
         self.individual_generic = DEIndividual

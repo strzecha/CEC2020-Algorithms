@@ -1,5 +1,7 @@
+"""Module with test function from CEC2020 RWSOC benchmark
+"""
 import numpy as np
-from scipy.optimize import fminbound
+
 from test_functions.test_function import TestFunction
 from utils.cec20_parameters import get_dim_and_constraints_cec20_constrained, get_cec2020_constrained_optimum
 
@@ -441,6 +443,5 @@ def cec20_func_factory():
         fun = TestFunction(f"RC{i+1}", lambda x, idx=i: cec20_func(x, idx+1), D, opt, gn, hn)
         funcs.append(fun)
     return funcs
-
 
 CEC2020_CONSTRAINED = cec20_func_factory()

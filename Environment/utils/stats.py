@@ -1,7 +1,8 @@
+"""Module with functions to calculate statistics and rankings
+"""
 import numpy as np
 import scipy.stats as scs
 import csv
-import time
 
 from utils.data_reader import get_results_from_file, get_properties
 from utils.cec20_parameters import get_cec2020_constrained_optimum, get_cec2020_nonconstrained_optimum

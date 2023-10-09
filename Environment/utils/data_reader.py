@@ -1,3 +1,5 @@
+"""Module with functions to read data from files
+"""
 import numpy as np
 import csv
 from jproperties import Properties

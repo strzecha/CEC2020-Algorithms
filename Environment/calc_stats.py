@@ -1,3 +1,5 @@
+"""Script to calculate statistics
+"""
 import argparse
 
 from utils.cec20_parameters import initialize_cec2020_constrained_parameters

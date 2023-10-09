@@ -276,5 +276,3 @@ class j2020(DE):
             r3 += self.bNP
 
         return r1, r2, r3
-
-    

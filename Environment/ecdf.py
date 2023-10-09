@@ -1,3 +1,5 @@
+"""Script to draw ECDF curves
+"""
 import argparse
 import numpy as np
 

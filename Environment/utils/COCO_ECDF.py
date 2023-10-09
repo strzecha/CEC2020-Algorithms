@@ -1,6 +1,6 @@
-import csv
+"""Module with functions to draw ECDF curves
+"""
 import numpy as np
-import math
 import matplotlib.pyplot as plt
 import datetime
 

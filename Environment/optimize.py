@@ -1,5 +1,5 @@
-import numpy as np
-import time
+"""Script to perform optimization
+"""
 import argparse
 import warnings
 warnings.filterwarnings('ignore')

@@ -1,3 +1,5 @@
+"""Script to perform Wilcoxon test
+"""
 import argparse
 import warnings
 warnings.filterwarnings('ignore')
