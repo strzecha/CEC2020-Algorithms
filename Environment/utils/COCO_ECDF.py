@@ -31,8 +31,6 @@ def save_or_show(save, show, name):
 
 def ECDF_xaxis_formula(FES, MAX_FES, D):
     return FES / MAX_FES
-    return math.log10(FES / D)
-    return FES
 
 def get_labels(optimality):
     if optimality:
@@ -42,7 +40,7 @@ def get_labels(optimality):
         name = "feasibility"
         criterion = 2
 
-    return fun_name, FES_name, name, criterion
+    return name, criterion
     
 
 def ECDF_group(algs, funs, dims, FES_budgets, n_runs, optimality=True, show=False, save=False):
